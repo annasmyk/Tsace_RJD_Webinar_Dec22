@@ -1,0 +1,243 @@
+---
+title: |
+ | Using JDemetra+ in R: from version 2 to version 3 
+ | Presentation 2: Seasonal adjustment in R
+subtitle: "TSACE Webinar, Wednesday December 14th 2022"
+author: "Anna Smyk and Tanguy Barthelemy"
+division: |
+    | With the collaboration of Alain Quartier-la-tente
+    | 
+logo: "img/SACElogo"
+automaticcontents: true
+automaticcontentstext: "Contents"
+output:
+    beamer_presentation:
+        template: template_Beamer.tex
+        keep_tex: yes
+        theme: TorinoTh
+        slide_level: 3
+        includes:
+          in_header: preamble_beamer.tex
+themeoptions: "coding=utf8,language=english"
+classoption: 'usepdftitle=false,french' #handout
+fontsize: 10pt
+bibliography: [biblio.bib]
+biblio-style: unsrtnat
+natbiboptions: [numbers]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      cache = F, 
+                      fig.align = 'center',
+                      fig.path = "img/markdown-")
+library(knitr)
+library(kableExtra)
+library(microbenchmark)
+library(ggplot2)
+library(rjd3toolkit)
+library(rjd3modelling)
+library(rjd3sa)
+library(rjd3arima)
+library(rjd3x13)
+library(rjd3tramoseats)
+library(rjdemetra3)
+library(ggdemetra3)
+
+# library(rjd3sts)
+# library(rjd3highfreq)
+
+# library(rjd3bench)
+fig.ext <- "pdf"
+is_html <- knitr::is_html_output()
+is_latex <- knitr::is_latex_output()
+fig.ext = "pdf"
+if(is_html){
+    fa_arrow_circle_right <- '<i class="fas fa-arrow-circle-right"></i>'
+    fa_r_project <- '<i class="fab fa-r-project"></i>'
+}else {
+    if(is_latex){
+        fa_arrow_circle_right <- "\\faIcon{arrow-circle-right}"
+        fa_r_project <- "\\faIcon{r-project}"
+        fa_java <- "\\faIcon{java}"
+    }else {
+        fa_arrow_circle_right <- "->"
+        fa_r_project <- 'R'
+    }
+}
+options(width = 60)
+def.par <- par(no.readonly = TRUE)
+```
+
+# Introduction 
+
+### Outline table 
+
+### Data formats
+
+here, no workspace structure 
+- assets
+- shortcomings 
+
+
+
+### SA process 
+
+- identifying seasonality 
+- pre treatement 
+- decomposition 
+- quality assessment
+
+comp with GUI main panels ?
+
+### rjd3 suite of packages for SA
+
+in v2 : 
+
+in v3: more tools (tests,...)
+
+
+
+# SA (or Time series) tools
+
+### Identifying seasonal patterns 
+
+### Normality test
+
+### Autocorrelation 
+
+
+# X13
+
+## Quick Launch with default specifications 
+
+### Quick Launch with default specifications 
+
+- x13
+- regarima 
+- x11 (one less spec in default x13)
+
+## Rerieving output and data visualization
+
+### Output structure  v2
+show the list of lists
+do a new version 
+
+### Output structure  v3 (cf txt file)
+show the NEW list of lists
+
+highlight deifferences: 
+- specs
+- specs direct accessible + 2 concepts
+(spec in v12 was point spec;, more about this in refresh section)
+
+### Retrieve output series 
+
+- final
+intermediate computations 
+- from preadjustement
+
+highlight differences v2 vs v3
+
+
+### Retrieve Diagnostics 
+
+### Plots and data visualisation 
+in v2
+in v3 : .mostly in ggdemetra3 for now ..
+
+
+
+
+
+
+## Customizing specifications
+
+### Customizing specifications 
+
+v2: 
+- step 1: extract spec
+- step 2: use the spec function with user-defined arguments
+v3:
+- use direct set_ functions 
+
+check what can be set 
+- a 
+- b 
+- ouliers 
+
+### Adding a context 
+new in v3, relevant ?
+
+### Customizing calendar regressors 
+in v2
+in v3
+
+### Intervention variables
+in v2
+
+in v3 : still a bug
+
+### User-defined parameters: summary 
+BILAN 
+- what's new ? 
+- whats's missing ?
+
+
+## Refreshing data 
+
+### Refreshing data 
+
+new feature of v3
+
+- new handling of spec (no extraction needed)
+- notion of point spec and domain spec
+- in v2 could only retrieve point spec 
+- generatingn new spec for refesh
+- new estimation
+
+
+
+
+# Tramo-seats 
+
+### rjd3tramoseats package  
+
+here (optionnal) what is different from the way rjd3x13 operates
+
+
+# SA of High-Frequency data 
+
+### SA of High-Frequency data
+tool oriented 
+
+
+# Generating User-defined auxilary variables 
+
+
+## calendars
+
+### calendars 
+
+here new functionnality of v3, rjd3modelling pacakage
+
+## outliers and intervention variables 
+
+### outliers and intervention variables 
+
+(using this variables already presented, now focus on generation)
+
+
+
+intervention bug in rj3modelling ?
+
+# Conclusion 
+
+### Conclusion on SA in R
+
+What has v3 brought to the table ?
+
+
+
+
+

@@ -1,0 +1,82 @@
+---
+title: |
+ | Using JDemetra+ in R: from version 2 to version 3 
+ | Presentation 3: Wrangling workspaces in R
+subtitle: "TSACE Webinar, Wednesday December 14th 2022"
+author: "Anna Smyk and Tanguy Barthelemy"
+division: |
+    | With the collaboration of Alain Quartier-la-tente
+    | 
+logo: "img/SACElogo"
+automaticcontents: true
+automaticcontentstext: "Contents"
+output:
+    beamer_presentation:
+        template: template_Beamer.tex
+        keep_tex: yes
+        theme: TorinoTh
+        slide_level: 3
+        includes:
+          in_header: preamble_beamer.tex
+themeoptions: "coding=utf8,language=english"
+classoption: 'usepdftitle=false,french' #handout
+fontsize: 10pt
+bibliography: [biblio.bib]
+biblio-style: unsrtnat
+natbiboptions: [numbers]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      cache = F, 
+                      fig.align = 'center',
+                      fig.path = "img/markdown-")
+library(knitr)
+library(kableExtra)
+library(microbenchmark)
+library(ggplot2)
+library(rjd3toolkit)
+library(rjd3modelling)
+library(rjd3sa)
+library(rjd3arima)
+library(rjd3x13)
+library(rjd3tramoseats)
+library(rjdemetra3)
+library(ggdemetra3)
+
+# library(rjd3sts)
+# library(rjd3highfreq)
+
+# library(rjd3bench)
+fig.ext <- "pdf"
+is_html <- knitr::is_html_output()
+is_latex <- knitr::is_latex_output()
+fig.ext = "pdf"
+if(is_html){
+    fa_arrow_circle_right <- '<i class="fas fa-arrow-circle-right"></i>'
+    fa_r_project <- '<i class="fab fa-r-project"></i>'
+}else {
+    if(is_latex){
+        fa_arrow_circle_right <- "\\faIcon{arrow-circle-right}"
+        fa_r_project <- "\\faIcon{r-project}"
+        fa_java <- "\\faIcon{java}"
+    }else {
+        fa_arrow_circle_right <- "->"
+        fa_r_project <- 'R'
+    }
+}
+options(width = 60)
+def.par <- par(no.readonly = TRUE)
+```
+
+# Introduction
+
+# 
+
+### fooz
+
+### Merging workspace 
+
+context : annual rev
+
+

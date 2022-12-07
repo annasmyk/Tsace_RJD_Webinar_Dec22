@@ -1,0 +1,408 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[10pt,xcolor=table,color={dvipsnames,usenames},ignorenonframetext,usepdftitle=false,french]{beamer}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+\usepackage{caption}
+\captionsetup{skip=0pt,belowskip=0pt}
+%\setlength\abovecaptionskip{-15pt}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath,mathtools,multirow}
+\usepackage{float,hhline}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+\usetheme[coding=utf8,language=english,
+,titlepagelogo=img/SACElogo
+]{TorinoTh}
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfauthor={Anna Smyk and Tanguy Barthelemy},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\newif\ifbibliography
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+\AtBeginPart{
+  \let\insertpartnumber\relax
+  \let\partname\relax
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \begin{frame}[noframenumbering]{Contents}
+    \tableofcontents[currentsection, hideothersubsections]
+    \end{frame}
+  \fi
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  %\setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+  }
+\setcounter{secnumdepth}{0}
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{dsfont}
+\usepackage{stmaryrd}
+\usepackage[normalem]{ulem}
+\usepackage{fontawesome5}
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=1.17}
+\pgfplotsset{samples=100}
+\usepackage{animate}
+ \usepackage{booktabs}
+
+\usepackage{colortbl}
+
+\DeclareMathOperator{\Cov}{Cov}
+\newcommand{\cov}[2]{\Cov\left( #1\,,\,#2 \right)}
+
+\DeclareMathOperator{\e}{e}
+\renewcommand{\P}{\mathds{P}} %Apparement \P existe déjà ?
+\newcommand\N{\mathds{N}}
+\newcommand\R{\mathds{R}}
+
+
+\newcommand\1{\mathds{1}}
+\newcommand{\E}[2][]{{\mathds{E}}_{#1}
+  \def\temp{#2}\ifx\temp\empty
+  \else
+    \left[#2\right]
+  \fi
+}
+\newcommand{\V}[2][]{{\mathds{V}}_{#1}
+  \def\temp{#2}\ifx\temp\empty
+  \else
+    \left[#2\right]
+  \fi
+}
+\newcommand\ud{\,\mathrm{d}}
+
+
+% blocks
+\usepackage{environ}
+\usepackage[tikz]{bclogo}
+
+\tikzstyle{titlestyle} =[draw=black!80,fill=black!20, text=black,
+ right=10pt, rounded corners]
+\mdfdefinestyle{symmaryboxstyle}{
+	linecolor=black!80, backgroundcolor = black!5,
+	skipabove=\baselineskip, innertopmargin=\baselineskip,
+	innerbottommargin=\baselineskip,
+	userdefinedwidth=\textwidth,
+	middlelinewidth=1.2pt, roundcorner=5pt,
+	skipabove={\dimexpr0.5\baselineskip+\topskip\relax},
+	frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+	innerlinewidth=0pt,
+}
+\NewEnviron{summary}{%
+\begin{mdframed}[style=symmaryboxstyle]
+\vspace{-0.5em}
+\BODY
+\end{mdframed}
+}
+\makeatletter
+% Open `\noalign` and check for overlay specification:
+\def\rowcolor{\noalign{\ifnum0=`}\fi\bmr@rowcolor}
+\newcommand<>{\bmr@rowcolor}{%
+    \alt#1%
+        {\global\let\CT@do@color\CT@@do@color\@ifnextchar[\CT@rowa\CT@rowb}% Rest of original `\rowcolor`
+        {\ifnum0=`{\fi}\@gooble@rowcolor}% End `\noalign` and gobble all arguments of `\rowcolor`.
+}
+% Gobble all normal arguments of `\rowcolor`:
+\newcommand{\@gooble@rowcolor}[2][]{\@gooble@rowcolor@}
+\newcommand{\@gooble@rowcolor@}[1][]{\@gooble@rowcolor@@}
+\newcommand{\@gooble@rowcolor@@}[1][]{\ignorespaces}
+
+\newcommand{\rowc}[1]{\only<#1>{\\\rowcolor{processblue!40}}}
+%\newcommand{\rowc}[1]{{\rowcolor<#1>{processblue!30}}
+\newcommand{\cellc}[1]{\only<#1>{\cellcolor{processblue!40}}}
+\newcommand{\supsp}[1]{\visible<#1>{\\}}
+
+\title{Using JDemetra+ in R: from version 2 to version 3\\
+Presentation 2: Seasonal adjustment in R}
+\ateneo{TSACE Webinar, Wednesday December 14th 2022}
+\author{Anna Smyk and Tanguy Barthelemy}
+\date{}
+
+
+\setrellabel{}
+
+\setcandidatelabel{}
+
+\rel{}
+\division{With the collaboration of Alain Quartier-la-tente\\}
+
+\departement{}
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+
+
+\begin{document}
+\begin{frame}[plain,noframenumbering]
+\titlepage
+\end{frame}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\begin{frame}{Outline table}
+\protect\hypertarget{outline-table}{}
+\end{frame}
+
+\begin{frame}{Data formats}
+\protect\hypertarget{data-formats}{}
+here, no workspace structure - assets - shortcomings
+\end{frame}
+
+\begin{frame}{SA process}
+\protect\hypertarget{sa-process}{}
+\begin{itemize}
+\tightlist
+\item
+  identifying seasonality
+\item
+  pre treatement
+\item
+  decomposition
+\item
+  quality assessment
+\end{itemize}
+
+comp with GUI main panels ?
+\end{frame}
+
+\begin{frame}{rjd3 suite of packages for SA}
+\protect\hypertarget{rjd3-suite-of-packages-for-sa}{}
+in v2 :
+
+in v3: more tools (tests,\ldots)
+\end{frame}
+
+\hypertarget{sa-or-time-series-tools}{%
+\section{SA (or Time series) tools}\label{sa-or-time-series-tools}}
+
+\begin{frame}{Identifying seasonal patterns}
+\protect\hypertarget{identifying-seasonal-patterns}{}
+\end{frame}
+
+\begin{frame}{Normality test}
+\protect\hypertarget{normality-test}{}
+\end{frame}
+
+\begin{frame}{Autocorrelation}
+\protect\hypertarget{autocorrelation}{}
+\end{frame}
+
+\hypertarget{x13}{%
+\section{X13}\label{x13}}
+
+\hypertarget{quick-launch-with-default-specifications}{%
+\subsection{Quick Launch with default
+specifications}\label{quick-launch-with-default-specifications}}
+
+\begin{frame}{Quick Launch with default specifications}
+\protect\hypertarget{quick-launch-with-default-specifications-1}{}
+\begin{itemize}
+\tightlist
+\item
+  x13
+\item
+  regarima
+\item
+  x11 (one less spec in default x13)
+\end{itemize}
+\end{frame}
+
+\hypertarget{rerieving-output-and-data-visualization}{%
+\subsection{Rerieving output and data
+visualization}\label{rerieving-output-and-data-visualization}}
+
+\begin{frame}{Output structure v2}
+\protect\hypertarget{output-structure-v2}{}
+show the list of lists do a new version
+\end{frame}
+
+\begin{frame}{Output structure v3 (cf txt file)}
+\protect\hypertarget{output-structure-v3-cf-txt-file}{}
+show the NEW list of lists
+
+highlight deifferences: - specs - specs direct accessible + 2 concepts
+(spec in v12 was point spec;, more about this in refresh section)
+\end{frame}
+
+\begin{frame}{Retrieve output series}
+\protect\hypertarget{retrieve-output-series}{}
+\begin{itemize}
+\tightlist
+\item
+  final intermediate computations
+\item
+  from preadjustement
+\end{itemize}
+
+highlight differences v2 vs v3
+\end{frame}
+
+\begin{frame}{Retrieve Diagnostics}
+\protect\hypertarget{retrieve-diagnostics}{}
+\end{frame}
+
+\begin{frame}{Plots and data visualisation}
+\protect\hypertarget{plots-and-data-visualisation}{}
+in v2 in v3 : .mostly in ggdemetra3 for now ..
+\end{frame}
+
+\hypertarget{customizing-specifications}{%
+\subsection{Customizing
+specifications}\label{customizing-specifications}}
+
+\begin{frame}{Customizing specifications}
+\protect\hypertarget{customizing-specifications-1}{}
+v2: - step 1: extract spec - step 2: use the spec function with
+user-defined arguments v3: - use direct set\_ functions
+
+check what can be set - a - b - ouliers
+\end{frame}
+
+\begin{frame}{Adding a context}
+\protect\hypertarget{adding-a-context}{}
+new in v3, relevant ?
+\end{frame}
+
+\begin{frame}{Customizing calendar regressors}
+\protect\hypertarget{customizing-calendar-regressors}{}
+in v2 in v3
+\end{frame}
+
+\begin{frame}{Intervention variables}
+\protect\hypertarget{intervention-variables}{}
+in v2
+
+in v3 : still a bug
+\end{frame}
+
+\begin{frame}{User-defined parameters: summary}
+\protect\hypertarget{user-defined-parameters-summary}{}
+BILAN - what's new ? - whats's missing ?
+\end{frame}
+
+\hypertarget{refreshing-data}{%
+\subsection{Refreshing data}\label{refreshing-data}}
+
+\begin{frame}{Refreshing data}
+\protect\hypertarget{refreshing-data-1}{}
+new feature of v3
+
+\begin{itemize}
+\tightlist
+\item
+  new handling of spec (no extraction needed)
+\item
+  notion of point spec and domain spec
+\item
+  in v2 could only retrieve point spec
+\item
+  generatingn new spec for refesh
+\item
+  new estimation
+\end{itemize}
+\end{frame}
+
+\hypertarget{tramo-seats}{%
+\section{Tramo-seats}\label{tramo-seats}}
+
+\begin{frame}{rjd3tramoseats package}
+\protect\hypertarget{rjd3tramoseats-package}{}
+here (optionnal) what is different from the way rjd3x13 operates
+\end{frame}
+
+\hypertarget{sa-of-high-frequency-data}{%
+\section{SA of High-Frequency data}\label{sa-of-high-frequency-data}}
+
+\begin{frame}{SA of High-Frequency data}
+\protect\hypertarget{sa-of-high-frequency-data-1}{}
+tool oriented
+\end{frame}
+
+\hypertarget{generating-user-defined-auxilary-variables}{%
+\section{Generating User-defined auxilary
+variables}\label{generating-user-defined-auxilary-variables}}
+
+\hypertarget{calendars}{%
+\subsection{calendars}\label{calendars}}
+
+\begin{frame}{calendars}
+\protect\hypertarget{calendars-1}{}
+here new functionnality of v3, rjd3modelling pacakage
+\end{frame}
+
+\hypertarget{outliers-and-intervention-variables}{%
+\subsection{outliers and intervention
+variables}\label{outliers-and-intervention-variables}}
+
+\begin{frame}{outliers and intervention variables}
+\protect\hypertarget{outliers-and-intervention-variables-1}{}
+(using this variables already presented, now focus on generation)
+
+intervention bug in rj3modelling ?
+\end{frame}
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+\begin{frame}{Conclusion on SA in R}
+\protect\hypertarget{conclusion-on-sa-in-r}{}
+What has v3 brought to the table ?
+\end{frame}
+
+\end{document}
