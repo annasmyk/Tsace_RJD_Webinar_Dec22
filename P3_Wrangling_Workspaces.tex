@@ -168,7 +168,7 @@
 \newcommand{\supsp}[1]{\visible<#1>{\\}}
 
 \title{Using JDemetra+ in R: from version 2 to version 3\\
-Presentation 3: Wranglin workspaces in R}
+Presentation 3: Wrangling workspaces in R}
 \ateneo{TSACE Webinar, Wednesday December 14th 2022}
 \author{Anna Smyk and Tanguy Barthelemy}
 \date{}
@@ -195,16 +195,113 @@ Presentation 3: Wranglin workspaces in R}
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-\hypertarget{section}{%
-\section{}\label{section}}
+\begin{frame}{Context}
+\protect\hypertarget{context}{}
+\begin{itemize}
+\item
+  a workspace is a JD+ specific data structure (xml files) which allows
+  to use the GUI and cruncher
+\item
+  in R we don't need this stucture to run an SA process (cf P2)
+\item
+  we could think sa processing with JD+ algorithms can happen in two
+  disntict worlds
 
-\begin{frame}{fooz}
-\protect\hypertarget{fooz}{}
+  \begin{itemize}
+  \tightlist
+  \item
+    GUI and cruncher using workspaces OR
+  \item
+    R functions (without workpaces, TS object or numeric vectors for HF)
+  \end{itemize}
+\end{itemize}
+
+Still there are benefits in using workspaces and R packages in
+conjunction
+
+We will highlight them in the remaining of this presentation
 \end{frame}
 
-\begin{frame}{Merging workspace}
-\protect\hypertarget{merging-workspace}{}
-context : annual rev
+\hypertarget{using-workspaces-and-r-packages-in-conjuction}{%
+\section{Using workspaces and R packages in
+conjuction}\label{using-workspaces-and-r-packages-in-conjuction}}
+
+\begin{frame}{Using workspaces and R packages in conjuction}
+\protect\hypertarget{using-workspaces-and-r-packages-in-conjuction-1}{}
+Two (?) classes of benefits
+
+\begin{itemize}
+\item
+  instant reading: immersing results in the R world (functions, plots..)
+\item
+  automating potential manual operations
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Workspace reading in R}
+\protect\hypertarget{workspace-reading-in-r}{}
+Context:
+
+cf doc R tools for v2 what is available in v3
+\end{frame}
+
+\hypertarget{automating-operations-on-workspaces}{%
+\section{Automating operations on
+workspaces}\label{automating-operations-on-workspaces}}
+
+\begin{frame}{Automating operations on workspaces}
+\protect\hypertarget{automating-operations-on-workspaces-1}{}
+operations - creation - loading - modifications - adding sa processings
+- adding series (sa item vs specs)
+\end{frame}
+
+\begin{frame}{Automating operations on series}
+\protect\hypertarget{automating-operations-on-series}{}
+\begin{itemize}
+\tightlist
+\item
+  series object
+\item
+  spec
+\item
+  meta data
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Merging workspaces}
+\protect\hypertarget{merging-workspaces}{}
+context: annual rev
+\end{frame}
+
+\begin{frame}{Preserving desirable properties ?}
+\protect\hypertarget{preserving-desirable-properties}{}
+two features to preserve - GUI readable - Crunchable
+
+When are the preserved and when not ?
+\end{frame}
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+\begin{frame}{Summary of functionnalities}
+\protect\hypertarget{summary-of-functionnalities}{}
+\begin{itemize}
+\item
+  available
+\item
+  missing
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Package's perimeter and ressources}
+\protect\hypertarget{packages-perimeter-and-ressources}{}
+\begin{itemize}
+\tightlist
+\item
+  V2 vs V3: not clear cut yet not many features are available in sheer
+  v3 rjdworkspace (predating v3) functions will be (partly) integrated
+  into rjdemetra3 package
+\end{itemize}
 \end{frame}
 
 \end{document}

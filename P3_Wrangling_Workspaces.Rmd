@@ -71,12 +71,87 @@ def.par <- par(no.readonly = TRUE)
 
 # Introduction
 
-# 
+### Context 
 
-### fooz
+- a workspace is a JD+ specific data structure (xml files) which allows to use the GUI and cruncher 
 
-### Merging workspace 
+- in R we don't need this stucture to run an SA process (cf P2)
 
-context : annual rev
+- we could think sa processing with JD+ algorithms can happen in two disntict worlds 
+  - GUI and cruncher using workspaces OR
+  - R functions (without workpaces, TS object or numeric vectors for HF)
+
+Still there are benefits in using workspaces and R packages in conjunction
+
+We will highlight them in the remaining of this presentation 
+
+# Using workspaces and R packages in conjuction
+
+### Using workspaces and R packages in conjuction 
+
+Two (?) classes of benefits
+
+- instant reading: immersing results in the R world (functions, plots..)
+
+- automating potential manual operations 
+
+### Workspace reading in R
+
+Context: 
+
+cf doc R tools for v2
+what is available in v3
+
+# Automating operations on workspaces 
+
+### Automating operations on workspaces 
+
+operations 
+- creation 
+- loading 
+- modifications 
+  - adding sa processings
+  - adding series (sa item vs specs)
+
+
+### Automating operations on series 
+
+- series object
+- spec 
+- meta data
+
+### Merging workspaces 
+
+context: annual rev
+
+
+
+### Preserving desirable properties ?
+
+two features to preserve
+- GUI readable 
+- Crunchable 
+
+When are the preserved and when not ?
+
+
+# Conclusion
+
+### Summary of functionnalities 
+
+- available 
+
+- missing 
+
+
+
+### Package's perimeter and  ressources
+
+- V2 vs V3: not clear cut yet
+not many features are available in sheer v3
+rjdworkspace (predating v3) functions will be (partly) integrated into rjdemetra3 package
+
+
+
 
 
