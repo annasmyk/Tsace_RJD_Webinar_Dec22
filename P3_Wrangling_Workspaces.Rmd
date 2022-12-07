@@ -97,7 +97,7 @@ Two (?) classes of benefits
 
 ### Workspace reading in R
 
-Context: 
+Context: I 
 
 cf doc R tools for v2
 what is available in v3
@@ -115,16 +115,19 @@ operations
 
 
 ### Automating operations on series 
-
+("functions that operate on one workpace")
 - series object
 - spec 
 - meta data
+in v2 RJDemetra 
+in v3 rjdworkpace and other rjd3...
 
 ### Merging workspaces 
-
+("functions that operate two workpaces")
 context: annual rev
 
-
+in v2 RJDemetra 
+in v3 rjdworkpace and other rjd3...
 
 ### Preserving desirable properties ?
 
