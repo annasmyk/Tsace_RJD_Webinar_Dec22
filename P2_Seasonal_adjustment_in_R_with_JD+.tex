@@ -62,6 +62,46 @@
   \fi
  }%
  {}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 % Prevent slide breaks in the middle of a paragraph:
 \widowpenalties 1 10000
 \raggedbottom
@@ -215,7 +255,13 @@ here, no workspace structure - assets - shortcomings
 \item
   decomposition
 \item
-  quality assessment
+  output series
+\item
+  diagnostics
+\item
+  customize parameters
+\item
+  repeat..
 \end{itemize}
 
 comp with GUI main panels ?
@@ -250,17 +296,36 @@ in v3: more tools (tests,\ldots)
 \subsection{Quick Launch with default
 specifications}\label{quick-launch-with-default-specifications}}
 
-\begin{frame}{Quick Launch with default specifications}
+\begin{frame}[fragile]{Quick Launch with default specifications}
 \protect\hypertarget{quick-launch-with-default-specifications-1}{}
+specifications - x13 - regarima - x11 (one less spec in default x13)
+
 \begin{itemize}
 \tightlist
 \item
-  x13
-\item
-  regarima
-\item
-  x11 (one less spec in default x13)
+  Specification: created with \texttt{spec\_x11\_default()},
+  \texttt{spec\_x13\_default()}, \texttt{spec\_regarima\_default()}
 \end{itemize}
+
+spec\_regarima\_default(name = c(``rg4'', ``rg0'', ``rg1'', ``rg2c'',
+``rg3'', ``rg5c''))
+
+spec\_x13\_default(name = c(``rsa4'', ``rsa0'', ``rsa1'', ``rsa2c'',
+``rsa3'', ``rsa5c''))
+
+spec\_x11\_default()
+\end{frame}
+
+\begin{frame}[fragile]{Running SA estimation process}
+\protect\hypertarget{running-sa-estimation-process}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sa\_13\_v2}\OtherTok{\textless{}{-}}\NormalTok{RJDemetra}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, }\AttributeTok{spec =}\StringTok{"RSA5c"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\#v3 \#sa\_x13 \textless- x13(y\_raw, spec= ``RSA5'', context = NULL)
+sa\_x13\_v3 \textless- rjd3x13::x13(y\_raw, spec= ``RSA5'')
 \end{frame}
 
 \hypertarget{rerieving-output-and-data-visualization}{%
@@ -306,12 +371,38 @@ in v2 in v3 : .mostly in ggdemetra3 for now ..
 \subsection{Customizing
 specifications}\label{customizing-specifications}}
 
-\begin{frame}{Customizing specifications}
+\begin{frame}[fragile]{Customizing specifications}
 \protect\hypertarget{customizing-specifications-1}{}
 v2: - step 1: extract spec - step 2: use the spec function with
 user-defined arguments v3: - use direct set\_ functions
 
-check what can be set - a - b - ouliers
+For the preprocessing step (functions defined in
+\texttt{rjd3modelling}):
+
+\texttt{set\_arima()}, \texttt{set\_automodel()}, \texttt{set\_basic()},
+\texttt{set\_easter()}, \texttt{set\_estimate()},
+\texttt{set\_outlier()}, \texttt{set\_tradingdays()},
+\texttt{set\_transform()}, \texttt{add\_outlier()} and
+\texttt{remove\_outlier()}, \texttt{add\_ramp()} and
+\texttt{remove}\_ramp()`
+
+\bcinterdit \texttt{add\_usrdefvar()} not yet available
+
+For the decopmostion step (function defined in \texttt{rjd3x13}):
+\texttt{set\_x11()}
+
+Adding Benchamarking (like in GUI) (in ?)
+\end{frame}
+
+\begin{frame}{Example of customizing specif}
+\protect\hypertarget{example-of-customizing-specif}{}
+sp = spec\_x13\_default(``rg5c'') y = rjd3toolkit::ABS\$X0.2.09.10.M
+fast.x13(y, spec = sp) sp = rjd3modelling::add\_outlier(sp, type =
+c(``AO''), c(``2015-01-01'', ``2010-01-01'')) sp =
+rjd3modelling::set\_transform( rjd3modelling::set\_tradingdays(
+rjd3modelling::set\_easter(sp, enabled = FALSE), option =
+``workingdays'' ), fun = ``None'' ) sp = set\_x11(sp, henderson.filter =
+13) fast.x13(y, spec = sp)
 \end{frame}
 
 \begin{frame}{Adding a context}

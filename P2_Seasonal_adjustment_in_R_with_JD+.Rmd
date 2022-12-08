@@ -35,6 +35,7 @@ library(knitr)
 library(kableExtra)
 library(microbenchmark)
 library(ggplot2)
+library(RJDemetra)
 library(rjd3toolkit)
 library(rjd3modelling)
 library(rjd3sa)
@@ -69,6 +70,16 @@ options(width = 60)
 def.par <- par(no.readonly = TRUE)
 ```
 
+```{r, eval=TRUE, echo=FALSE}
+ipi<-read.csv2("Data/IPI_nace4.csv")
+ipi$date<-as.Date(ipi$date,format="%d/%m/%Y")
+ipi[,-1]<-sapply(ipi[,-1],as.numeric)
+# creating a TS object from a data frame 
+y_raw<-ts(ipi[,"RF3030"],frequency=12,start=c(1990,1),end=c(2019,9))
+
+
+```
+
 # Introduction 
 
 ### Outline table 
@@ -80,13 +91,15 @@ here, no workspace structure
 - shortcomings 
 
 
-
 ### SA process 
 
 - identifying seasonality 
 - pre treatement 
 - decomposition 
-- quality assessment
+- output series 
+- diagnostics 
+- customize parameters 
+- repeat..
 
 comp with GUI main panels ?
 
@@ -107,15 +120,103 @@ in v3: more tools (tests,...)
 ### Autocorrelation 
 
 
-# X13
+# X13 (Tramo-seats)
 
 ## Quick Launch with default specifications 
 
-### Quick Launch with default specifications 
+### Quick Launch with default specifications (1)
 
+specifications 
 - x13
 - regarima 
 - x11 (one less spec in default x13)
+
+- Specification: created with `spec_x11_default()`, `spec_x13_default()`, `spec_regarima_default()` 
+
+spec_regarima_default(name = c("rg4", "rg0", "rg1", "rg2c", "rg3", "rg5c"))
+
+spec_x13_default(name = c("rsa4", "rsa0", "rsa1", "rsa2c", "rsa3", "rsa5c"))
+
+spec_x11_default()
+
+### Quick Launch with default specifications (2)
+
+- Apply model with `x11()`, `x13()`, `fast.x13()`, `regarima()`, `fast.regarima()`
+
+### Running SA estimation process
+
+in version 2
+```{r,eval=TRUE, include=TRUE}
+# X13
+sa_x13_v2<-RJDemetra::x13(y_raw, spec ="RSA5c")
+
+#Tramo-Seats
+sa_ts_v2<-RJDemetra::tramoseats(y_raw, spec ="RSAfull")
+```
+
+in version 3
+```{r,eval=TRUE, include=TRUE}
+#X13
+sa_x13_v3 <- rjd3x13::x13(y_raw, spec= "RSA5")
+
+#Tramo seats
+sa_ts_v3 <- rjd3tramoseats::tramoseats(y_raw, spec= "RSAfull")
+
+```
+
+affichage output ?
+
+
+### Running only pre-adjustment
+
+
+in version 2
+```{r,eval=TRUE, include=TRUE}
+# X13 (different default spec names, cf help pages)
+sa_x13_v2<-RJDemetra::regarima_x13(y_raw, spec ="RG5c")
+
+#Tramo-Seats : NO TRAMO alone ?
+
+```
+
+in version 3
+```{r,eval=TRUE, include=TRUE}
+#X13
+sa_regarima_v3 <- rjd3x13::regarima(y_raw)
+
+#Tramo seats (if no spec indicated what is the defalut ?)
+# retrouver en 
+sa_tramo_v3 <- rjd3tramoseats::tramo(y_raw)
+
+# "fast." versions...
+```
+
+affichage output ?
+
+
+### Running only decomposition
+
+in version 2
+```{r,eval=TRUE, include=TRUE}
+# X13
+sa_x13_v2<-RJDemetra::x13(y_raw, spec ="RSA5c")
+
+#Tramo-Seats
+sa_ts_v2<-RJDemetra::tramoseats(y_raw, spec ="RSAfull")
+```
+
+in version 3
+```{r,eval=TRUE, include=TRUE}
+#X13
+sa_x13_v3 <- rjd3x13::x13(y_raw, spec= "RSA5")
+
+#Tramo seats
+sa_ts_v3 <- rjd3x13::x13(y_raw, spec= "RSAfull")
+
+```
+
+affichage output ?
+
 
 ## Rerieving output and data visualization
 
@@ -161,10 +262,35 @@ v2:
 v3:
 - use direct set_ functions 
 
-check what can be set 
-- a 
-- b 
-- ouliers 
+For the preprocessing step (functions defined in `rjd3modelling`):
+
+`set_arima()`, `set_automodel()`, `set_basic()`, `set_easter()`, `set_estimate()`, `set_outlier()`, `set_tradingdays()`, `set_transform()`, `add_outlier()` and `remove_outlier()`, `add_ramp()` and `remove`_ramp()`
+
+\bcinterdit `add_usrdefvar()` not yet available
+
+For the decopmostion step (function defined in `rjd3x13`):
+ `set_x11()`
+ 
+Adding Benchamarking (like in GUI) (in ?)
+
+### Example of customizing specif
+
+sp = spec_x13_default("rg5c")
+y = rjd3toolkit::ABS$X0.2.09.10.M
+fast.x13(y, spec = sp)
+sp = rjd3modelling::add_outlier(sp,
+                 type = c("AO"), c("2015-01-01", "2010-01-01"))
+sp =  rjd3modelling::set_transform(
+   rjd3modelling::set_tradingdays(
+     rjd3modelling::set_easter(sp, enabled = FALSE),
+    option = "workingdays"
+  ),
+  fun = "None"
+)
+sp = set_x11(sp,
+             henderson.filter = 13)
+fast.x13(y, spec = sp)
+
 
 ### Adding a context 
 new in v3, relevant ?
