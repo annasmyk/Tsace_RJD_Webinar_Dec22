@@ -92,3 +92,30 @@ cruncher
 
 ## On production in R
 
+### On production in R 
+
+## Overall conclusion 
+
+### Take home message
+
+summary 
+
+- what is new 
+
+- what is missing
+
+### Testing and issues 
+
+### Resources 
+
+- github for the webinar 
+
+
+- new online doc : announce V0
+(0 = not everthing will have been covered)
+
+- blog Building 
+  - can also be used for problem sharing
+  - will link presentations about JD+ in confs / workshop 
+  
+If you encounter any issues with installation or results, feel free to email us.

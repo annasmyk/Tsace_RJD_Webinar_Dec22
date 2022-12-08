@@ -1,7 +1,7 @@
 ---
 title: |
  | Using JDemetra+ in R: from version 2 to version 3 
- | Presentation 1: General Outline of R-Jemetra+ universe
+ | Presentation 1: General Outline of R-JDemetra+ universe
 subtitle: "TSACE Webinar, Wednesday December 14th 2022"
 author: "Anna Smyk and Tanguy Barthelemy"
 division: |
@@ -48,11 +48,11 @@ library(ggdemetra3)
 
 ### Goals and outline of the webinar (1)
 
-### Goals and outline of the webinar (1)
+### Goals and outline of the webinar (2)
 
 Four presentations
 
-Resurces on GitHub
+Resurces on GitHub (details in P4)
 
 # From V2 to v3
 
@@ -65,6 +65,16 @@ Resurces on GitHub
 
 Table : What JD+ core algorithms can be accessed ? V2 and V3 ? vs GUI
 cf doc
+
+### Orga of R packages: JP schema 
+
+### Objective of R packages 
+
+started in 2019...
+- be immersed in R
+- from jP 
+
+(rumors about adding Python access)
 
 ### Accessing JD+ core routines in R (2)
 
@@ -88,8 +98,12 @@ pb of reliability and testing
 
 ## Installing packages 
 
+technical requirement: java17
+
 don't forget : 
 rjdworkspace 
 JDCruncher
+
+
 
 
