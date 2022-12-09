@@ -75,7 +75,8 @@ ipi<-read.csv2("Data/IPI_nace4.csv")
 ipi$date<-as.Date(ipi$date,format="%d/%m/%Y")
 ipi[,-1]<-sapply(ipi[,-1],as.numeric)
 # creating a TS object from a data frame 
-y_raw<-ts(ipi[,"RF3030"],frequency=12,start=c(1990,1),end=c(2019,9))
+y_raw<-ts(ipi[,"RF3030"],frequency=12,start=c(1990,1),end=c(2019,6))
+y_new<-ts(ipi[,"RF3030"],frequency=12,start=c(1990,1),end=c(2019,9))
 
 
 ```
@@ -93,7 +94,7 @@ here, no workspace structure
 
 ### SA process 
 
-- identifying seasonality 
+- testing for seasonality 
 - pre treatement 
 - decomposition 
 - output series 
@@ -111,16 +112,16 @@ in v3: more tools (tests,...)
 
 
 
-# SA (or Time series) tools
+# Time series tools (new in v3)
 
-### Identifying seasonal patterns 
-
+### Testing for seasonality  
+Data format TS object (num vector for HF)
 ### Normality test
 
 ### Autocorrelation 
 
 
-# X13 (Tramo-seats)
+# X13 (...and some Tramo-seats)
 
 ## Quick Launch with default specifications 
 
@@ -172,11 +173,12 @@ affichage output ?
 
 in version 2
 ```{r,eval=TRUE, include=TRUE}
-# X13 (different default spec names, cf help pages)
-sa_x13_v2<-RJDemetra::regarima_x13(y_raw, spec ="RG5c")
+# Reg-Arima part from X13 only (different default spec names, cf help pages)
+regA_v2<-RJDemetra::regarima_x13(y_raw, spec ="RG5c")
 
-#Tramo-Seats : NO TRAMO alone ?
-
+# Tramo only 
+tramo_v2<-RJDemetra::regarima_tramoseats(y_raw,
+  spec = "TRfull")
 ```
 
 in version 3
@@ -188,7 +190,7 @@ sa_regarima_v3 <- rjd3x13::regarima(y_raw)
 # retrouver en 
 sa_tramo_v3 <- rjd3tramoseats::tramo(y_raw)
 
-# "fast." versions...
+# "fast." versions...(cf output structure)
 ```
 
 affichage output ?
@@ -198,22 +200,24 @@ affichage output ?
 
 in version 2
 ```{r,eval=TRUE, include=TRUE}
-# X13
-sa_x13_v2<-RJDemetra::x13(y_raw, spec ="RSA5c")
+# X11 (spec option)
+X11_v2<-RJDemetra::x13(y_raw, spec ="X11")
 
-#Tramo-Seats
-sa_ts_v2<-RJDemetra::tramoseats(y_raw, spec ="RSAfull")
+#Tramo-Seats ? you 
+#sa_ts_v2<-RJDemetra::tramoseats(y_raw, spec ="RSAfull")
 ```
 
 in version 3
 ```{r,eval=TRUE, include=TRUE}
-#X13
-sa_x13_v3 <- rjd3x13::x13(y_raw, spec= "RSA5")
+#X11
+x11_v3 <- rjd3x13::x11(y_raw)
 
 #Tramo seats
-sa_ts_v3 <- rjd3x13::x13(y_raw, spec= "RSAfull")
+#sa_ts_v3 <- rjd3tramoseats::seats.decompose(y_raw)
 
 ```
+
+
 
 affichage output ?
 
@@ -227,6 +231,8 @@ do a new version
 ### Output structure  v3 (cf txt file)
 show the NEW list of lists
 
+### Differences from v2 to v3
+
 highlight deifferences: 
 - specs
 - specs direct accessible + 2 concepts
@@ -234,109 +240,336 @@ highlight deifferences:
 
 ### Retrieve output series 
 
-- final
-intermediate computations 
-- from preadjustement
+input and output  = TS objects (not when using specific extensions for HF data)
+- final series : different 
+```{r,eval=TRUE, include=TRUE}
+# Version 2 (affichage main, d tables in user def output)
+sa_x13_v2$final$series
+sa_x13_v2$final$forecasts
 
-highlight differences v2 vs v3
-
-
-### Retrieve Diagnostics 
-
-### Plots and data visualisation 
-in v2
-in v3 : .mostly in ggdemetra3 for now ..
+  # Version 3 
+# final seasonally adjusted series
+sa_x13_v3$result$final$d11final
 
 
+```
+
+in v3 much more series available without using user defined output
+
+### Series from preadjustement
+
+```{r,eval=TRUE, include=TRUE}
+# Version 2 (affichage main, d tables in user def output)
+sa_x13_v2$regarima$model$effects # data frame
+
+# forecast accessible only via user defined output (cf below)
+
+# Version 3: "x11 names" : preadjustement effets as stored in the A table
+# add doc on names   
+sa_x13_v3$result$preadjust$a6
 
 
+```
+
+### Series from decompostion
+
+
+```{r,eval=TRUE, include=TRUE}
+# Version 2 (affichage main, d tables in user def output)
+
+# D tables accessible via user-defined output,
+
+# forecast accessible only via user defined output (cf below)
+
+# Version 3: "x11 names" : preadjustement effets as stored in the A table
+# add doc on names   
+sa_x13_v3$result$decomposition$d5 # tables from D1 to D13
+
+
+```
+
+
+### Retrieve Diagnostics
+
+Just fetch the needed objects in the relevant par of the output structure or print the whole "model"
+
+```{r,eval=TRUE, include=TRUE}
+# Version 2 
+print(sa_x13_v2)
+#pdf ?
+sa_x13_v2$decomposition$mstats
+sa_x13_v2$decomposition$s_filter
+sa_x13_v2$decomposition$t_filter
+# version 3
+print(sa_x13_v2)
+
+```
+What is missing (series or diagnostics) can be retrieved adding user-defined output in the options 
+(more available by default in v3)
+
+### Retrieve user defined-output (1/2)
+In v2 or v3 : define a vector of objects your wish to add
+
+Lists of avaible diagnostics or series 
+```{r,eval=FALSE, include=TRUE}
+# Version 2 
+user_defined_variables("X13-ARIMA") 
+user_defined_variables("TRAMO-SEATS")
+# Version 3: more specific functions 
+userdefined_variables_tramoseats("tramoseats")
+userdefined_variables_tramoseats("tramo") # restriction
+
+userdefined_variables_x13("regarima") #restrction
+userdefined_variables_x13()
+
+```
+
+### Retrieve user defined-output (2/2)
+
+
+Select the objects and customize estimation function
+```{r,eval=TRUE, include=TRUE}
+# version 3
+ud<-userdefined_variables_x13()[15:17] # b series
+ud
+sa_x13_v3_UD<-rjd3x13::x13(y_raw,"RSA5c",userdefined=ud)
+sa_x13_v3_UD$user_defined # remainder of the names 
+# retrieve the object 
+sa_x13_v3_UD$user_defined$decomposition.b1
+
+
+```
+
+
+### Plots and data visualisation (1/2) {.allowframebreaks} 
+
+In version 2 3 kinds of plots : final (2 types), regarima and SI ratios 
+```{r,eval=TRUE, include=TRUE}
+# version 2
+# for class 'final' : 2 types 
+# syntaxe min 
+plot(sa_x13_v2, type_chart = "sa-trend", first_date = c(2015, 1))
+plot(sa_x13_v2, type= "cal-seas-irr",first_date = c(2015, 1))
+
+
+layout(matrix(1:6, 3, 2));plot(sa_x13_v2$regarima,ask = FALSE)
+
+# Plotting SI ratios  
+plot(sa_x13_v2$decomposition, first_date = c(2015,1))
+
+```
+
+### Plots and data visualisation (2/2)
+
+In version 3 
+- final + NEW "autoplot" layout 
+- regarima not available (yet ?)
+- SI ratios + NEW ggplot layout 
+
+```{r,eval=TRUE, include=TRUE}
+# version 3
+# remotes::install_github("AQLT/ggdemetra3",INSTALL_opts = "--no-multiarch")
+# library(ggdemetra3)
+ggdemetra3::siratioplot(sa_x13_v3)
+ggdemetra3::ggsiratioplot(sa_x13_v3)
+ggplot2::autoplot(sa_x13_v3)
+
+
+```
 
 
 ## Customizing specifications
 
-### Customizing specifications 
+### Customizing specifications: general steps 
 
-v2: 
-- step 1: extract spec
-- step 2: use the spec function with user-defined arguments
-v3:
-- use direct set_ functions 
+To customize a specification you must 
+- start with a valid specification, usually one of the defaut specs (equivalent to cloning a spec in GUI)
+- create a new spec 
+- apply the new spec to a series 
 
-For the preprocessing step (functions defined in `rjd3modelling`):
+Some differences between v2 and v3
 
-`set_arima()`, `set_automodel()`, `set_basic()`, `set_easter()`, `set_estimate()`, `set_outlier()`, `set_tradingdays()`, `set_transform()`, `add_outlier()` and `remove_outlier()`, `add_ramp()` and `remove`_ramp()`
+### Customizing specifications: in version 2
 
-\bcinterdit `add_usrdefvar()` not yet available
+Direct parameter modification as arguments of the spec function 
+```{r,eval=FALSE, include=TRUE}
+# version 2
+# changing estimation span, imposing additive model and adding user defined ouliers 
+# first create a new spec modifying the previous one 
+spec_1<- x13_spec(sa_x13_v2)
+spec_2<- x13_spec(spec_1, estimate.from = "2004-01-01",
+                  usrdef.outliersEnabled = TRUE,
+                             usrdef.outliersType = c("LS", "AO"),
+                             usrdef.outliersDate = c("2008-10-01", "2018-01-01"),
+                             transform.function = "None") # additive model
+# here the reg-arima model will be estimated from  "2004-01-01" 
+# the decomposition will be run on the whole span 
 
-For the decopmostion step (function defined in `rjd3x13`):
+# new sa processing
+sa_x13_v2_2<-RJDemetra::x13(serie_brute,spec_2)
+sa_x13_v2_2$final$series
+
+```
+
+
+### Customizing specifications: in version 3 
+
+Use direct and specific `set_` functions 
+- for the preprocessing step (functions defined in `rjd3modelling`):
+
+`set_arima()`, `set_automodel()`, `set_basic()`, `set_easter()`, `set_estimate()`, `set_outlier()`, `set_tradingdays()`, `set_transform()`, `add_outlier()` and `remove_outlier()`, `add_ramp()` and `remove_ramp()`, `add_usrdefvar()`
+
+- for the decomposition step in X13 (function defined in `rjd3x13`):
  `set_x11()`
  
-Adding Benchamarking (like in GUI) (in ?)
+- for the decomposition step in Tramo-Seats (function defined in `rjd3tramoseats`):
+ `set_seats()`
+ 
+- for the benchmarking step (function defined in `rjd3modelling`):
+ `set_benchmarking()`
 
-### Example of customizing specif
+New v3 feature, same options available as in GUI.
 
-sp = spec_x13_default("rg5c")
-y = rjd3toolkit::ABS$X0.2.09.10.M
-fast.x13(y, spec = sp)
-sp = rjd3modelling::add_outlier(sp,
-                 type = c("AO"), c("2015-01-01", "2010-01-01"))
-sp =  rjd3modelling::set_transform(
-   rjd3modelling::set_tradingdays(
-     rjd3modelling::set_easter(sp, enabled = FALSE),
-    option = "workingdays"
-  ),
-  fun = "None"
-)
-sp = set_x11(sp,
-             henderson.filter = 13)
-fast.x13(y, spec = sp)
+### Customizing specifications in version 3: example
+```{r,eval=FALSE, include=TRUE}
+######### spec custo in v3
+# start with default spec 
+spec_1 = spec_x13_default("RSA3")
+# or start with existing spec (no extraction function needed)
+spec_1<-sa_x13_v3_UD$estimation_spec
+
+# set a new spec
+## add outliers 
+spec_2 = rjd3modelling::add_outlier(spec_1,
+                  type = c("AO"), c("2015-01-01", "2010-01-01"))
+## set trading days
+spec_2<-rjd3modelling::set_tradingdays(spec_2,
+    option = "workingdays" )
+# set x11 options 
+spec_2<-set_x11(spec_2,henderson.filter = 13)
+# apply with `fast.x13` (results only)
+fast.x13(y,spec_2)
+
+```
 
 
-### Adding a context 
-new in v3, relevant ?
+### Adding user-defined regressors 
 
-### Customizing calendar regressors 
-in v2
-in v3
+In version 2: regressors added directly to the specification 
 
-### Intervention variables
-in v2
+In version 3: new notion of "context"
+an additionnal concept designed to
+- 
+- 
 
-in v3 : still a bug
+### Adding user-defined regressors in v2
 
-### User-defined parameters: summary 
-BILAN 
-- what's new ? 
-- whats's missing ?
+```{r,eval=FALSE, include=TRUE}
+# defining user defined trading days 
+spec_4 <- x13_spec(spec_1,
+tradingdays.option = "UserDefined",
+tradingdays.test ="None",
+usrdef.varEnabled = TRUE,
+# the user defined variable will be assigned to the calendar component
+usrdef.varType="Calendar",
+usrdef.var=td_regs ) # regressors have to be a single or multiple TS 
+# new sa processing
+sa_x13_v2_4<-x13(serie_brute,spec_4)
+# user defined intervention variable  
+spec_5 <- x13_spec(spec_1,
+                   usrdef.varEnabled = TRUE,
+                   # the user defined variable will be assigned to the trend component
+                   usrdef.varType="Trend",
+                   usrdef.var=x ) # x has to to be a single or multiple TS 
+# new sa processing
+sa_x13_v2_5<-x13(serie_brute,spec_5)
+```
 
+### Adding user-defined regressors in version 3
+
+```{r,eval=FALSE, include=TRUE}
+# defining user defined trading days 
+td_reg1<- rjd3modelling::td(12, start=start(y_raw),length = length(y_raw),groups = c(1,1,1,1,1,0,0))
+
+context<-rjd3modelling::modelling_context(variables=list(a=xvar))
+
+spec <- rjd3x13::spec_regarima_default(name = "rg3") |>
+  rjd3modelling::add_usrdefvar(id = "r.a")
+
+reg_a_estimation<-rjd3x13::regarima(window(ts, start=1985, end=2013),sp,context = context)
+
+# if user_def variable to tren d? how to chose component ?
+# regressors have to be added one by one 
+```
 
 ## Refreshing data 
 
-### Refreshing data 
+### Estimation spec vs result_spec
 
-new feature of v3
+Possibility of refreshing data is new feature of version 3.
 
+The "sa_model" generated with an estimation:
 - new handling of spec (no extraction needed)
-- notion of point spec and domain spec
+- notion of 
+    - estimation spec (domain spec): set of customizable constraints
+```{r, eval=FALSE, include=TRUE}
+sa_x13_v3$estimation_spec$regarima$arima
+```
+    - result spec (or point spec)
+```{r, eval=FALSE, include=TRUE}
+
+```
+    
 - in v2 could only retrieve point spec 
-- generatingn new spec for refesh
-- new estimation
+- in v3 your are able to restimate the result spec inside the domain (estimation spec) freeing constriants on some parameters : just like in GUI
+
+### Steps for refreshing data
+
+```{r,eval=FALSE, include=TRUE}
+
+current_result_spec<-sa_x13_v3$result_spec
+current_domain_spec<-sa_x13_v3$estimation_spec
+
+# generate NEW spec for refresh 
+refreshed_spec<-x13.refresh(current_spec, # point spec to be refreshed
+            current_domain_spec, #domain spec (set of constraints)
+            policy = "Outliers",
+            period = 12, # monthly series
+            start = "2017-01-01",
+            end = NULL)
+
+# apply the new spec on new data : y_new= y_raw + 3 months
+sa_x13_v3_refresh<-x13(y_new,refreshed_spec)
+# what will be the domain spec here ?
+# domain spec = point spec ?
+```
+- Outliers identiication : more flaxible the last ouliers or all outleirs in v2, here the span can be customized 
+(Warning: x13.refresh hasn't been thouroughly tested yet)
+
+### Refresh Policies 
+
+- "FreeParameters", 
+-  "Complete": 
+- "Outliers_StochasticComponent", 
+- "Outliers",
+- "FixedParameters", 
+- "FixedAutoRegressiveParameters", 
+- "Fixed", 
 
 
+### User-defined parameters: summary 
 
-
-# Tramo-seats 
-
-### rjd3tramoseats package  
-
-here (optionnal) what is different from the way rjd3x13 operates
-
+- what's new ? 
+- whats's missing ?
 
 # SA of High-Frequency data 
 
 ### SA of High-Frequency data
-tool oriented 
 
+High-frequency data can 
+
+
+In github repo full presnetations about {rjd3highfreq} 
 
 # Generating User-defined auxilary variables 
 
@@ -345,7 +578,7 @@ tool oriented
 
 ### calendars 
 
-here new functionnality of v3, rjd3modelling pacakage
+here new functionnality of v3, rjd3modelling package
 
 ## outliers and intervention variables 
 
