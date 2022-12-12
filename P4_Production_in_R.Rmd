@@ -249,16 +249,56 @@ summary
 
 ### Resources 
 
-- Resources on GitHub: slides, code, additionnal references (Beamers and papers)
+- **Webinar Resources** on GitHub: slides, code, additionnal references (Beamers and papers)
 <https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22>
 
-Coming soon :
+- Coming soon: **JDemetra+ NEW online documentation first release** on 
+Thursday december 22nd:
+<https://jdemetra-new-documentation.netlify.app/>
 
-- new online doc : announce V0
-(0 = not everthing will have been covered)
+Restriced scope : SA (incl HF) and Chapter on Tools (GUI, R packages and plung-ins)
 
-- blog Building 
-  - can also be used for problem sharing
-  - will link presentations about JD+ in confs / workshop 
+
+- Blog **JDemetra+ universe** 
+<https://jdemetra-universe-blog.netlify.app/>
+  - can be used for problem/solution/insights sharing (comments available if logged into GitHub)
+  - guest posts welcome
+  - will link "all" presentations about JDemetra+ in confs / workshop (so if you give a talk about JD+ let us know..) 
   
-If you encounter any issues with installation or results, feel free to email us.
+### Thank you for your attention {.noframenumbering}
+
+Packages \faIcon{r-project}{}:
+
+::::{.columns}
+:::{.column width=40%}
+
+\href{https://github.com/palatej/rjd3toolkit}{\faGithub{} palatej/rjd3toolkit}
+
+\href{https://github.com/palatej/rjd3modelling}{\faGithub{} palatej/rjd3modelling}
+
+\href{https://github.com/palatej/rjd3sa}{\faGithub{} palatej/rjd3sa}
+
+\href{https://github.com/palatej/rjd3arima}{\faGithub{} palatej/rjd3arima}
+
+\href{https://github.com/palatej/rjd3x13}{\faGithub{} palatej/rjd3x13}
+
+\href{https://github.com/palatej/rjd3tramoseats}{\faGithub{} palatej/rjd3tramoseats}
+
+\href{https://github.com/palatej/rjdemetra3}{\faGithub{} palatej/rjdemetra3}
+:::
+:::{.column width=50%}
+
+\href{https://github.com/palatej/rjdfilters}{\faGithub{} palatej/rjdfilters}
+
+\href{https://github.com/palatej/rjd3sts}{\faGithub{} palatej/rjd3sts}
+
+\href{https://github.com/palatej/rjd3stl}{\faGithub{} palatej/rjd3stl}
+
+\href{https://github.com/palatej/rjd3highfreq}{\faGithub{} palatej/rjd3highfreq}
+
+\href{https://github.com/palatej/rjd3bench}{\faGithub{} palatej/rjd3bench}
+
+\href{https://github.com/AQLT/ggdemetra3}{\faGithub{} AQLT/ggdemetra3}
+:::
+::::
+  

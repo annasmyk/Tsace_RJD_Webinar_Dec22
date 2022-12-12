@@ -76,7 +76,7 @@ Four presentations
 -   P1: general introduction 
       - higlighting the main evolutions between version 2 and 3
       - outlining the global scope of R tools for JDemetra+
-      - defining the scope of the webinar : SA with X-13 and Tramo-Seats
+      - defining the scope of the webinar : SA with X-13 and                    Tramo-Seats
         (leaving the rest aside...for furure webinars ?)
       - working environment set-up 
 
