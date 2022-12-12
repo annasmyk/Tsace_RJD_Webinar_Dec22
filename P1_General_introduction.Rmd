@@ -89,8 +89,6 @@ Four presentations
 Resources on GitHub: slides, code, additionnal references
 <https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22>
 
-(ref to doc travail v2)
-
 ### JDemetra+: a library of algorithms for time series analysis
 
 JDemetra+ is a library of algorithms on:
@@ -131,13 +129,15 @@ Goals of thiswebinar
 
 ### From V2 to v3: changing gears 
 
+V2 : RJDemetra (X13-Arima, Tramo-seats, workspace wrangling) and some more specific packatges like rjdhighfreq, rjdsts...
+(corresponding to the version 2.x family of JD+ Core)
+
+
 The mindset of version 3 (vs v2) is
 
 - modularity: independent more specific functions
 - more "stand alone" tools (not only retrieving results on )
 
-V2 : RJDemetra (X13-Arima, Tramo-seats, workspace wrangling) and some more specific packatges like rjdhighfreq, rjdsts...
-(corresponding to the version 2.x family of JD+ Core)
 
 V3 : A suite of packages cf schema
 
@@ -167,27 +167,28 @@ Scope of this  webinar : SA with X-13 and Tramo-Seats, including HF data
 
 ### Installing packages (1/2)
 
-They all require Java `r fa_java` $\geq$ 17 
-(see for example installation manual of `RJDemetra`: <https://github.com/jdemetra/rjdemetra/wiki/Installation-manual>)
-
 Version 2: RJDemetra is on CRAN 
 ```{r, include=TRUE, eval=FALSE}
 install.packages(RJDemetra)
 library(RJDemetra)
 ```
 
-in part 3 and 4 rjdworkspace JDCruncher
-```{r, include=TRUE, eval=FALSE}
-install.packages(RJDemetra) #maj
-library(RJDemetra)
-```
+In part 3 and 4 we will also use  
+
+- JDCruncher (based on cruncher output)
+To install it: download the **.zip** or **.tar.gz** file from <https://github.com/InseeFr/JDCruncheR/releases>. 
+
+- rjdworkspace (based on RJDemetra)
+To install it: download the **.zip** or **.tar.gz** file from <https://github.com/InseeFrLab/rjdworkspace/releases>. 
+
 You can run v2 and v3 simultaneously
+
 Version 3 requires Java `r fa_java` $\geq$ 17 
-see <https://github.com/jdemetra/rjdemetra/wiki/Installation-manual>)
+(see <https://github.com/jdemetra/rjdemetra/wiki/Installation-manual>)
 
 ### Installing packages (2/2)
 
-Install from GiHub (as not on CRAN yet)
+Installing latest version from GitHub (as not on CRAN yet)
 
 ```{r, eval=FALSE}
 # install.packages("remotes")
