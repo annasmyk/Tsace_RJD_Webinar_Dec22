@@ -253,6 +253,8 @@ here, no workspace structure - assets - shortcomings
 \item
   pre treatement
 \item
+  create customisezd variables for pretratement
+\item
   decomposition
 \item
   output series
@@ -263,8 +265,6 @@ here, no workspace structure - assets - shortcomings
 \item
   repeat..
 \end{itemize}
-
-comp with GUI main panels ?
 \end{frame}
 
 \begin{frame}{rjd3 suite of packages for SA}
@@ -272,18 +272,6 @@ comp with GUI main panels ?
 in v2 :
 
 in v3: more tools (tests,\ldots)
-\end{frame}
-
-\hypertarget{sa-or-time-series-tools}{%
-\section{SA (or Time series) tools}\label{sa-or-time-series-tools}}
-
-\begin{frame}{testing for seasonality}
-\protect\hypertarget{testing-for-seasonality}{}
-Data format TS object (num vector for HF) \#\#\# Normality test
-\end{frame}
-
-\begin{frame}{Autocorrelation}
-\protect\hypertarget{autocorrelation}{}
 \end{frame}
 
 \hypertarget{x13-and-some-tramo-seats}{%
@@ -324,9 +312,9 @@ spec\_x11\_default()
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Running SA estimation process}
+\begin{frame}[fragile,allowframebreaks]{Running SA estimation process}
 \protect\hypertarget{running-sa-estimation-process}{}
-in version 2
+In version 2 \footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -338,24 +326,120 @@ in version 2
 \end{Highlighting}
 \end{Shaded}
 
-in version 3
+In version 3 \footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#X13}
 \NormalTok{sa\_x13\_v3 }\OtherTok{\textless{}{-}}\NormalTok{ rjd3x13}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, }\AttributeTok{spec=} \StringTok{"RSA5"}\NormalTok{)}
+\NormalTok{sa\_x13\_v3}
+\end{Highlighting}
+\end{Shaded}
 
+\begin{verbatim}
+## RegARIMA
+## Log-transformation: yes 
+## SARIMA model:  (0,1,1) (0,1,1) 
+## 
+## Coefficients
+##           Estimate Std. Error T-stat
+## theta(1)  -0.72466    0.03740 -19.38
+## btheta(1) -0.56372    0.04992 -11.29
+## 
+## Regression model:
+##            Estimate Std. Error T-stat
+## monday     0.016430   0.008647  1.900
+## tuesday    0.012493   0.008603  1.452
+## wednesday  0.006496   0.008621  0.754
+## thursday  -0.003046   0.008598 -0.354
+## friday     0.019581   0.008638  2.267
+## saturday  -0.020445   0.008608 -2.375
+## easter    -0.045446   0.017158 -2.649
+## Number of observations:  354 
+## Number of effective observations:  341 
+## Number of parameters:  10 
+## 
+## Loglikelihood:  374.7681 
+## Adjusted loglikelihood:  -1077.716 
+## 
+## Standard error of the regression (ML estimate):  0.07999264 
+## AIC:  2175.432 
+## AICC:  2176.099 
+## BIC:  2213.751 
+## 
+## 
+## Decomposition
+## Monitoring and Quality Assessment Statistics: 
+##     M stats
+## m1    0.986
+## m2    0.660
+## m3    1.888
+## m4    0.262
+## m5    1.877
+## m6    0.140
+## m7    0.374
+## m8    0.823
+## m9    0.441
+## m10   0.557
+## m11   0.484
+## q     0.799
+## qm2   0.816
+## 
+## Final filters: 
+## Seasonal filter:  
+## Trend filter: 23 terms Henderson moving average
+## 
+## Diagnostics
+## Relative contribution of the components to the stationary
+## portion of the variance in the original series,
+## after the removal of the long term trend (in %)
+## 
+##            Component
+##  cycle        35.745
+##  seasonal     49.917
+##  irregular     6.601
+##  calendar      2.726
+##  others        0.000
+##  total        94.989
+## 
+## Residual seasonality tests
+##                 P.value
+##  seas.ftest.i     0.977
+##  seas.ftest.sa    0.992
+##  seas.qstest.i    1.000
+##  seas.qstest.sa   1.000
+##  td.ftest.i       0.999
+##  td.ftest.sa      0.999
+## 
+## 
+## Final
+## Last values
+##             series       sa    trend seas       irr
+## Jul 2018 108.12963 125.7729 112.5273    1 1.1177102
+## Aug 2018  90.03625 116.6883 113.3824    1 1.0291574
+## Sep 2018 116.46355 112.2071 113.8818    1 0.9852950
+## Oct 2018 124.07923 109.5869 113.9926    1 0.9613510
+## Nov 2018 136.04300 119.6826 113.7513    1 1.0521420
+## Dec 2018 113.17850 124.2718 113.2503    1 1.0973202
+## Jan 2019 108.28574 108.9028 112.6145    1 0.9670404
+## Feb 2019 110.21151 114.3220 111.9838    1 1.0208800
+## Mar 2019 122.43580 111.6401 111.4757    1 1.0014743
+## Apr 2019 108.64593 108.2331 111.1456    1 0.9737949
+## May 2019 111.25296 111.2931 110.9967    1 1.0026702
+## Jun 2019 109.35264 105.3926 111.0227    1 0.9492889
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \CommentTok{\#Tramo seats}
 \NormalTok{sa\_ts\_v3 }\OtherTok{\textless{}{-}}\NormalTok{ rjd3tramoseats}\SpecialCharTok{::}\FunctionTok{tramoseats}\NormalTok{(y\_raw, }\AttributeTok{spec=} \StringTok{"RSAfull"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-affichage output ?
 \end{frame}
 
 \begin{frame}[fragile]{Running only pre-adjustment}
 \protect\hypertarget{running-only-pre-adjustment}{}
-in version 2
+In version 2 \footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -368,27 +452,24 @@ in version 2
 \end{Highlighting}
 \end{Shaded}
 
-in version 3
+In version 3 \footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#X13}
 \NormalTok{sa\_regarima\_v3 }\OtherTok{\textless{}{-}}\NormalTok{ rjd3x13}\SpecialCharTok{::}\FunctionTok{regarima}\NormalTok{(y\_raw)}
 
-\CommentTok{\#Tramo seats (if no spec indicated what is the defalut ?)}
-\CommentTok{\# retrouver en }
+\CommentTok{\#Tramo seats }
 \NormalTok{sa\_tramo\_v3 }\OtherTok{\textless{}{-}}\NormalTok{ rjd3tramoseats}\SpecialCharTok{::}\FunctionTok{tramo}\NormalTok{(y\_raw)}
 
 \CommentTok{\# "fast." versions...(cf output structure)}
 \end{Highlighting}
 \end{Shaded}
-
-affichage output ?
 \end{frame}
 
 \begin{frame}[fragile]{Running only decomposition}
 \protect\hypertarget{running-only-decomposition}{}
-in version 2
+In version 2 \footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -400,7 +481,7 @@ in version 2
 \end{Highlighting}
 \end{Shaded}
 
-in version 3
+In version 3 \footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -411,8 +492,6 @@ in version 3
 \CommentTok{\#sa\_ts\_v3 \textless{}{-} rjd3tramoseats::seats.decompose(y\_raw)}
 \end{Highlighting}
 \end{Shaded}
-
-affichage output ?
 \end{frame}
 
 \hypertarget{rerieving-output-and-data-visualization}{%
@@ -429,16 +508,17 @@ show the list of lists do a new version
 show the NEW list of lists
 \end{frame}
 
-\begin{frame}{Differences from v2 to v3}
-\protect\hypertarget{differences-from-v2-to-v3}{}
-highlight deifferences: - specs - specs direct accessible + 2 concepts
-(spec in v12 was point spec;, more about this in refresh section)
+\begin{frame}{Differences from version 2 to version 3}
+\protect\hypertarget{differences-from-version-2-to-version-3}{}
+Differences: - specs - results: more specific () - specs direct
+accessible + 2 concepts (spec in v12 was point spec;, more about this in
+refresh section)
 \end{frame}
 
 \begin{frame}[fragile]{Retrieve output series}
 \protect\hypertarget{retrieve-output-series}{}
-input and output = TS objects (not when using specific extensions for HF
-data) - final series : different
+Input and output = TS in R objects (not when using specific extensions
+for HF data) - final series : different \footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -829,7 +909,7 @@ data) - final series : different
 
 \begin{Shaded}
 \begin{Highlighting}[]
-  \CommentTok{\# Version 3 }
+\CommentTok{\# Version 3 }
 \CommentTok{\# final seasonally adjusted series}
 \NormalTok{sa\_x13\_v3}\SpecialCharTok{$}\NormalTok{result}\SpecialCharTok{$}\NormalTok{final}\SpecialCharTok{$}\NormalTok{d11final}
 \end{Highlighting}
@@ -931,7 +1011,8 @@ data) - final series : different
 ## 2019
 \end{verbatim}
 
-in v3 much more series available without using user defined output
+In version 3 much more series are available without using the
+user-defined output option.
 \end{frame}
 
 \begin{frame}[fragile]{Series from preadjustement}
@@ -1768,123 +1849,22 @@ in v3 much more series available without using user defined output
 
 \begin{frame}[fragile]{Series from decompostion}
 \protect\hypertarget{series-from-decompostion}{}
+In version 2 - D tables accessible via user-defined output, - forecast
+series accessible only via user defined output (cf below)
+
+In Version 3: ``x11 names'' \footnotesize
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Version 2 (affichage main, d tables in user def output)}
-
-\CommentTok{\# D tables accessible via user{-}defined output,}
-
-\CommentTok{\# forecast accessible only via user defined output (cf below)}
-
-\CommentTok{\# Version 3: "x11 names" : preadjustement effets as stored in the A table}
-\CommentTok{\# add doc on names   }
+\CommentTok{\# Version 3  }
 \NormalTok{sa\_x13\_v3}\SpecialCharTok{$}\NormalTok{result}\SpecialCharTok{$}\NormalTok{decomposition}\SpecialCharTok{$}\NormalTok{d5 }\CommentTok{\# tables from D1 to D13}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-##            Jan       Feb       Mar       Apr       May
-## 1990 1.1923683 1.1475372 1.2360235 0.9704338 0.8556732
-## 1991 1.1923683 1.1475372 1.2360235 0.9704338 0.8556732
-## 1992 1.1849743 1.1510465 1.2435127 0.9749012 0.8612511
-## 1993 1.1807324 1.1566905 1.2605805 0.9885448 0.8669907
-## 1994 1.1922639 1.1523619 1.2757969 1.0068935 0.8695447
-## 1995 1.2166191 1.1249847 1.2721669 1.0121162 0.8688322
-## 1996 1.2450179 1.0834820 1.2454913 1.0023317 0.8656880
-## 1997 1.2555405 1.0495401 1.2271165 0.9904221 0.8486778
-## 1998 1.2501025 1.0381839 1.2204037 0.9905274 0.8413694
-## 1999 1.2318413 1.0390251 1.2367841 0.9867202 0.8416078
-## 2000 1.2089257 1.0464806 1.2492297 0.9788361 0.8634672
-## 2001 1.1800572 1.0491062 1.2583754 0.9757810 0.8832794
-## 2002 1.1325321 1.0428091 1.2348755 0.9923866 0.8988702
-## 2003 1.0718296 1.0214298 1.1908855 1.0058515 0.9223131
-## 2004 1.0126809 1.0013869 1.1298796 1.0064516 0.9484983
-## 2005 0.9712045 0.9930933 1.0907517 0.9871631 0.9874654
-## 2006 0.9484844 0.9993403 1.0839241 0.9774550 0.9975318
-## 2007 0.9359237 1.0011544 1.0943698 0.9628210 0.9844018
-## 2008 0.9393037 0.9901907 1.0961059 0.9744643 0.9581568
-## 2009 0.9590225 0.9776566 1.0804624 0.9810222 0.9509411
-## 2010 0.9826951 0.9685397 1.0732969 1.0069881 0.9567758
-## 2011 0.9819884 0.9834280 1.0880056 1.0068075 0.9523702
-## 2012 0.9620294 0.9908457 1.1129084 1.0091122 0.9346199
-## 2013 0.9383872 1.0149560 1.1274324 0.9962207 0.9188376
-## 2014 0.9438716 1.0188730 1.1355461 1.0022589 0.9193370
-## 2015 0.9673181 1.0237713 1.1443895 1.0021617 0.9352595
-## 2016 0.9923360 0.9997236 1.1439864 1.0141691 0.9585648
-## 2017 0.9970757 0.9819855 1.1347372 1.0053839 0.9742721
-## 2018 0.9858826 0.9670230 1.1128331 0.9988516 0.9788531
-## 2019 0.9736082 0.9658516 1.1018036 0.9851722 0.9754609
-## 2020 0.9736082 0.9658516 1.1018036 0.9851722 0.9754609
-##            Jun       Jul       Aug       Sep       Oct
-## 1990 0.9436397 0.9620500 0.9870751 1.0099916 0.9383933
-## 1991 0.9436397 0.9603890 0.9940779 1.0075140 0.9405471
-## 1992 0.9527072 0.9550537 1.0023782 0.9995745 0.9401989
-## 1993 0.9668507 0.9541997 0.9940739 0.9932727 0.9347024
-## 1994 0.9941858 0.9529795 0.9781405 0.9792167 0.9325696
-## 1995 1.0265591 0.9657967 0.9590935 0.9741345 0.9412288
-## 1996 1.0683449 0.9703981 0.9513661 0.9740342 0.9504035
-## 1997 1.1018130 0.9728214 0.9403743 0.9903587 0.9627231
-## 1998 1.1131822 0.9641039 0.9229157 0.9945226 0.9669750
-## 1999 1.1010234 0.9566074 0.9048893 0.9966272 0.9925206
-## 2000 1.0781532 0.9382339 0.8914595 0.9868075 1.0189431
-## 2001 1.0638671 0.9040916 0.8729147 0.9986190 1.0657783
-## 2002 1.0738463 0.8622193 0.8475298 1.0175103 1.1056242
-## 2003 1.0913327 0.8429397 0.8192024 1.0441867 1.1382211
-## 2004 1.1154190 0.8510339 0.8075990 1.0552863 1.1484065
-## 2005 1.1279717 0.8866580 0.8104828 1.0492363 1.1320718
-## 2006 1.1286504 0.9167361 0.8211325 1.0364563 1.1278970
-## 2007 1.1320246 0.9268187 0.8281151 1.0314576 1.1312409
-## 2008 1.1278822 0.9083581 0.8179973 1.0439317 1.1510762
-## 2009 1.1281035 0.8775027 0.7927892 1.0692625 1.1573576
-## 2010 1.1123591 0.8572939 0.7687723 1.0868301 1.1430802
-## 2011 1.1043148 0.8557319 0.7576867 1.0967290 1.1310391
-## 2012 1.1168364 0.8637587 0.7584292 1.0872344 1.1189428
-## 2013 1.1435091 0.8683837 0.7514842 1.0892695 1.1248066
-## 2014 1.1626778 0.8593566 0.7347846 1.0878022 1.1252662
-## 2015 1.1531310 0.8482600 0.7253953 1.0993582 1.1235364
-## 2016 1.1373547 0.8418010 0.7276421 1.0951331 1.1115493
-## 2017 1.1110311 0.8515238 0.7464552 1.0949353 1.0975844
-## 2018 1.0983236 0.8656381 0.7617972 1.0891558 1.0847723
-## 2019 1.0853086 0.8772038 0.7723823 1.0897915 1.0780807
-## 2020 1.0853086                                        
-##            Nov       Dec
-## 1990 0.9105157 0.8490633
-## 1991 0.9030049 0.8402231
-## 1992 0.8852651 0.8236869
-## 1993 0.8617122 0.8040465
-## 1994 0.8507145 0.7960603
-## 1995 0.8575596 0.7913869
-## 1996 0.8779645 0.7924634
-## 1997 0.9041255 0.7802210
-## 1998 0.9343864 0.7786052
-## 1999 0.9551974 0.7765584
-## 2000 0.9696996 0.7949522
-## 2001 0.9777913 0.8275608
-## 2002 0.9992903 0.8709786
-## 2003 1.0252674 0.9137773
-## 2004 1.0409510 0.9300468
-## 2005 1.0362813 0.9379035
-## 2006 1.0241403 0.9461274
-## 2007 1.0269467 0.9615963
-## 2008 1.0344281 0.9756185
-## 2009 1.0382919 0.9837954
-## 2010 1.0365436 0.9941820
-## 2011 1.0515680 0.9867151
-## 2012 1.0682536 0.9699605
-## 2013 1.0668241 0.9424074
-## 2014 1.0459547 0.9337465
-## 2015 1.0387872 0.9237939
-## 2016 1.0641768 0.9288596
-## 2017 1.1060349 0.9350992
-## 2018 1.1382335 0.9498428
-## 2019 1.1505432 0.9561857
-## 2020
-\end{verbatim}
 \end{frame}
 
-\begin{frame}[fragile]{Retrieve Diagnostics}
-\protect\hypertarget{retrieve-diagnostics}{}
-Just fetch the needed objects in the relevant par of the output
+\begin{frame}[fragile]{Retrieving Diagnostics}
+\protect\hypertarget{retrieving-diagnostics}{}
+Just fetch the needed objects in the relevant part of the output
 structure or print the whole ``model''
 
 \begin{Shaded}
@@ -2011,7 +1991,6 @@ structure or print the whole ``model''
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#pdf ?}
 \NormalTok{sa\_x13\_v2}\SpecialCharTok{$}\NormalTok{decomposition}\SpecialCharTok{$}\NormalTok{mstats}
 \end{Highlighting}
 \end{Shaded}
@@ -2055,7 +2034,7 @@ structure or print the whole ``model''
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# version 3}
+\CommentTok{\# version 3 (more diagnostics available by default)}
 \FunctionTok{print}\NormalTok{(sa\_x13\_v2)}
 \end{Highlighting}
 \end{Shaded}
@@ -2175,15 +2154,33 @@ structure or print the whole ``model''
 ## [4m[1mAdditional output variables[22m[24m
 \end{verbatim}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sa\_x13\_v3}\SpecialCharTok{$}\NormalTok{result}\SpecialCharTok{$}\NormalTok{diagnostics}\SpecialCharTok{$}\NormalTok{td.ftest.i}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $value
+## [1] 0.06001233
+## 
+## $pvalue
+## [1] 0.9991373
+## 
+## $description
+## [1] "F with 6.0 degrees of freedom in the nominator and 359.0 degrees of freedom in the denominator"
+\end{verbatim}
+
 What is missing (series or diagnostics) can be retrieved adding
-user-defined output in the options (more available by default in v3)
+user-defined output in the options
 \end{frame}
 
-\begin{frame}[fragile]{Retrieve user defined-output (1/2)}
-\protect\hypertarget{retrieve-user-defined-output-12}{}
-In v2 or v3 : define a vector of objects your wish to add
+\begin{frame}[fragile]{Retrieving user defined-output (1/2)}
+\protect\hypertarget{retrieving-user-defined-output-12}{}
+In version 2 or version 3: first define a vector of objects your wish to
+add
 
-Lists of avaible diagnostics or series
+Lists of avaible diagnostics or series \footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2203,6 +2200,8 @@ Lists of avaible diagnostics or series
 \begin{frame}[fragile]{Retrieve user defined-output (2/2)}
 \protect\hypertarget{retrieve-user-defined-output-22}{}
 Select the objects and customize estimation function
+
+\footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2339,13 +2338,15 @@ Select the objects and customize estimation function
 \begin{frame}[fragile,allowframebreaks]{Plots and data visualisation
 (1/2)}
 \protect\hypertarget{plots-and-data-visualisation-12}{}
-In version 2 3 kinds of plots : final (2 types), regarima and SI ratios
+In version 2 three kinds of plots: - final (2 types) - regarima
+residuals (6 plots) - SI ratios
+
+\footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# version 2}
 \CommentTok{\# for class \textquotesingle{}final\textquotesingle{} : 2 types }
-\CommentTok{\# syntaxe min }
 \FunctionTok{plot}\NormalTok{(sa\_x13\_v2, }\AttributeTok{type\_chart =} \StringTok{"sa{-}trend"}\NormalTok{, }\AttributeTok{first\_date =} \FunctionTok{c}\NormalTok{(}\DecValTok{2015}\NormalTok{, }\DecValTok{1}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -2362,6 +2363,7 @@ In version 2 3 kinds of plots : final (2 types), regarima and SI ratios
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# regarima}
 \FunctionTok{layout}\NormalTok{(}\FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{));}\FunctionTok{plot}\NormalTok{(sa\_x13\_v2}\SpecialCharTok{$}\NormalTok{regarima,}\AttributeTok{ask =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -2558,13 +2560,26 @@ to - -
 \hypertarget{refreshing-data}{%
 \subsection{Refreshing data}\label{refreshing-data}}
 
-\begin{frame}[fragile]{Estimation spec vs result\_spec}
-\protect\hypertarget{estimation-spec-vs-result_spec}{}
+\begin{frame}[fragile]{Estimation\_spec vs result\_spec (1/2)}
+\protect\hypertarget{estimation_spec-vs-result_spec-12}{}
 Possibility of refreshing data is new feature of version 3.
 
-The ``sa\_model'' generated with an estimation: - new handling of spec
-(no extraction needed) - notion of - estimation spec (domain spec): set
-of customizable constraints
+In the ``sa\_model'' object generated by the estimation process:
+
+\begin{itemize}
+\item
+  new handling of spec (no extraction needed as separated)
+\item
+  notion of
+
+  \begin{itemize}
+  \tightlist
+  \item
+    estimation spec (domain spec): set of customizable constraints
+  \end{itemize}
+\end{itemize}
+
+\footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2576,10 +2591,22 @@ of customizable constraints
 - result spec (or point spec)
 \end{verbatim}
 
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sa\_x13\_v3}\SpecialCharTok{$}\NormalTok{result\_spec}\SpecialCharTok{$}\NormalTok{regarima}\SpecialCharTok{$}\NormalTok{arima}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{Estimation\_spec vs result\_spec}
+\protect\hypertarget{estimation_spec-vs-result_spec}{}
 \begin{itemize}
 \tightlist
 \item
-  in v2 could only retrieve point spec
+  in v2 could only retrieve a (point) result\_spec (extracted with
+  x13\_spec)
 \item
   in v3 your are able to restimate the result spec inside the domain
   (estimation spec) freeing constriants on some parameters : just like
@@ -2653,11 +2680,108 @@ of customizable constraints
 \hypertarget{sa-of-high-frequency-data}{%
 \section{SA of High-Frequency data}\label{sa-of-high-frequency-data}}
 
-\begin{frame}{SA of High-Frequency data}
-\protect\hypertarget{sa-of-high-frequency-data-1}{}
-High-frequency data can
+\begin{frame}{SA of High-Frequency data (1/2)}
+\protect\hypertarget{sa-of-high-frequency-data-12}{}
+Specificity: high-frequency data can display multiple and non integer
+periodicities:
 
-In github repo full presnetations about \{rjd3highfreq\}
+For example a daily serie might display 3 periodicities: - weekly
+(\(p=7\)): Mondays are alike and different from Sundays (DOW) -
+intra-monthly (\(p=30.44\)): the last days of each month are different
+from the first ones (DOM) - yearly (\(p=365.25\)): from on year to
+another the 15th of June are alike, summer days are alike (DOY)
+
+Two classes of solutions: - round periodicities (might involve imputing
+data) (extended STL,..) - use approximations for fractional backshift
+powers (extended X13-Arima and Tramo-Seats)
+\end{frame}
+
+\begin{frame}{SA of High-Frequency data (2/2)}
+\protect\hypertarget{sa-of-high-frequency-data-22}{}
+Specific tools: rjd3highfreq and rjd3stl (version 3) (version 2 :
+rjdhighfreq)
+
+Different data format: numeric vectors (and NOT TS objects)
+
+\begin{itemize}
+\item
+  linerarization with fractionnal airline model (correction for calendar
+  effects and outlier detection)
+\item
+  iterative decomposition (extrended X-11 and Seats) starting with the
+  highest frequency
+\end{itemize}
+
+See presentation about \{rjd3highfreq\} (Webinar GitHub Repo)
+\end{frame}
+
+\begin{frame}[fragile]{Linearization: code template}
+\protect\hypertarget{linearization-code-template}{}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rjd3highfreq}\SpecialCharTok{::}\NormalTok{fractionalAirlineEstimation}
+\NormalTok{                        (df\_daily}\SpecialCharTok{$}\NormalTok{log\_births, }\CommentTok{\# here series in log}
+                \AttributeTok{x =}\NormalTok{ q, }\CommentTok{\# q= calendar}
+                \AttributeTok{periods =} \DecValTok{7}\NormalTok{, }\CommentTok{\# approx  c(7,365.25)}
+                \AttributeTok{ndiff =} \DecValTok{2}\NormalTok{, }\AttributeTok{ar =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{mean =} \ConstantTok{FALSE}\NormalTok{,}
+                \AttributeTok{outliers =} \FunctionTok{c}\NormalTok{(}\StringTok{"ao"}\NormalTok{,}\StringTok{"wo"}\NormalTok{), }
+                \CommentTok{\# WO compensation, LS not relevant here }
+                \AttributeTok{criticalValue =} \DecValTok{0}\NormalTok{, }\CommentTok{\# computed in the algorithm}
+                \AttributeTok{precision =} \FloatTok{1e{-}9}\NormalTok{, }\AttributeTok{approximateHessian =} \ConstantTok{TRUE}\NormalTok{)}
+                    
+\CommentTok{\# calendar regressors can be defined with the \{rjd3modelling\} package }
+\end{Highlighting}
+\end{Shaded}
+
+See \{rjd3highfreq\} help pages
+\end{frame}
+
+\begin{frame}[fragile]{Decomposition with extended X-11: code template}
+\protect\hypertarget{decomposition-with-extended-x-11-code-template}{}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#step 1: p=7}
+\NormalTok{x11.dow}\OtherTok{\textless{}{-}}\NormalTok{rjd3highfreq}\SpecialCharTok{::}\FunctionTok{x11}\NormalTok{(}\FunctionTok{exp}\NormalTok{(pre.mult}\SpecialCharTok{$}\NormalTok{model}\SpecialCharTok{$}\NormalTok{linearized),}
+        \AttributeTok{period =} \DecValTok{7}\NormalTok{,                 }\CommentTok{\# DOW pattern}
+        \AttributeTok{mul =} \ConstantTok{TRUE}\NormalTok{,                              }
+        \AttributeTok{trend.horizon =} \DecValTok{9}\NormalTok{,  }\CommentTok{\# 1/2 Filter length : not too long vs p}
+        \AttributeTok{trend.degree =} \DecValTok{3}\NormalTok{,                         }\CommentTok{\# Polynomial degree}
+        \AttributeTok{trend.kernel =} \StringTok{"Henderson"}\NormalTok{,               }\CommentTok{\# Kernel function}
+        \AttributeTok{trend.asymmetric =} \StringTok{"CutAndNormalize"}\NormalTok{,     }\CommentTok{\# Truncation method}
+        \AttributeTok{seas.s0 =} \StringTok{"S3X9"}\NormalTok{, }\AttributeTok{seas.s1 =} \StringTok{"S3X9"}\NormalTok{,       }\CommentTok{\# Seasonal filters}
+        \AttributeTok{extreme.lsig =} \FloatTok{1.5}\NormalTok{, }\AttributeTok{extreme.usig =} \FloatTok{2.5}\NormalTok{)   }\CommentTok{\# Sigma{-}limits}
+\CommentTok{\#step 2: p=365.25}
+\NormalTok{x11.doy}\OtherTok{\textless{}{-}}\NormalTok{ rjd3highfreq}\SpecialCharTok{::}\FunctionTok{x11}\NormalTok{(x11.dow}\SpecialCharTok{$}\NormalTok{decomposition}\SpecialCharTok{$}\NormalTok{sa,  }\CommentTok{\# previous sa}
+                    \AttributeTok{period =} \FloatTok{365.2425}\NormalTok{,         }\CommentTok{\# DOY pattern}
+                    \AttributeTok{mul =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#other parameters skipped here}
+\end{Highlighting}
+\end{Shaded}
+
+See \{rjd3highfreq\} help pages for more details
+\end{frame}
+
+\begin{frame}[fragile]{Decomposition with extended Seats: code template}
+\protect\hypertarget{decomposition-with-extended-seats-code-template}{}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#step 1: p=7}
+\CommentTok{\#step 2: p=365.25}
+\NormalTok{amb.doy }\OtherTok{\textless{}{-}}\NormalTok{ rjd3highfreq}\SpecialCharTok{::}\FunctionTok{fractionalAirlineDecomposition}\NormalTok{(}
+\NormalTok{  amb.dow}\SpecialCharTok{$}\NormalTok{decomposition}\SpecialCharTok{$}\NormalTok{sa,  }\CommentTok{\# DOW{-}adjusted linearised data}
+  \AttributeTok{period =} \FloatTok{365.2425}\NormalTok{,         }\CommentTok{\# DOY pattern}
+  \AttributeTok{sn =} \ConstantTok{FALSE}\NormalTok{,                }\CommentTok{\# Signal (SA){-}noise decomposition }
+  \AttributeTok{stde =} \ConstantTok{FALSE}\NormalTok{,              }\CommentTok{\# Compute standard deviations}
+  \AttributeTok{nbcasts =} \DecValTok{0}\NormalTok{, }\AttributeTok{nfcasts =} \DecValTok{0}\NormalTok{)  }\CommentTok{\# Numbers of back{-} and forecasts}
+\end{Highlighting}
+\end{Shaded}
+
+See \{rjd3highfreq\} help pages for more details
 \end{frame}
 
 \hypertarget{generating-user-defined-auxilary-variables}{%
@@ -2669,18 +2793,342 @@ variables}\label{generating-user-defined-auxilary-variables}}
 
 \begin{frame}{calendars}
 \protect\hypertarget{calendars-1}{}
-here new functionnality of v3, rjd3modelling pacakage
+New features of version 3:
+
+\begin{itemize}
+\item
+  generating calendars in R (see GUI function in v2)
+\item
+  generating calendars regressors
+
+  \begin{itemize}
+  \tightlist
+  \item
+    raw number of days or contrasts
+  \item
+    long term mean correction or not
+  \item
+    user-defined groups of days
+  \item
+    user-defined contrast days (associated with holidays)
+  \end{itemize}
+\end{itemize}
+
+can be done with \{rjd3modelling\} package
+\end{frame}
+
+\begin{frame}[fragile]{Creation of a specific calendar}
+\protect\hypertarget{creation-of-a-specific-calendar}{}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rjd3modelling)}
+\NormalTok{fr\_cal }\OtherTok{\textless{}{-}} \FunctionTok{calendar.new}\NormalTok{()}
+\FunctionTok{calendar.holiday}\NormalTok{(fr\_cal, }\StringTok{"NEWYEAR"}\NormalTok{)}
+\FunctionTok{calendar.holiday}\NormalTok{(fr\_cal, }\StringTok{"EASTERMONDAY"}\NormalTok{)}
+\FunctionTok{calendar.holiday}\NormalTok{(fr\_cal, }\StringTok{"MAYDAY"}\NormalTok{)}
+\FunctionTok{calendar.fixedday}\NormalTok{(fr\_cal, }\AttributeTok{month =} \DecValTok{5}\NormalTok{, }\AttributeTok{day =} \DecValTok{8}\NormalTok{,}
+                  \AttributeTok{start =} \StringTok{"1953{-}03{-}20"}\NormalTok{)}
+\CommentTok{\# calendar.holiday(fr\_cal, "WHITMONDAY") \# Equivalent to:}
+\FunctionTok{calendar.easter}\NormalTok{(fr\_cal, }\AttributeTok{offset =} \DecValTok{61}\NormalTok{)}
+
+\FunctionTok{calendar.fixedday}\NormalTok{(fr\_cal, }\AttributeTok{month =} \DecValTok{7}\NormalTok{, }\AttributeTok{day =} \DecValTok{14}\NormalTok{)}
+\CommentTok{\# calendar.holiday(fr\_cal, "ASSUMPTION")}
+\FunctionTok{calendar.easter}\NormalTok{(fr\_cal, }\AttributeTok{offset =} \DecValTok{61}\NormalTok{)}
+\FunctionTok{calendar.holiday}\NormalTok{(fr\_cal, }\StringTok{"ALLSAINTSDAY"}\NormalTok{)}
+\FunctionTok{calendar.holiday}\NormalTok{(fr\_cal, }\StringTok{"ARMISTICE"}\NormalTok{)}
+\FunctionTok{calendar.holiday}\NormalTok{(fr\_cal, }\StringTok{"CHRISTMAS"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Creation of a associated
+regressors}
+\protect\hypertarget{creation-of-a-associated-regressors}{}
+Use \texttt{holidays()} to get the days of the holidays and
+\texttt{htd()} to get the trading days regressors
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{holidays}\NormalTok{(fr\_cal, }\StringTok{"2020{-}12{-}24"}\NormalTok{, }\DecValTok{10}\NormalTok{,}\AttributeTok{single =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            [,1]
+## 2020-12-24    0
+## 2020-12-25    1
+## 2020-12-26    0
+## 2020-12-27    0
+## 2020-12-28    0
+## 2020-12-29    0
+## 2020-12-30    0
+## 2020-12-31    0
+## 2021-01-01    1
+## 2021-01-02    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OtherTok{=} \FunctionTok{ts}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{start =} \DecValTok{2020}\NormalTok{, }\AttributeTok{end =} \FunctionTok{c}\NormalTok{(}\DecValTok{2020}\NormalTok{, }\DecValTok{11}\NormalTok{), }\AttributeTok{frequency =} \DecValTok{12}\NormalTok{)}
+\CommentTok{\# Trading{-}days regressors (each day has a different effect, sunday as contrasts)}
+\NormalTok{td\_reg }\OtherTok{\textless{}{-}} \FunctionTok{htd}\NormalTok{(fr\_cal, }\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{groups =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+\CommentTok{\# Working{-}days regressors (Monday = ... = Friday; Saturday = Sunday = contrasts)}
+\NormalTok{wd\_reg }\OtherTok{\textless{}{-}} \FunctionTok{htd}\NormalTok{(fr\_cal, }\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{groups =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+\CommentTok{\# Monday = ... = Friday; Saturday; Sunday = contrasts}
+\NormalTok{wd\_reg }\OtherTok{\textless{}{-}} \FunctionTok{htd}\NormalTok{(fr\_cal, }\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{groups =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+\NormalTok{wd\_reg}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             group-1    group-2
+## Jan 2020  2.0000000  0.0000000
+## Feb 2020  0.0000000  1.0000000
+## Mar 2020 -1.7809251 -0.7968209
+## Apr 2020  0.7809251 -0.2031791
+## May 2020 -3.1554920  0.4740847
+## Jun 2020  5.1554920  0.5259153
+## Jul 2020  2.0000000  0.0000000
+## Aug 2020 -4.0000000  0.0000000
+## Sep 2020  2.0000000  0.0000000
+## Oct 2020  2.0000000  1.0000000
+## Nov 2020  0.0000000  0.0000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Monday = ... = Wednesday; Thursday; Friday = contrasts}
+\NormalTok{wd\_reg2}\OtherTok{\textless{}{-}} \FunctionTok{htd}\NormalTok{(fr\_cal, }\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{groups =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{wd\_reg2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            group-1    group-2
+## Jan 2020 -5.000000  0.0000000
+## Feb 2020  1.000000  0.0000000
+## Mar 2020  3.000000  0.0000000
+## Apr 2020  1.000000  1.0000000
+## May 2020  4.155492  0.5259153
+## Jun 2020 -1.155492 -0.5259153
+## Jul 2020 -5.000000  0.0000000
+## Aug 2020  3.000000  0.0000000
+## Sep 2020  2.000000  0.0000000
+## Oct 2020 -4.000000  0.0000000
+## Nov 2020  0.000000  0.0000000
+\end{verbatim}
 \end{frame}
 
 \hypertarget{outliers-and-intervention-variables}{%
-\subsection{outliers and intervention
+\subsection{Outliers and intervention
 variables}\label{outliers-and-intervention-variables}}
 
-\begin{frame}{outliers and intervention variables}
+\begin{frame}{Outliers and intervention variables}
 \protect\hypertarget{outliers-and-intervention-variables-1}{}
-(using this variables already presented, now focus on generation)
+New feature of version 3 allows to create:
 
-intervention bug in rj3modelling ?
+\begin{itemize}
+\tightlist
+\item
+  outliers regressors (AO, LS, TC, SO, Ramp (quadratic to be added)
+\item
+  trigonometric variables
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Example of outliers}
+\protect\hypertarget{example-of-outliers}{}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OtherTok{=} \FunctionTok{ts}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{start =} \DecValTok{2000}\NormalTok{, }\AttributeTok{end =} \DecValTok{2005}\NormalTok{, }\AttributeTok{frequency =} \DecValTok{12}\NormalTok{)}
+\NormalTok{ao }\OtherTok{=} \FunctionTok{ao.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{date =} \StringTok{"2001{-}03{-}01"}\NormalTok{)}
+\NormalTok{ls }\OtherTok{=} \FunctionTok{ls.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{date =} \StringTok{"2001{-}01{-}01"}\NormalTok{)}
+\NormalTok{tc }\OtherTok{=} \FunctionTok{tc.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{date =} \StringTok{"2001{-}01{-}01"}\NormalTok{, }\AttributeTok{rate =} \FloatTok{0.7}\NormalTok{)}
+\NormalTok{so }\OtherTok{=} \FunctionTok{so.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{date =} \StringTok{"2003{-}05{-}01"}\NormalTok{)}
+\NormalTok{ramp }\OtherTok{=} \FunctionTok{ramp.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{range =} \FunctionTok{c}\NormalTok{(}\StringTok{"2001{-}01{-}01"}\NormalTok{,}\StringTok{"2001{-}12{-}01"}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{ts.union}\NormalTok{(ao, ls, tc, so, ramp), }\AttributeTok{plot.type =} \StringTok{"single"}\NormalTok{,}
+     \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{,}\StringTok{"lightgreen"}\NormalTok{,}\StringTok{"orange"}\NormalTok{,}\StringTok{"blue"}\NormalTok{,}\StringTok{"black"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{img/markdown-outplot-1} \end{center}
+\end{frame}
+
+\hypertarget{time-series-tools}{%
+\section{Time series tools}\label{time-series-tools}}
+
+\begin{frame}[fragile]{Time series tools: NEW features in version 3}
+\protect\hypertarget{time-series-tools-new-features-in-version-3}{}
+The spirit of version 3 is to offer more tools from JDemetra+ libraries
+such as:
+
+\begin{itemize}
+\item
+  tests (seasonality, normality, randomness, residual td effects)
+  (rjd3tookit, rjd3modelling; rjd3sa)
+\item
+  autocorrelation functions (irjd3toolkit), incl partial and inverse
+\item
+  arima model estimation and decomposition (rjd3modelling)
+\item
+  aggregation to higher frequency (\texttt{rjd3toolkit::aggregate()})
+\end{itemize}
+
+More flexibilty for the user as they can be applied any time not just as
+part of an SA porcessing.
+
+Some of might also be available in other R packages. Arima model
+estimation is notoriously faster than other R functions.
+\end{frame}
+
+\begin{frame}[fragile]{Testing for seasonality}
+\protect\hypertarget{testing-for-seasonality}{}
+In rjd3sa:
+
+\begin{itemize}
+\item
+  Canova-Hansen (\texttt{seasonality.canovahansen()})
+\item
+  X-12 combined test (\texttt{seasonality.combined()})
+\item
+  F-test on seasonal dummies (\texttt{seasonality.f()})
+\item
+  Friedman Seasonality Test (\texttt{seasonality.friedman()})
+\item
+  Kruskall-Wallis Seasonality Test
+  (\texttt{seasonality.kruskalwallis()})
+\item
+  Periodogram Seasonality Test (\texttt{seasonality.periodogram()})
+\item
+  QS Seasonality Test (\texttt{seasonality.qs()})
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Testing for seasonality:
+examples}
+\protect\hypertarget{testing-for-seasonality-examples}{}
+(Always correct the trend and remove the mean before seasonality tests)
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rjd3sa)}
+\NormalTok{y }\OtherTok{=} \FunctionTok{diff}\NormalTok{(rjd3toolkit}\SpecialCharTok{::}\NormalTok{ABS}\SpecialCharTok{$}\NormalTok{X0.}\DecValTok{2}\NormalTok{.}\DecValTok{09}\NormalTok{.}\FloatTok{10.}\NormalTok{M, }\DecValTok{1}\NormalTok{); y }\OtherTok{=}\NormalTok{ y }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(y)}
+\FunctionTok{seasonality.f}\NormalTok{(y, }\DecValTok{12}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Value:  378.9234 
+## P-Value:  0.0000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{seasonality.friedman}\NormalTok{(y, }\DecValTok{12}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Value:  298.2529 
+## P-Value:  0.0000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{seasonality.kruskalwallis}\NormalTok{(y, }\DecValTok{12}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Value:  319.9801 
+## P-Value:  0.0000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{seasonality.combined}\NormalTok{(y, }\DecValTok{12}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $seasonality
+## [1] "PRESENT"
+## 
+## $kruskalwallis
+## $kruskalwallis$value
+## [1] 319.9801
+## 
+## $kruskalwallis$pvalue
+## [1] 0
+## 
+## $kruskalwallis$description
+## [1] "Chi2 with 11.0 degrees of freedom "
+## 
+## 
+## $stable
+## $stable$SSM
+## [1] 69596527
+## 
+## $stable$dfM
+## [1] 11
+## 
+## $stable$SSR
+## [1] 6721009
+## 
+## $stable$dfR
+## [1] 412
+## 
+## $stable$test
+## Value:  387.8445 
+## P-Value:  0.0000 
+## 
+## 
+## $evolutive
+## $evolutive$SSM
+## [1] 2145849
+## 
+## $evolutive$dfM
+## [1] 34
+## 
+## $evolutive$SSR
+## [1] 3800578
+## 
+## $evolutive$dfR
+## [1] 374
+## 
+## $evolutive$test
+## Value:  6.210723 
+## P-Value:  0.0000
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Arima estimation}
+\protect\hypertarget{arima-estimation}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# JD+}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{system.time}\NormalTok{(}\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{) \{  j}\OtherTok{\textless{}{-}}\NormalTok{rjd3modelling}\SpecialCharTok{::}\FunctionTok{sarima.estimate}\NormalTok{(}\FunctionTok{log}\NormalTok{(rjd3toolkit}\SpecialCharTok{::}\NormalTok{ABS}\SpecialCharTok{$}\NormalTok{X0.}\DecValTok{2}\NormalTok{.}\DecValTok{09}\NormalTok{.}\FloatTok{10.}\NormalTok{M), }\AttributeTok{order=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{seasonal =} \FunctionTok{list}\NormalTok{(}\AttributeTok{order=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{period=}\DecValTok{12}\NormalTok{))\}))}
+
+\CommentTok{\#utilisateur     système      écoulé }
+\CommentTok{\#      4.98        0.37        4.63 }
+
+\CommentTok{\#R{-}native}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{system.time}\NormalTok{(}\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{) \{  r}\OtherTok{\textless{}{-}}\FunctionTok{arima}\NormalTok{(}\FunctionTok{log}\NormalTok{(rjd3toolkit}\SpecialCharTok{::}\NormalTok{ABS}\SpecialCharTok{$}\NormalTok{X0.}\DecValTok{2}\NormalTok{.}\DecValTok{09}\NormalTok{.}\FloatTok{10.}\NormalTok{M), }\AttributeTok{order=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{seasonal =} \FunctionTok{list}\NormalTok{(}\AttributeTok{order=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{period=}\DecValTok{12}\NormalTok{))\}))}
+\FunctionTok{print}\NormalTok{(j}\SpecialCharTok{$}\NormalTok{likelihood )}
+\FunctionTok{print}\NormalTok{(r)}
+
+\CommentTok{\# utilisateur     système      écoulé }
+\CommentTok{\#     158.74        0.23      160.49 }
+\end{Highlighting}
+\end{Shaded}
 \end{frame}
 
 \hypertarget{conclusion}{%
