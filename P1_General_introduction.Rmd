@@ -1,7 +1,7 @@
 ---
 title: |
  | Using JDemetra+ in R: from version 2 to version 3 
- | Presentation 1: General Outline of R-JDemetra+ universe
+ | Presentation 1: General Outline of the R-JDemetra+ universe
 subtitle: "TSACE Webinar, Wednesday December 14th 2022"
 author: "Anna Smyk and Tanguy Barthelemy"
 division: |
@@ -24,6 +24,9 @@ fontsize: 10pt
 bibliography: [biblio.bib]
 biblio-style: unsrtnat
 natbiboptions: [numbers]
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r setup, include=FALSE}
@@ -42,68 +45,164 @@ library(rjd3x13)
 library(rjd3tramoseats)
 library(rjdemetra3)
 library(ggdemetra3)
+fig.ext <- "pdf"
+is_html <- knitr::is_html_output()
+is_latex <- knitr::is_latex_output()
+fig.ext = "pdf"
+if(is_html){
+    fa_arrow_circle_right <- '<i class="fas fa-arrow-circle-right"></i>'
+    fa_r_project <- '<i class="fab fa-r-project"></i>'
+}else {
+    if(is_latex){
+        fa_arrow_circle_right <- "\\faIcon{arrow-circle-right}"
+        fa_r_project <- "\\faIcon{r-project}"
+        fa_java <- "\\faIcon{java}"
+    }else {
+        fa_arrow_circle_right <- "->"
+        fa_r_project <- 'R'
+    }
+}
+options(width = 60)
+def.par <- par(no.readonly = TRUE)
+
 ```
 
 # Introduction
 
-### Goals and outline of the webinar (1)
-
-### Goals and outline of the webinar (2)
+### Outline of the webinar
 
 Four presentations
 
-Resurces on GitHub (details in P4)
+-   P1: general introduction 
+      - higlighting the main evolutions between version 2 and 3
+      - outlining the global scope of R tools for JDemetra+
+      - defining the scope of the webinar : SA with X-13 and Tramo-Seats
+        (leaving the rest aside...for furure webinars ?)
+      - working environment set-up 
 
-# From V2 to v3
+-   P2: Focus on SA with X13 or tramo-seats in R and related tools.
 
-### From V2 to v3
+-   P3: Working in R with JDemetra+ specific data structure (workspaces)
 
--   modularity
--   more tools (vs only retrieving output)
+-   P4: Quality assessement and production in R
 
-### Accessing JD+ core routines in R (1)
+Resources on GitHub: slides, code, additionnal references
+<https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22>
 
-Table : What JD+ core algorithms can be accessed ? V2 and V3 ? vs GUI
-cf doc
+(ref to doc travail v2)
 
-### Orga of R packages: JP schema 
+### JDemetra+: a library of algorithms for time series analysis
 
-### Objective of R packages 
+JDemetra+ is a library of algorithms on:
 
-started in 2019...
-- be immersed in R
-- from jP 
+- seasonal adjustment (GUI and R)
 
-(rumors about adding Python access)
+- trend and cycle estimation (R only)
 
-### Accessing JD+ core routines in R (2)
+- benchmarking and temporal disaggregation (GUI and R)
 
-Table : What JD+ core algorithms can be accessed ? V2 and V3 ? cf excel file
+- nowcasting (R and Plug-in)
 
-### Focus on seasonal adjustment
+They can be accessed via graphical user-interface (GUI) and/or R and/or plug-ins. The available output, functions or tools are in general not identical using R or GUI for example, it is often fruitlful to combine them. 
 
-v2 vs vs 3 table highlighting new tools, broken down by basic task T
+JDemetra+ also offers general utilities for time series analysis: tests, autocorrelations functions, arima modelling, spectral analysis tools ...(in GUI and R)
 
-### Contrasting with GUI 
-annotated images ??
-- main results 
-- pre proc 
-- spec
+### Why R packages ? 
 
-### use v2 or v3 ?
+Before 2019: access only through GUI and plug-ins.
 
-pb of reliability and testing
+Why add R packages ? 
+
+Allows to immerse JD+ algoriths in the R universe, whith all its pre-existing statistical functions and user-community.
+
+In March 2019, `RJDemetra` (containing X-13 Arima and Tramo-Seats) was published on CRAN:
+-   first `r fa_r_project` package that enables to use Tramo-Seats
+-   faster than existing `r fa_r_project` packages on seasonal adjustment
+
+Since, many more packages have been developped as JDemetra+ was upgraded from version 2 to version 3
+- extension of scope : High-frequency data, STL
+- ...
+
+Goals of thiswebinar
+- rationale and context for using JD+ in R
+- highlight the differences from v2 to v3 ("what is new ? what is missing ?) 
+
+# Accessing JDemetra+ core routines: from V2 to v3
+
+### From V2 to v3: changing gears 
+
+The mindset of version 3 (vs v2) is
+
+- modularity: independent more specific functions
+- more "stand alone" tools (not only retrieving results on )
+
+V2 : RJDemetra (X13-Arima, Tramo-seats, workspace wrangling) and some more specific packatges like rjdhighfreq, rjdsts...
+(corresponding to the version 2.x family of JD+ Core)
+
+V3 : A suite of packages cf schema
+
+(corresponding to the version 2.x family of JD+ Core)
+(still uder contstruction, moving perimeters)
+
+### Organisation of the rjd3 packages
+
+![](img/Schema_JP_orga_packages.png)
+
+### Seasonal adjustment algorithms in JDemetra+ version 3
+
+For seasonal adjustment, specifically, JDemetra+ contains:
+
+- X13-Arima (GUI and R)
+- Tramo-seats (GUI and R)
+- STL (R only)
+- STS (SSF framework) (R only)
+
+All of these algorithms can be used with HF data. 
+
+For X13-Arima and Tramo seats some illustrations are available only via GUI.
+
+Scope of this  webinar : SA with X-13 and Tramo-Seats, including HF data
 
 # Setting up your work envrionment
 
-## Installing packages 
+### Installing packages (1/2)
 
-technical requirement: java17
+They all require Java `r fa_java` $\geq$ 17 
+(see for example installation manual of `RJDemetra`: <https://github.com/jdemetra/rjdemetra/wiki/Installation-manual>)
 
-don't forget : 
-rjdworkspace 
-JDCruncher
+Version 2: RJDemetra is on CRAN 
+```{r, include=TRUE, eval=FALSE}
+install.packages(RJDemetra)
+library(RJDemetra)
+```
 
+in part 3 and 4 rjdworkspace JDCruncher
+```{r, include=TRUE, eval=FALSE}
+install.packages(RJDemetra) #maj
+library(RJDemetra)
+```
+You can run v2 and v3 simultaneously
+Version 3 requires Java `r fa_java` $\geq$ 17 
+see <https://github.com/jdemetra/rjdemetra/wiki/Installation-manual>)
 
+### Installing packages (2/2)
 
+Install from GiHub (as not on CRAN yet)
+
+```{r, eval=FALSE}
+# install.packages("remotes")
+remotes::install_github("palatej/rjd3toolkit")
+remotes::install_github("palatej/rjd3modelling")
+remotes::install_github("palatej/rjd3sa")
+remotes::install_github("palatej/rjd3arima")
+remotes::install_github("palatej/rjd3x13")
+remotes::install_github("palatej/rjd3tramoseats")
+remotes::install_github("palatej/rjdemetra3")
+remotes::install_github("palatej/rjdfilters")
+remotes::install_github("palatej/rjd3sts")
+remotes::install_github("palatej/rjd3highfreq")
+remotes::install_github("palatej/rjd3stl")
+remotes::install_github("palatej/rjd3bench")
+remotes::install_github("AQLT/ggdemetra3") #addtionnal graphics 
+```
 

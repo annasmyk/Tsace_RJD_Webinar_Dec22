@@ -62,6 +62,55 @@
   \fi
  }%
  {}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 % Prevent slide breaks in the middle of a paragraph:
 \widowpenalties 1 10000
 \raggedbottom
@@ -168,7 +217,7 @@
 \newcommand{\supsp}[1]{\visible<#1>{\\}}
 
 \title{Using JDemetra+ in R: from version 2 to version 3\\
-Presentation 1: General Outline of R-JDemetra+ universe}
+Presentation 1: General Outline of the R-JDemetra+ universe}
 \ateneo{TSACE Webinar, Wednesday December 14th 2022}
 \author{Anna Smyk and Tanguy Barthelemy}
 \date{}
@@ -195,80 +244,199 @@ Presentation 1: General Outline of R-JDemetra+ universe}
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-\begin{frame}{Goals and outline of the webinar (1)}
-\protect\hypertarget{goals-and-outline-of-the-webinar-1}{}
-\end{frame}
-
-\begin{frame}{Goals and outline of the webinar (1)}
-\protect\hypertarget{goals-and-outline-of-the-webinar-1-1}{}
+\begin{frame}{Outline of the webinar}
+\protect\hypertarget{outline-of-the-webinar}{}
 Four presentations
 
-Resurces on GitHub (details in P4)
+\begin{itemize}
+\item
+  P1: general introduction
+
+  \begin{itemize}
+  \tightlist
+  \item
+    higlighting the main evolutions between version 2 and 3
+  \item
+    outlining the global scope of R tools for JDemetra+
+  \item
+    defining the scope of the webinar : SA with X-13 and Tramo-Seats
+    (leaving the rest aside\ldots for furure webinars ?)
+  \item
+    working environment set-up
+  \end{itemize}
+\item
+  P2: Focus on SA with X13 or tramo-seats in R and related tools.
+\item
+  P3: Working in R with JDemetra+ specific data structure (workspaces)
+\item
+  P4: Quality assessement and production in R
+\end{itemize}
+
+Resources on GitHub: slides, code, additionnal references
+\url{https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22}
+
+(ref to doc travail v2)
 \end{frame}
 
-\hypertarget{from-v2-to-v3}{%
-\section{From V2 to v3}\label{from-v2-to-v3}}
+\begin{frame}{JDemetra+: a library of algorithms for time series
+analysis}
+\protect\hypertarget{jdemetra-a-library-of-algorithms-for-time-series-analysis}{}
+JDemetra+ is a library of algorithms on:
 
-\begin{frame}{From V2 to v3}
-\protect\hypertarget{from-v2-to-v3-1}{}
+\begin{itemize}
+\item
+  seasonal adjustment (GUI and R)
+\item
+  trend and cycle estimation (R only)
+\item
+  benchmarking and temporal disaggregation (GUI and R)
+\item
+  nowcasting (R and Plug-in)
+\end{itemize}
+
+They can be accessed via graphical user-interface (GUI) and/or R and/or
+plug-ins. The available output, functions or tools are in general not
+identical using R or GUI for example, it is often fruitlful to combine
+them.
+
+JDemetra+ also offers general utilities for time series analysis: tests,
+autocorrelations functions, arima modelling, spectral analysis tools
+\ldots(in GUI and R)
+\end{frame}
+
+\begin{frame}[fragile]{Why R packages ?}
+\protect\hypertarget{why-r-packages}{}
+Before 2019: access only through GUI and plug-ins.
+
+Why add R packages ?
+
+Allows to immerse JD+ algoriths in the R universe, whith all its
+pre-existing statistical functions and user-community.
+
+In March 2019, \texttt{RJDemetra} (containing X-13 Arima and
+Tramo-Seats) was published on CRAN: - first \faIcon{r-project} package
+that enables to use Tramo-Seats - faster than existing
+\faIcon{r-project} packages on seasonal adjustment
+
+Since, many more packages have been developped as JDemetra+ was upgraded
+from version 2 to version 3 - extension of scope : High-frequency data,
+STL - \ldots{}
+
+Goals of thiswebinar - rationale and context for using JD+ in R -
+highlight the differences from v2 to v3 (``what is new ? what is missing
+?)
+\end{frame}
+
+\hypertarget{accessing-jdemetra-core-routines-from-v2-to-v3}{%
+\section{Accessing JDemetra+ core routines: from V2 to
+v3}\label{accessing-jdemetra-core-routines-from-v2-to-v3}}
+
+\begin{frame}{From V2 to v3: changing gears}
+\protect\hypertarget{from-v2-to-v3-changing-gears}{}
+The mindset of version 3 (vs v2) is
+
 \begin{itemize}
 \tightlist
 \item
-  modularity
+  modularity: independent more specific functions
 \item
-  more tools (vs only retrieving output)
+  more ``stand alone'' tools (not only retrieving results on )
 \end{itemize}
+
+V2 : RJDemetra (X13-Arima, Tramo-seats, workspace wrangling) and some
+more specific packatges like rjdhighfreq, rjdsts\ldots{} (corresponding
+to the version 2.x family of JD+ Core)
+
+V3 : A suite of packages cf schema
+
+(corresponding to the version 2.x family of JD+ Core) (still uder
+contstruction, moving perimeters)
 \end{frame}
 
-\begin{frame}{Accessing JD+ core routines in R (1)}
-\protect\hypertarget{accessing-jd-core-routines-in-r-1}{}
-Table : What JD+ core algorithms can be accessed ? V2 and V3 ? vs GUI cf
-doc
+\begin{frame}{Organisation of the rjd3 packages}
+\protect\hypertarget{organisation-of-the-rjd3-packages}{}
+\includegraphics{img/Schema_JP_orga_packages.png}
 \end{frame}
 
-\begin{frame}{Orga of R packages: JP schema}
-\protect\hypertarget{orga-of-r-packages-jp-schema}{}
-\end{frame}
+\begin{frame}{Seasonal adjustment algorithms in JDemetra+ version 3}
+\protect\hypertarget{seasonal-adjustment-algorithms-in-jdemetra-version-3}{}
+For seasonal adjustment, specifically, JDemetra+ contains:
 
-\begin{frame}{Objective of R packages}
-\protect\hypertarget{objective-of-r-packages}{}
-started in 2019\ldots{} - be immersed in R - from jP
+\begin{itemize}
+\tightlist
+\item
+  X13-Arima (GUI and R)
+\item
+  Tramo-seats (GUI and R)
+\item
+  STL (R only)
+\item
+  STS (SSF framework) (R only)
+\end{itemize}
 
-(rumors about adding Python access)
-\end{frame}
+All of these algorithms can be used with HF data.
 
-\begin{frame}{Accessing JD+ core routines in R (2)}
-\protect\hypertarget{accessing-jd-core-routines-in-r-2}{}
-Table : What JD+ core algorithms can be accessed ? V2 and V3 ? cf excel
-file
-\end{frame}
+For X13-Arima and Tramo seats some illustrations are available only via
+GUI.
 
-\begin{frame}{Focus on seasonal adjustment}
-\protect\hypertarget{focus-on-seasonal-adjustment}{}
-v2 vs vs 3 table highlighting new tools, broken down by basic task T
-\end{frame}
-
-\begin{frame}{Contrasting with GUI}
-\protect\hypertarget{contrasting-with-gui}{}
-annotated images ?? - main results - pre proc - spec
-\end{frame}
-
-\begin{frame}{use v2 or v3 ?}
-\protect\hypertarget{use-v2-or-v3}{}
-pb of reliability and testing
+Scope of this webinar : SA with X-13 and Tramo-Seats, including HF data
 \end{frame}
 
 \hypertarget{setting-up-your-work-envrionment}{%
 \section{Setting up your work
 envrionment}\label{setting-up-your-work-envrionment}}
 
-\hypertarget{installing-packages}{%
-\subsection{Installing packages}\label{installing-packages}}
+\begin{frame}[fragile]{Installing packages (1/2)}
+\protect\hypertarget{installing-packages-12}{}
+They all require Java \faIcon{java} \(\geq\) 17 (see for example
+installation manual of \texttt{RJDemetra}:
+\url{https://github.com/jdemetra/rjdemetra/wiki/Installation-manual})
 
-\begin{frame}{Installing packages}
-technical requirement: java17
+Version 2: RJDemetra is on CRAN
 
-don't forget : rjdworkspace JDCruncher
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(RJDemetra)}
+\FunctionTok{library}\NormalTok{(RJDemetra)}
+\end{Highlighting}
+\end{Shaded}
+
+in part 3 and 4 rjdworkspace JDCruncher
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(RJDemetra) }\CommentTok{\#maj}
+\FunctionTok{library}\NormalTok{(RJDemetra)}
+\end{Highlighting}
+\end{Shaded}
+
+You can run v2 and v3 simultaneously Version 3 requires Java
+\faIcon{java} \(\geq\) 17 see
+\url{https://github.com/jdemetra/rjdemetra/wiki/Installation-manual})
+\end{frame}
+
+\begin{frame}[fragile]{Installing packages (2/2)}
+\protect\hypertarget{installing-packages-22}{}
+Install from GiHub (as not on CRAN yet)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages("remotes")}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3toolkit"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3modelling"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3sa"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3arima"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3x13"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3tramoseats"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjdemetra3"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjdfilters"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3sts"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3highfreq"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3stl"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3bench"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"AQLT/ggdemetra3"}\NormalTok{) }\CommentTok{\#addtionnal graphics }
+\end{Highlighting}
+\end{Shaded}
 \end{frame}
 
 \end{document}
