@@ -31,7 +31,6 @@ editor_options:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, 
-                      eval = FALSE, 
                       cache = F, 
                       fig.align = 'center',
                       fig.path = "img/markdown-")
