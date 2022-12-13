@@ -246,36 +246,34 @@ Presentation 1: General Outline of the R-JDemetra+ universe}
 
 \begin{frame}{Outline of the webinar}
 \protect\hypertarget{outline-of-the-webinar}{}
+Scope of the webinar: Seasonal Adjustment with X13-Arima and Tramo-Seats
+(leaving the rest aside\ldots for future webinars ?)
+
 Four presentations
 
 \begin{itemize}
 \item
-  P1: general introduction
+  P1: introduction
 
   \begin{itemize}
   \tightlist
   \item
-    higlighting the main evolutions between version 2 and 3
+    highlighting the main evolutions between version 2 and 3
   \item
     outlining the global scope of R tools for JDemetra+
-  \item
-    defining the scope of the webinar : SA with X-13 and Tramo-Seats
-    (leaving the rest aside\ldots for furure webinars ?)
   \item
     working environment set-up
   \end{itemize}
 \item
-  P2: Focus on SA with X13 or tramo-seats in R and related tools.
+  P2: Focus on SA with X13-Arima or Tramo-Seats in R and related tools.
 \item
-  P3: Working in R with JDemetra+ specific data structure (workspaces)
+  P3: Working in R with JDemetra+ workspaces
 \item
-  P4: Quality assessement and production in R
+  P4: Quality assessment and production in R
 \end{itemize}
 
-Resources on GitHub: slides, code, additionnal references
+Resources on GitHub: slides, code, additional papers and beamers
 \url{https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22}
-
-(ref to doc travail v2)
 \end{frame}
 
 \begin{frame}{JDemetra+: a library of algorithms for time series
@@ -285,22 +283,23 @@ JDemetra+ is a library of algorithms on:
 
 \begin{itemize}
 \item
-  seasonal adjustment (GUI and R)
+  Seasonal Adjustment (GUI and R)
 \item
-  trend and cycle estimation (R only)
+  Trend and cycle estimation (R only)
 \item
-  benchmarking and temporal disaggregation (GUI and R)
+  Benchmarking and temporal disaggregation (GUI and R)
 \item
-  nowcasting (R and Plug-in)
+  Bowcasting (R and Plug-in)
 \end{itemize}
 
 They can be accessed via graphical user-interface (GUI) and/or R and/or
-plug-ins. The available output, functions or tools are in general not
-identical using R or GUI for example, it is often fruitlful to combine
-them.
+plug-ins.
+
+The available output, functions or tools are in general not identical
+using R or GUI for example, it is often fruitful to combine them.
 
 JDemetra+ also offers general utilities for time series analysis: tests,
-autocorrelations functions, arima modelling, spectral analysis tools
+auto-correlation functions, arima modelling, spectral analysis tools
 \ldots(in GUI and R)
 \end{frame}
 
@@ -310,21 +309,30 @@ Before 2019: access only through GUI and plug-ins.
 
 Why add R packages ?
 
-Allows to immerse JD+ algoriths in the R universe, whith all its
+Allows to immerse JD+ algorithms in the R universe, with all its
 pre-existing statistical functions and user-community.
 
 In March 2019, \texttt{RJDemetra} (containing X-13 Arima and
-Tramo-Seats) was published on CRAN: - first \faIcon{r-project} package
-that enables to use Tramo-Seats - faster than existing
-\faIcon{r-project} packages on seasonal adjustment
+Tramo-Seats) was published on CRAN:
 
-Since, many more packages have been developped as JDemetra+ was upgraded
-from version 2 to version 3 - extension of scope : High-frequency data,
-STL - \ldots{}
+\begin{itemize}
+\item
+  first \faIcon{r-project} package that enables to use Tramo-Seats
+\item
+  faster than existing \faIcon{r-project} packages on seasonal
+  adjustment
+\end{itemize}
+\end{frame}
 
-Goals of thiswebinar - rationale and context for using JD+ in R -
-highlight the differences from v2 to v3 (``what is new ? what is missing
-?)
+\begin{frame}{Ever-growing R ecosystem}
+\protect\hypertarget{ever-growing-r-ecosystem}{}
+Since, many more packages have been developed as JDemetra+ Core was
+upgraded from version 2 to version 3
+
+Extension of scope: - High-frequency data (extended) - STL - refresh
+policies for SA - new tools
+
+Modifications of existing functions and output organisation
 \end{frame}
 
 \hypertarget{accessing-jdemetra-core-routines-from-v2-to-v3}{%
@@ -333,24 +341,38 @@ v3}\label{accessing-jdemetra-core-routines-from-v2-to-v3}}
 
 \begin{frame}{From V2 to v3: changing gears}
 \protect\hypertarget{from-v2-to-v3-changing-gears}{}
-The mindset of version 3 (vs v2) is
+\textbf{Version 2:}
 
 \begin{itemize}
-\tightlist
 \item
-  modularity: independent more specific functions
+  RJDemetra (X13-Arima, Tramo-Seats, functions for workspace wrangling)
 \item
-  more ``stand alone'' tools (not only retrieving results on )
+  additionnal packages based on RJDemetra: rjdworkspace, ggdemetra,
+  rjdqa (see paper on V2)
+\item
+  more specific packatges like rjdhighfreq, rjdsts
 \end{itemize}
 
-V2 : RJDemetra (X13-Arima, Tramo-seats, workspace wrangling) and some
-more specific packatges like rjdhighfreq, rjdsts\ldots{} (corresponding
-to the version 2.x family of JD+ Core)
+(corresponding to the version 2.x family of JD+ Core)
 
-V3 : A suite of packages cf schema
+The mindset of version 3 is:
 
-(corresponding to the version 2.x family of JD+ Core) (still uder
-contstruction, moving perimeters)
+\begin{itemize}
+\item
+  modular organisation: independent more specific functions
+\item
+  more ``stand alone'' tools (not only retrieving results from SA
+  processing)
+\end{itemize}
+
+\textbf{Version 3:} A suite of packages (see below)
+
+\begin{itemize}
+\item
+  corresponding to the version 3.x family of JD+ Core
+\item
+  still under construction, moving perimeters
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Organisation of the rjd3 packages}
@@ -367,31 +389,28 @@ For seasonal adjustment, specifically, JDemetra+ contains:
 \item
   X13-Arima (GUI and R)
 \item
-  Tramo-seats (GUI and R)
+  Tramo-Seats (GUI and R)
 \item
   STL (R only)
 \item
-  STS (SSF framework) (R only)
+  Structural Time Series (SSF framework) (R only)
 \end{itemize}
 
 All of these algorithms can be used with HF data.
 
-For X13-Arima and Tramo seats some illustrations are available only via
-GUI.
+For X13-Arima and Tramo-Seats some illustrations are available only in
+GUI. (auxiliary tools like: spectral analysis, sliding spans, revision
+history\ldots)
 
-Scope of this webinar : SA with X-13 and Tramo-Seats, including HF data
+Scope of this webinar: SA with X-13 and Tramo-Seats, including HF data
 \end{frame}
 
-\hypertarget{setting-up-your-work-envrionment}{%
+\hypertarget{setting-up-your-work-environment}{%
 \section{Setting up your work
-envrionment}\label{setting-up-your-work-envrionment}}
+environment}\label{setting-up-your-work-environment}}
 
 \begin{frame}[fragile]{Installing packages (1/2)}
 \protect\hypertarget{installing-packages-12}{}
-They all require Java \faIcon{java} \(\geq\) 17 (see for example
-installation manual of \texttt{RJDemetra}:
-\url{https://github.com/jdemetra/rjdemetra/wiki/Installation-manual})
-
 Version 2: RJDemetra is on CRAN
 
 \begin{Shaded}
@@ -401,23 +420,28 @@ Version 2: RJDemetra is on CRAN
 \end{Highlighting}
 \end{Shaded}
 
-in part 3 and 4 rjdworkspace JDCruncher
+In part 3 and 4 we will also use
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(RJDemetra) }\CommentTok{\#maj}
-\FunctionTok{library}\NormalTok{(RJDemetra)}
-\end{Highlighting}
-\end{Shaded}
+\begin{itemize}
+\item
+  JDCruncher (based on cruncher output) To install it: download the
+  \textbf{.zip} or \textbf{.tar.gz} file from
+  \url{https://github.com/InseeFr/JDCruncheR/releases}.
+\item
+  rjdworkspace (based on RJDemetra) To install it: download the
+  \textbf{.zip} or \textbf{.tar.gz} file from
+  \url{https://github.com/InseeFrLab/rjdworkspace/releases}.
+\end{itemize}
 
-You can run v2 and v3 simultaneously Version 3 requires Java
-\faIcon{java} \(\geq\) 17 see
+You can run v2 and v3 simultaneously
+
+Version 3 requires Java \faIcon{java} \(\geq\) 17 (see
 \url{https://github.com/jdemetra/rjdemetra/wiki/Installation-manual})
 \end{frame}
 
 \begin{frame}[fragile]{Installing packages (2/2)}
 \protect\hypertarget{installing-packages-22}{}
-Install from GiHub (as not on CRAN yet)
+Installing latest version from GitHub (as not on CRAN yet)
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -434,9 +458,22 @@ Install from GiHub (as not on CRAN yet)
 \NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3highfreq"}\NormalTok{)}
 \NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3stl"}\NormalTok{)}
 \NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3bench"}\NormalTok{)}
-\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"AQLT/ggdemetra3"}\NormalTok{) }\CommentTok{\#addtionnal graphics }
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"AQLT/ggdemetra3"}\NormalTok{) }\CommentTok{\#additional graphics }
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
+
+\begin{frame}{Let's get started}
+\protect\hypertarget{lets-get-started}{}
+Goal of this webinar
+
+\begin{itemize}
+\item
+  outline main features for SA with JDemetra+ in R (using X13-Arima and
+  Tramo-Seats)
+\item
+  highlight the differences from version 2 to version 3
+\end{itemize}
 \end{frame}
 
 \end{document}
