@@ -274,8 +274,6 @@ Four presentations
 
 Resources on GitHub: slides, code, additionnal references
 \url{https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22}
-
-(ref to doc travail v2)
 \end{frame}
 
 \begin{frame}{JDemetra+: a library of algorithms for time series
@@ -333,6 +331,10 @@ v3}\label{accessing-jdemetra-core-routines-from-v2-to-v3}}
 
 \begin{frame}{From V2 to v3: changing gears}
 \protect\hypertarget{from-v2-to-v3-changing-gears}{}
+V2 : RJDemetra (X13-Arima, Tramo-seats, workspace wrangling) and some
+more specific packatges like rjdhighfreq, rjdsts\ldots{} (corresponding
+to the version 2.x family of JD+ Core)
+
 The mindset of version 3 (vs v2) is
 
 \begin{itemize}
@@ -342,10 +344,6 @@ The mindset of version 3 (vs v2) is
 \item
   more ``stand alone'' tools (not only retrieving results on )
 \end{itemize}
-
-V2 : RJDemetra (X13-Arima, Tramo-seats, workspace wrangling) and some
-more specific packatges like rjdhighfreq, rjdsts\ldots{} (corresponding
-to the version 2.x family of JD+ Core)
 
 V3 : A suite of packages cf schema
 
@@ -388,10 +386,6 @@ envrionment}\label{setting-up-your-work-envrionment}}
 
 \begin{frame}[fragile]{Installing packages (1/2)}
 \protect\hypertarget{installing-packages-12}{}
-They all require Java \faIcon{java} \(\geq\) 17 (see for example
-installation manual of \texttt{RJDemetra}:
-\url{https://github.com/jdemetra/rjdemetra/wiki/Installation-manual})
-
 Version 2: RJDemetra is on CRAN
 
 \begin{Shaded}
@@ -401,23 +395,28 @@ Version 2: RJDemetra is on CRAN
 \end{Highlighting}
 \end{Shaded}
 
-in part 3 and 4 rjdworkspace JDCruncher
+In part 3 and 4 we will also use
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(RJDemetra) }\CommentTok{\#maj}
-\FunctionTok{library}\NormalTok{(RJDemetra)}
-\end{Highlighting}
-\end{Shaded}
+\begin{itemize}
+\item
+  JDCruncher (based on cruncher output) To install it: download the
+  \textbf{.zip} or \textbf{.tar.gz} file from
+  \url{https://github.com/InseeFr/JDCruncheR/releases}.
+\item
+  rjdworkspace (based on RJDemetra) To install it: download the
+  \textbf{.zip} or \textbf{.tar.gz} file from
+  \url{https://github.com/InseeFrLab/rjdworkspace/releases}.
+\end{itemize}
 
-You can run v2 and v3 simultaneously Version 3 requires Java
-\faIcon{java} \(\geq\) 17 see
+You can run v2 and v3 simultaneously
+
+Version 3 requires Java \faIcon{java} \(\geq\) 17 (see
 \url{https://github.com/jdemetra/rjdemetra/wiki/Installation-manual})
 \end{frame}
 
 \begin{frame}[fragile]{Installing packages (2/2)}
 \protect\hypertarget{installing-packages-22}{}
-Install from GiHub (as not on CRAN yet)
+Installing latest version from GitHub (as not on CRAN yet)
 
 \begin{Shaded}
 \begin{Highlighting}[]

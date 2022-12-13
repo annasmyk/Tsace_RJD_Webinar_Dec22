@@ -236,41 +236,91 @@ Two (?) classes of benefits
 \item
   automating potential manual operations
 \end{itemize}
+
+De manière générale, aucune compatibilité entre v2 et v3
 \end{frame}
 
-\begin{frame}{Workspace reading in R}
-\protect\hypertarget{workspace-reading-in-r}{}
-Context:
+\hypertarget{instant-reading}{%
+\section{Instant reading}\label{instant-reading}}
 
-cf doc R tools for v2 what is available in v3
+\begin{frame}[fragile]{Instant reading}
+v2 : \texttt{RJDemetra::load\_workspace()} --\textgreater{} creation of
+RJD object (java object pointer) v3 :
+\texttt{rjdemetra3::load\_workspace()} --\textgreater{} readable R
+object (list format)
 \end{frame}
 
-\hypertarget{automating-operations-on-workspaces}{%
-\section{Automating operations on
-workspaces}\label{automating-operations-on-workspaces}}
+\hypertarget{automating-operations}{%
+\section{Automating operations}\label{automating-operations}}
+
+\begin{frame}{Automating operations}
+On me voit ?
+\end{frame}
 
 \begin{frame}{Automating operations on workspaces}
-\protect\hypertarget{automating-operations-on-workspaces-1}{}
-operations - creation - loading - modifications - adding sa processings
-- adding series (sa item vs specs)
+\protect\hypertarget{automating-operations-on-workspaces}{}
+Goal: to produce and to reproduce the workspace structure without the
+JDemetra+ graphical interface but with R and keeping the read, write and
+refresh properties both by the graphical interface and by the cruncher.
+
+Cruncher and GUI react the same way to a WS : - if the structure is not
+good : they won't be able to read anything - if the structure is minimal
+: they will manage to only read and compute the SA-items - if the ws are
+well-structured and have all the necessairy information : they will
+succeed to read, compute and refresh with the chosen policy our
+sa-items.
+\end{frame}
+
+\begin{frame}{Outline of the automation}
+\protect\hypertarget{outline-of-the-automation}{}
+Presentation in v2
+
+operations - creation - export / write - modifications / dynamic update
+\end{frame}
+
+\begin{frame}[fragile]{Creation}
+\protect\hypertarget{creation}{}
+\texttt{RJDemetra::new\_workspace()} : creation of workspace
+\texttt{RJDemetra::new\_multiprocessing()} : creation of multiprocessing
+
+To create a spec, there is several functions :
+\texttt{RJDemetra::x13\_spec(),\ RJDemetra::tramoseats\_spec(),\ ...}
+and also in v3 with packages \texttt{rjd3tramoseats} and
+\texttt{rjd3x13}
+
+To create an SA-item, there is several functions depending on the chosen
+spec : \texttt{RJDemetra::x13(),\ RJDemetra::tramoseats(),\ ...} and
+also in v3 with packages \texttt{rjd3tramoseats} and \texttt{rjd3x13}
+
+Finally you can use \texttt{RJDemetra::add\_sa\_item()} to add the
+created SA-item to a multprocessing in your workspace
+\end{frame}
+
+\begin{frame}[fragile]{Export}
+\protect\hypertarget{export}{}
+The function \texttt{RJDemetra::save\_workspace()} export and create a
+physical workspace with a structure in folder and xml files. But it only
+creates what the previous functions constructed.
+
+For example, the function \texttt{RJDemetra::x13()}
+\end{frame}
+
+\begin{frame}{Dynamic update}
+\protect\hypertarget{dynamic-update}{}
+Attention, the exported workspace
 \end{frame}
 
 \begin{frame}{Automating operations on series}
 \protect\hypertarget{automating-operations-on-series}{}
-\begin{itemize}
-\tightlist
-\item
-  series object
-\item
-  spec
-\item
-  meta data
-\end{itemize}
+(``functions that operate on one workpace'') - series object - spec -
+meta data in v2 RJDemetra in v3 rjdworkpace and other rjd3\ldots{}
 \end{frame}
 
 \begin{frame}{Merging workspaces}
 \protect\hypertarget{merging-workspaces}{}
-context: annual rev
+(``functions that operate two workpaces'') context: annual rev
+
+in v2 RJDemetra in v3 rjdworkpace and other rjd3\ldots{}
 \end{frame}
 
 \begin{frame}{Preserving desirable properties ?}

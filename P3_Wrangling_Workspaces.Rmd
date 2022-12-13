@@ -27,7 +27,8 @@ natbiboptions: [numbers]
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,
+knitr::opts_chunk$set(echo = TRUE, 
+                      eval = FALSE, 
                       cache = F, 
                       fig.align = 'center',
                       fig.path = "img/markdown-")
@@ -52,11 +53,11 @@ fig.ext <- "pdf"
 is_html <- knitr::is_html_output()
 is_latex <- knitr::is_latex_output()
 fig.ext = "pdf"
-if(is_html){
+if (is_html) {
     fa_arrow_circle_right <- '<i class="fas fa-arrow-circle-right"></i>'
     fa_r_project <- '<i class="fab fa-r-project"></i>'
-}else {
-    if(is_latex){
+} else {
+    if (is_latex) {
         fa_arrow_circle_right <- "\\faIcon{arrow-circle-right}"
         fa_r_project <- "\\faIcon{r-project}"
         fa_java <- "\\faIcon{java}"
@@ -69,7 +70,12 @@ options(width = 60)
 def.par <- par(no.readonly = TRUE)
 ```
 
+
+
 # Introduction
+
+Mise en page : 
+package en gras, code en quote
 
 ### Context 
 
@@ -85,6 +91,8 @@ Still there are benefits in using workspaces and R packages in conjunction
 
 We will highlight them in the remaining of this presentation 
 
+
+
 # Using workspaces and R packages in conjuction
 
 ### Using workspaces and R packages in conjuction 
@@ -95,32 +103,80 @@ Two (?) classes of benefits
 
 - automating potential manual operations 
 
-### Workspace reading in R
+De manière générale, aucune compatibilité entre v2 et v3
 
-Context: I 
 
-cf doc R tools for v2
-what is available in v3
 
-# Automating operations on workspaces 
+# Instant reading
+
+v2 : `RJDemetra::load_workspace()` --> creation of RJD object (java object pointer)
+v3 : `rjdemetra3::load_workspace()` --> readable R object (list format)
+
+avantage : to directement dans l'environnement R
+--> mettre bout de code lecture de série get_boject
+--> doc de traavil
+
+
+# Automating operations
 
 ### Automating operations on workspaces 
 
-operations 
+Goal: to produce and to reproduce the workspace structure without the JDemetra+ graphical interface but with R and keeping the read, write and refresh properties both by the graphical interface and by the cruncher.
+
+Cruncher and GUI react the same way to a WS :
+
+- if the structure is not good : they won't be able to read anything
+- if the structure is minimal : they will manage to only read and compute the SA-items
+- if the ws are well-structured and have all the necessairy information : they will succeed to read, compute and refresh with the chosen policy our sa-items.
+
+### Outline of the automation
+
+Presentation in v2
+
+operations :
+
 - creation 
-- loading 
-- modifications 
-  - adding sa processings
-  - adding series (sa item vs specs)
+- export / write 
+- modifications / dynamic update
 
+### Creation
 
-### Automating operations on series 
+- `RJDemetra::new_workspace()` : creation of workspace
+- `RJDemetra::new_multiprocessing()` : creation of multiprocessing
+- to create a spec, there is several functions :
+`RJDemetra::x13_spec(), RJDemetra::tramoseats_spec(), ...` and also in v3 with packages `rjd3tramoseats` and `rjd3x13`
+- to create an SA-item, there is several functions depending on the chosen spec :
+`RJDemetra::x13(), RJDemetra::tramoseats(), ...` and also in v3 with packages `rjd3tramoseats` and `rjd3x13`
+- Finally you can use `RJDemetra::add_sa_item()` to add the created SA-item to a multprocessing in your workspace
+
+### Export
+
+The function `RJDemetra::save_workspace()` export and create a physical workspace with a structure in folder and xml files. But it only creates what the previous functions constructed. 
+
+For example, the production line `RJDemetra::x13(...) |> RJDemetra::add_sa_item(...) |> RJDemetra::save_workspace(...)` create an XML file without any metadata --> no link with the raw data !
+
+### Summary
+
+RJD2 --> virtual WS --> physical XML (minimal)
+rjdWS : modify uniquement physical WS
+GUI & Cruncher --> read at least minimal XML and refresh with a completed XMl
+
+### rjdworkspace and dynamic update
+
+Ici on discute le package rjdws développer par l'Insee.
+rjdws est un package qui ... Ce package s'appuie sur RJDv2
+Les packages v3 ne sont pas encore développés pour la gestion de WS.
+
+### Automating one WS
+
 ("functions that operate on one workpace")
 - series object
 - spec 
 - meta data
 in v2 RJDemetra 
 in v3 rjdworkpace and other rjd3...
+
+### Automating with several WS
 
 ### Merging workspaces 
 ("functions that operate two workpaces")
