@@ -307,7 +307,7 @@ what is missing ?
 
 Possible Contributions
 
-- Testing it and reporting issues (rest_rjd3 repo on GitHub)
+- Testing and reporting issues (test_rjd3 repo on GitHub)
 
 - Developing new tools (other packages, new functions, etc.)
 
