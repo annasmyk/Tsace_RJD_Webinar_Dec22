@@ -19,7 +19,7 @@ output:
         includes:
           in_header: preamble_beamer.tex
 themeoptions: "coding=utf8,language=english"
-classoption: 'usepdftitle=false,french' #handout
+classoption: 'usepdftitle=false,french,aspectratio=169' #handout
 fontsize: 10pt
 bibliography: [biblio.bib]
 biblio-style: unsrtnat
@@ -34,30 +34,31 @@ knitr::opts_chunk$set(echo = TRUE,
                       cache = F, 
                       fig.align = 'center',
                       fig.path = "img/markdown-")
-library(knitr)
-library(RJDemetra)
-library(ggplot2)
-library(rjd3toolkit)
-library(rjd3modelling)
-library(rjd3sa)
-library(rjd3arima)
-library(rjd3x13)
-library(rjd3tramoseats)
-library(rjdemetra3)
-library(ggdemetra3)
+library("knitr")
+library("RJDemetra")
+library("ggplot2")
+library("rjd3toolkit")
+library("rjd3modelling")
+library("rjd3sa")
+library("rjd3arima")
+library("rjd3x13")
+library("rjd3tramoseats")
+library("rjdemetra3")
+library("ggdemetra3")
+
 fig.ext <- "pdf"
 is_html <- knitr::is_html_output()
 is_latex <- knitr::is_latex_output()
-fig.ext = "pdf"
-if(is_html){
+fig.ext <- "pdf"
+if (is_html) {
     fa_arrow_circle_right <- '<i class="fas fa-arrow-circle-right"></i>'
     fa_r_project <- '<i class="fab fa-r-project"></i>'
-}else {
-    if(is_latex){
+} else {
+    if (is_latex) {
         fa_arrow_circle_right <- "\\faIcon{arrow-circle-right}"
         fa_r_project <- "\\faIcon{r-project}"
         fa_java <- "\\faIcon{java}"
-    }else {
+    } else {
         fa_arrow_circle_right <- "->"
         fa_r_project <- 'R'
     }
@@ -198,8 +199,8 @@ Scope of this  webinar: SA with X-13 and Tramo-Seats, including HF data
 
 Version 2: RJDemetra is on CRAN 
 ```{r, include=TRUE, eval=FALSE}
-install.packages(RJDemetra)
-library(RJDemetra)
+install.packages("RJDemetra")
+library("RJDemetra")
 ```
 
 In part 3 and 4 we will also use  

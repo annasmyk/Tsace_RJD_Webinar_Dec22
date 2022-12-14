@@ -19,7 +19,7 @@ output:
         includes:
           in_header: preamble_beamer.tex
 themeoptions: "coding=utf8,language=english"
-classoption: 'usepdftitle=false,french' #handout
+classoption: 'usepdftitle=false,french,aspectratio=169' #handout
 fontsize: 10pt
 bibliography: [biblio.bib]
 biblio-style: unsrtnat
@@ -31,33 +31,33 @@ knitr::opts_chunk$set(echo = TRUE,
                       cache = F, 
                       fig.align = 'center',
                       fig.path = "img/markdown-")
-library(knitr)
-library(kableExtra)
-library(microbenchmark)
-library(ggplot2)
-library(RJDemetra)
-library(rjd3toolkit)
-library(rjd3modelling)
-library(rjd3sa)
-library(rjd3arima)
-library(rjd3x13)
-library(rjd3tramoseats)
-library(rjdemetra3)
-library(ggdemetra3)
+library("knitr")
+library("kableExtra")
+library("microbenchmark")
+library("ggplot2")
+library("RJDemetra")
+library("rjd3toolkit")
+library("rjd3modelling")
+library("rjd3sa")
+library("rjd3arima")
+library("rjd3x13")
+library("rjd3tramoseats")
+library("rjdemetra3")
+library("ggdemetra3")
 
-# library(rjd3sts)
-# library(rjd3highfreq)
+# library("rjd3sts")
+# library("rjd3highfreq")
 
-# library(rjd3bench)
+# library("rjd3bench")
 fig.ext <- "pdf"
 is_html <- knitr::is_html_output()
 is_latex <- knitr::is_latex_output()
-fig.ext = "pdf"
-if(is_html){
+fig.ext <- "pdf"
+if (is_html) {
     fa_arrow_circle_right <- '<i class="fas fa-arrow-circle-right"></i>'
     fa_r_project <- '<i class="fab fa-r-project"></i>'
-}else {
-    if(is_latex){
+} else {
+    if (is_latex) {
         fa_arrow_circle_right <- "\\faIcon{arrow-circle-right}"
         fa_r_project <- "\\faIcon{r-project}"
         fa_java <- "\\faIcon{java}"
@@ -71,12 +71,12 @@ def.par <- par(no.readonly = TRUE)
 ```
 
 ```{r, eval=TRUE, echo=FALSE}
-ipi<-read.csv2("Data/IPI_nace4.csv")
-ipi$date<-as.Date(ipi$date,format="%d/%m/%Y")
-ipi[,-1]<-sapply(ipi[,-1],as.numeric)
+ipi <- read.csv2("../Data/IPI_nace4.csv")
+ipi$date <- as.Date(ipi$date, format = "%d/%m/%Y")
+ipi[, -1] <- sapply(ipi[, -1], as.numeric)
 # creating a TS object from a data frame 
-y_raw<-ts(ipi[,"RF3030"],frequency=12,start=c(1990,1),end=c(2019,6))
-y_new<-ts(ipi[,"RF3030"],frequency=12,start=c(1990,1),end=c(2019,9))
+y_raw <- ts(ipi[, "RF3030"], frequency = 12, start = c(1990, 1), end = c(2019, 6))
+y_new <- ts(ipi[, "RF3030"], frequency = 12, start = c(1990, 1), end = c(2019, 9))
 
 
 ```
@@ -124,21 +124,21 @@ In version 2
 \footnotesize
 ```{r,eval=TRUE, include=TRUE}
 # X13
-sa_x13_v2<-RJDemetra::x13(y_raw, spec ="RSA5c")
+sa_x13_v2 <- RJDemetra::x13(y_raw, spec = "RSA5c")
 # see help pages for default spec names, identical in v2 and v3
 #Tramo-Seats
-sa_ts_v2<-RJDemetra::tramoseats(y_raw, spec ="RSAfull")
+sa_ts_v2 <- RJDemetra::tramoseats(y_raw, spec = "RSAfull")
 ```
 
 In version 3 (printed model identical to v2)
 \footnotesize
 ```{r,eval=TRUE, include=TRUE}
 #X13
-sa_x13_v3 <- rjd3x13::x13(y_raw, spec= "RSA5")
+sa_x13_v3 <- rjd3x13::x13(y_raw, spec = "RSA5")
 sa_x13_v3
 
 #Tramo seats
-sa_ts_v3 <- rjd3tramoseats::tramoseats(y_raw, spec= "RSAfull")
+sa_ts_v3 <- rjd3tramoseats::tramoseats(y_raw, spec = "RSAfull")
 
 ```
 
@@ -147,20 +147,20 @@ In version 2
 \footnotesize
 ```{r,eval=FALSE, include=TRUE}
 # Reg-Arima part from X13 only (different default spec names, cf help pages)
-regA_v2<-RJDemetra::regarima_x13(y_raw, spec ="RG5c")
+regA_v2 <- RJDemetra::regarima_x13(y_raw, spec = "RG5c")
 
 # Tramo only 
-tramo_v2<-RJDemetra::regarima_tramoseats(y_raw,spec = "TRfull")
+tramo_v2 <- RJDemetra::regarima_tramoseats(y_raw,spec = "TRfull")
 ```
 
 In version 3 (not very different)
 \footnotesize
 ```{r,eval=FALSE, include=TRUE}
 #X13
-sa_regarima_v3 <- rjd3x13::regarima(y_raw, spec ="RG5c")
+sa_regarima_v3 <- rjd3x13::regarima(y_raw, spec = "RG5c")
 
 #Tramo seats 
-#sa_tramo_v3 <- rjd3tramoseats::tramo(y_raw,spec = "TRfull")
+#sa_tramo_v3 <- rjd3tramoseats::tramo(y_raw, spec = "TRfull")
 
 # "fast." versions...(just results, cf output structure)
 ```
@@ -171,10 +171,10 @@ In version 2
 \footnotesize
 ```{r,eval=FALSE, include=TRUE}
 # X11 (spec option)
-X11_v2<-RJDemetra::x13(y_raw, spec ="X11")
+X11_v2 <- RJDemetra::x13(y_raw, spec = "X11")
 
 #Tramo-Seats ? you 
-#sa_ts_v2<-RJDemetra::tramoseats(y_raw, spec ="RSAfull")
+#sa_ts_v2<-RJDemetra::tramoseats(y_raw, spec = "RSAfull")
 ```
 
 In version 3
@@ -201,7 +201,7 @@ All arranged in a specific way
 \footnotesize
 ```{r,eval=FALSE, include=TRUE}
 # v2 "output"
-Model_sa<-RJDemetra::x13(y_raw, spec ="RSA5")
+Model_sa <- RJDemetra::x13(y_raw, spec = "RSA5")
 
 Model_sa$regarima
 Model_sa$decomposition
@@ -221,7 +221,7 @@ Results vs specification...and then by domain
 \footnotesize
 ```{r,eval=FALSE, include=TRUE}
 # Model_sa = sa_x13_v3
-sa_x13_v3<-RJDemetra::x13(y_raw, spec ="RSA5")
+sa_x13_v3 <- RJDemetra::x13(y_raw, spec = "RSA5")
 sa_x13_v3$result
 sa_x13_v3$estimation_spec
 sa_x13_v3$result_spec
@@ -341,9 +341,9 @@ Select the objects and customize estimation function
 \footnotesize
 ```{r,eval=TRUE, include=TRUE}
 # version 3
-ud<-userdefined_variables_x13()[15:17] # b series
+ud <- userdefined_variables_x13()[15:17] # b series
 ud
-sa_x13_v3_UD<-rjd3x13::x13(y_raw,"RSA5c",userdefined=ud)
+sa_x13_v3_UD <- rjd3x13::x13(y_raw, "RSA5c", userdefined = ud)
 sa_x13_v3_UD$user_defined # remainder of the names 
 # retrieve the object 
 sa_x13_v3_UD$user_defined$decomposition.b1
@@ -365,23 +365,24 @@ In version 2 three kinds of plots:
 # Version 2
 # for class 'final' : 2 types 
 plot(sa_x13_v2, type_chart = "sa-trend", first_date = c(2015, 1))
-#plot(sa_x13_v2, type= "cal-seas-irr",first_date = c(2015, 1))
+#plot(sa_x13_v2, type = "cal-seas-irr", first_date = c(2015, 1))
 ```
 
 ### Plots and data visualisation in version 2 {.allowframebreaks} 
 
 ```{r, include=TRUE, eval=TRUE}
 # regarima
-layout(matrix(1:6, 3, 2));plot(sa_x13_v2$regarima,ask = FALSE)
+layout(matrix(1:6, 3, 2))
+plot(sa_x13_v2$regarima, ask = FALSE)
 # Plotting SI ratios  
-plot(sa_x13_v2$decomposition, first_date = c(2015,1))
+plot(sa_x13_v2$decomposition, first_date = c(2015, 1))
 ```
 
 ### Plots and data visualisation in version 2 {.allowframebreaks} 
 
 ```{r, include=TRUE, eval=TRUE}
 # Plotting SI ratios  
-plot(sa_x13_v2$decomposition, first_date = c(2015,1))
+plot(sa_x13_v2$decomposition, first_date = c(2015, 1))
 ```
 
 ### Plots and data visualisation in version 3 {.allowframebreaks} 
@@ -397,8 +398,8 @@ In version 3
 \footnotesize
 ```{r,eval=TRUE, include=TRUE}
 # version 3
-# remotes::install_github("AQLT/ggdemetra3",INSTALL_opts = "--no-multiarch")
-library(ggdemetra3)
+# remotes::install_github("AQLT/ggdemetra3", INSTALL_opts = "--no-multiarch")
+library("ggdemetra3")
 ggdemetra3::siratioplot(sa_x13_v3)
 ```
 
@@ -440,8 +441,8 @@ Direct parameter modification as arguments of the specification function
 # changing estimation span, imposing additive model and
 #adding user defined ouliers 
 # first create a new spec modifying the previous one 
-spec_1<- x13_spec(sa_x13_v2)
-spec_2<- x13_spec(spec_1, estimate.from = "2004-01-01",
+spec_1 <- x13_spec(sa_x13_v2)
+spec_2 <- x13_spec(spec_1, estimate.from = "2004-01-01",
                   usrdef.outliersEnabled = TRUE,
                              usrdef.outliersType = c("LS", "AO"),
                              usrdef.outliersDate = c("2008-10-01", "2018-01-01"),
@@ -450,7 +451,7 @@ spec_2<- x13_spec(spec_1, estimate.from = "2004-01-01",
 # the decomposition will be run on the whole span 
 
 # new sa processing
-sa_x13_v2_2<-RJDemetra::x13(y_raw,spec_2)
+sa_x13_v2_2 <- RJDemetra::x13(y_raw, spec_2)
 sa_x13_v2_2$final$series
 
 ```
@@ -479,21 +480,21 @@ Benchmarking New v3 feature, same options available as in GUI.
 \footnotesize
 ```{r,eval=FALSE, include=TRUE}
 # start with default spec 
-spec_1 = spec_x13_default("RSA3")
+spec_1 <- spec_x13_default("RSA3")
 # or start with existing spec (no extraction function needed)
-spec_1<-sa_x13_v3_UD$estimation_spec
+spec_1 <- sa_x13_v3_UD$estimation_spec
 
 # set a new spec
 ## add outliers 
-spec_2 = rjd3modelling::add_outlier(spec_1,
+spec_2 <- rjd3modelling::add_outlier(spec_1,
                   type = c("AO"), c("2015-01-01", "2010-01-01"))
 ## set trading days
-spec_2<-rjd3modelling::set_tradingdays(spec_2,
-    option = "workingdays" )
+spec_2 <- rjd3modelling::set_tradingdays(spec_2,
+                  option = "workingdays" )
 # set x11 options 
-spec_2<-set_x11(spec_2,henderson.filter = 13)
+spec_2 <- set_x11(spec_2, henderson.filter = 13)
 # apply with `fast.x13` (results only)
-fast.x13(y,spec_2)
+fast.x13(y, spec_2)
 
 ```
 
@@ -519,15 +520,15 @@ usrdef.varEnabled = TRUE,
 usrdef.varType="Calendar",
 usrdef.var=td_regs ) # regressors have to be a single or multiple TS 
 # new sa processing
-sa_x13_v2_4<-x13(y_raw,spec_td)
+sa_x13_v2_4 <- x13(y_raw, spec_td)
 # user defined intervention variable  
 spec_int <- x13_spec(spec_1,
                    usrdef.varEnabled = TRUE,
                    # the user defined variable will be assigned to the trend component
-                   usrdef.varType="Trend",
-                   usrdef.var=x ) # x has to to be a single or multiple TS 
+                   usrdef.varType = "Trend",
+                   usrdef.var = x ) # x has to to be a single or multiple TS 
 # new sa processing
-sa_x13_v2_5<-x13(y_raw,spec_int)
+sa_x13_v2_5 <- x13(y_raw, spec_int)
 ```
 
 ### Adding user-defined regressors in version 3
@@ -535,17 +536,17 @@ sa_x13_v2_5<-x13(y_raw,spec_int)
 \footnotesize
 ```{r,eval=FALSE, include=TRUE}
 # define a user defined trading days regressor 
-td_reg1<- rjd3modelling::td(12, start=start(y_raw),length = length(y_raw),groups = c(1,1,1,1,1,0,0))
+td_reg1 <- rjd3modelling::td(12, start = start(y_raw), length = length(y_raw), groups = c(1, 1, 1, 1, 1, 0, 0))
 
 # define a context
-my_context<-rjd3modelling::modelling_context(variables=list(a=xvar))
+my_context <- rjd3modelling::modelling_context(variables = list(a = xvar))
 
 # set a new specification from a default specification
-spec_td<- rjd3x13::spec_regarima_default(name = "rg3") |>
+spec_td <- rjd3x13::spec_regarima_default(name = "rg3") |>
   rjd3modelling::add_usrdefvar(id = "r.a")
 
 # new reg-arima estimation
-reg_a_estimation<-rjd3x13::regarima(window(ts, start=1985, end=2013),spec_td,context = my_context)
+reg_a_estimation <- rjd3x13::regarima(window(ts, start = 1985, end = 2013), spec_td, context = my_context)
 ```
 
 ## Refreshing data 
@@ -584,11 +585,11 @@ sa_x13_v3$result_spec$regarima$arima
 \footnotesize
 ```{r,eval=FALSE, include=TRUE}
 
-current_result_spec<-sa_x13_v3$result_spec
-current_domain_spec<-sa_x13_v3$estimation_spec
+current_result_spec <- sa_x13_v3$result_spec
+current_domain_spec <- sa_x13_v3$estimation_spec
 
 # generate NEW spec for refresh 
-refreshed_spec<-x13.refresh(current_result_spec, # point spec to be refreshed
+refreshed_spec <- x13.refresh(current_result_spec, # point spec to be refreshed
             current_domain_spec, #domain spec (set of constraints)
             policy = "Outliers",
             period = 12, # monthly series
@@ -597,7 +598,7 @@ refreshed_spec<-x13.refresh(current_result_spec, # point spec to be refreshed
 
 # apply the new spec on new data : y_new= y_raw + 1 month
 
-sa_x13_v3_refresh<-x13(y_new,refreshed_spec)
+sa_x13_v3_refresh <- x13(y_new, refreshed_spec)
 
 ```
 
@@ -669,7 +670,7 @@ See {rjd3highfreq} help pages
 \footnotesize 
 ```{r, eval=FALSE,include=TRUE}
 #step 1: p=7
-x11.dow<-rjd3highfreq::x11(exp(pre.mult$model$linearized),
+x11.dow <- rjd3highfreq::x11(exp(pre.mult$model$linearized),
         period = 7,                 # DOW pattern
         mul = TRUE,                              
         trend.horizon = 9,  # 1/2 Filter length : not too long vs p
@@ -679,7 +680,7 @@ x11.dow<-rjd3highfreq::x11(exp(pre.mult$model$linearized),
         seas.s0 = "S3X9", seas.s1 = "S3X9",       # Seasonal filters
         extreme.lsig = 1.5, extreme.usig = 2.5)   # Sigma-limits
 #step 2: p=365.25
-x11.doy<- rjd3highfreq::x11(x11.dow$decomposition$sa,  # previous sa
+x11.doy <- rjd3highfreq::x11(x11.dow$decomposition$sa,  # previous sa
                     period = 365.2425,         # DOY pattern
                     mul = TRUE) #other parameters skipped here
 ```
@@ -723,7 +724,7 @@ Can be done with rjd3modelling package
 
 \footnotesize
 ```{r}
-library(rjd3modelling)
+library("rjd3modelling")
 # French
 fr_cal <- calendar.new()
 calendar.holiday(fr_cal, "NEWYEAR")
@@ -751,7 +752,7 @@ Use `holidays()` to get the days of the holidays and `htd()` to get the trading 
 \footnotesize
 ```{r}
 holidays(fr_cal, "2020-12-24", 10,single = T)
-s = ts(0, start = 2020, end = c(2020, 11), frequency = 12)
+s <- ts(0, start = 2020, end = c(2020, 11), frequency = 12)
 # Trading-days regressors (each day has a different effect, sunday as contrasts)
 td_reg <- htd(fr_cal, s = s, groups = c(1, 2, 3, 4, 5, 6, 0))
 # Working-days regressors (Monday = ... = Friday; Saturday = Sunday = contrasts)
@@ -760,7 +761,7 @@ wd_reg <- htd(fr_cal, s = s, groups = c(1, 1, 1, 1, 1, 0, 0))
 wd_reg <- htd(fr_cal, s = s, groups = c(1, 1, 1, 1, 1, 2, 0))
 wd_reg
 # Monday = ... = Wednesday; Thursday; Friday = contrasts
-wd_reg2<- htd(fr_cal, s = s, groups = c(1, 1, 1, 2, 0, 1, 1))
+wd_reg2 <- htd(fr_cal, s = s, groups = c(1, 1, 1, 2, 0, 1, 1))
 wd_reg2
 ```
 
@@ -778,12 +779,12 @@ New feature of version 3 allows to create:
 
 \footnotesize
 ```{r outplot}
-s = ts(0, start = 2000, end = 2005, frequency = 12)
-ao = ao.variable(s = s, date = "2001-03-01")
-ls = ls.variable(s = s, date = "2001-01-01")
-tc = tc.variable(s = s, date = "2001-01-01", rate = 0.7) # Customizable rate
-so = so.variable(s = s, date = "2003-05-01")
-ramp = ramp.variable(s = s, range = c("2001-01-01","2001-12-01"))
+s <- ts(0, start = 2000, end = 2005, frequency = 12)
+ao <- ao.variable(s = s, date = "2001-03-01")
+ls <- ls.variable(s = s, date = "2001-01-01")
+tc <- tc.variable(s = s, date = "2001-01-01", rate = 0.7) # Customizable rate
+so <- so.variable(s = s, date = "2003-05-01")
+ramp <- ramp.variable(s = s, range = c("2001-01-01","2001-12-01"))
 plot(ts.union(ao, ls, tc, so, ramp), plot.type = "single",
      col = c("red","lightgreen","orange","blue","black"))
 ```
@@ -831,19 +832,27 @@ In rjd3sa:
 \footnotesize
 ```{r, include=TRUE, eval=FALSE}
 # JD+
-print(system.time(for (i in 1:1000) {  j<-rjd3modelling::sarima.estimate(log(rjd3toolkit::ABS$X0.2.09.10.M), order=c(2,1,1), seasonal = list(order=c(0,1,1), period=12))}))
-
+print(system.time(
+    for (i in 1:1000) {  
+      j <- rjd3modelling::sarima.estimate(
+        data = log(rjd3toolkit::ABS$X0.2.09.10.M), 
+        order = c(2, 1, 1), seasonal = list(order = c(0, 1, 1), period = 12))
+    }))
 #       user    system        elapsed (in seconds) 
 #      4.98        0.37        4.63 
 
 #R-native
-print(system.time(for (i in 1:1000) {  r<-arima(log(rjd3toolkit::ABS$X0.2.09.10.M), order=c(2,1,1), seasonal = list(order=c(0,1,1), period=12))}))
-print(j$likelihood )
-print(r)
-
+print(system.time(
+  for (i in 1:1000) {  
+    r <- arima(
+      x = log(rjd3toolkit::ABS$X0.2.09.10.M), 
+      order = c(2, 1, 1), seasonal = list(order = c(0, 1, 1), period = 12))
+  }))
 #       user    system        elapsed (in seconds) 
 #     158.74        0.23      160.49 
 
+print(j$likelihood )
+print(r)
 ```
 
 
