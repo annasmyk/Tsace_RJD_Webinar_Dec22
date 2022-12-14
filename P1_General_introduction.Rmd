@@ -71,10 +71,12 @@ def.par <- par(no.readonly = TRUE)
 
 ### Outline of the webinar
 
+        **(PUSH record button)**
+
 Scope of the webinar: Seasonal Adjustment with X13-Arima and  Tramo-Seats
 (leaving the rest aside...for future webinars ?)
 
-Four presentations
+Four presentations (approx 90')
 
 -   P1: introduction 
       - highlighting the main evolutions between version 2 and 3
@@ -82,6 +84,8 @@ Four presentations
       - working environment set-up 
 
 -   P2: Focus on SA with X13-Arima or Tramo-Seats in R and related tools.
+
+  **10' Coffe Break**
 
 -   P3: Working in R with JDemetra+ workspaces
 
@@ -127,9 +131,13 @@ In March 2019, `RJDemetra` (containing X-13 Arima and Tramo-Seats) was published
 Since, many more packages have been developed as JDemetra+ Core was upgraded from version 2 to version 3
 
 Extension of scope:
+
 - High-frequency data (extended)
+
 - STL
+
 - refresh policies for SA 
+
 - new tools 
 
 Modifications of existing functions and output organisation
@@ -228,11 +236,4 @@ remotes::install_github("palatej/rjd3bench")
 remotes::install_github("AQLT/ggdemetra3") #additional graphics 
 ```
 
-### Let's get started 
-
-
-Goal of this webinar
-
-- outline main features for SA with JDemetra+ in R (using X13-Arima and Tramo-Seats)
-
-- highlight the differences from version 2 to version 3 
+ 

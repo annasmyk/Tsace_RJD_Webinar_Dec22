@@ -244,14 +244,19 @@ Presentation 1: General Outline of the R-JDemetra+ universe}
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-\begin{frame}{Outline of the webinar}
+\begin{frame}[fragile]{Outline of the webinar}
 \protect\hypertarget{outline-of-the-webinar}{}
+\begin{verbatim}
+    **(PUSH record button)**
+\end{verbatim}
+
 Scope of the webinar: Seasonal Adjustment with X13-Arima and Tramo-Seats
 (leaving the rest aside\ldots for future webinars ?)
 
-Four presentations
+Four presentations (approx 90')
 
 \begin{itemize}
+\tightlist
 \item
   P1: introduction
 
@@ -266,6 +271,11 @@ Four presentations
   \end{itemize}
 \item
   P2: Focus on SA with X13-Arima or Tramo-Seats in R and related tools.
+\end{itemize}
+
+\textbf{10' Coffe Break}
+
+\begin{itemize}
 \item
   P3: Working in R with JDemetra+ workspaces
 \item
@@ -329,8 +339,18 @@ Tramo-Seats) was published on CRAN:
 Since, many more packages have been developed as JDemetra+ Core was
 upgraded from version 2 to version 3
 
-Extension of scope: - High-frequency data (extended) - STL - refresh
-policies for SA - new tools
+Extension of scope:
+
+\begin{itemize}
+\item
+  High-frequency data (extended)
+\item
+  STL
+\item
+  refresh policies for SA
+\item
+  new tools
+\end{itemize}
 
 Modifications of existing functions and output organisation
 \end{frame}
@@ -355,7 +375,7 @@ v3}\label{accessing-jdemetra-core-routines-from-v2-to-v3}}
 
 (corresponding to the version 2.x family of JD+ Core)
 
-The mindset of version 3 is:
+\textbf{The mindset of version 3 is:}
 
 \begin{itemize}
 \item
@@ -461,19 +481,6 @@ Installing latest version from GitHub (as not on CRAN yet)
 \NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"AQLT/ggdemetra3"}\NormalTok{) }\CommentTok{\#additional graphics }
 \end{Highlighting}
 \end{Shaded}
-\end{frame}
-
-\begin{frame}{Let's get started}
-\protect\hypertarget{lets-get-started}{}
-Goal of this webinar
-
-\begin{itemize}
-\item
-  outline main features for SA with JDemetra+ in R (using X13-Arima and
-  Tramo-Seats)
-\item
-  highlight the differences from version 2 to version 3
-\end{itemize}
 \end{frame}
 
 \end{document}
