@@ -19,7 +19,7 @@ output:
         includes:
           in_header: preamble_beamer.tex
 themeoptions: "coding=utf8,language=english"
-classoption: 'usepdftitle=false,french' #handout
+classoption: 'usepdftitle=false,french,aspectratio=169' #handout
 fontsize: 10pt
 bibliography: [biblio.bib]
 biblio-style: unsrtnat
@@ -31,18 +31,18 @@ knitr::opts_chunk$set(echo = TRUE,
                       cache = F, 
                       fig.align = 'center',
                       fig.path = "img/markdown-")
-library(knitr)
-library(kableExtra)
-library(microbenchmark)
-library(ggplot2)
-library(rjd3toolkit)
-library(rjd3modelling)
-library(rjd3sa)
-library(rjd3arima)
-library(rjd3x13)
-library(rjd3tramoseats)
-library(rjdemetra3)
-library(ggdemetra3)
+library("knitr")
+library("kableExtra")
+library("microbenchmark")
+library("ggplot2")
+library("rjd3toolkit")
+library("rjd3modelling")
+library("rjd3sa")
+library("rjd3arima")
+library("rjd3x13")
+library("rjd3tramoseats")
+library("rjdemetra3")
+library("ggdemetra3")
 
 # library(rjd3sts)
 # library(rjd3highfreq)
@@ -51,16 +51,16 @@ library(ggdemetra3)
 fig.ext <- "pdf"
 is_html <- knitr::is_html_output()
 is_latex <- knitr::is_latex_output()
-fig.ext = "pdf"
-if(is_html){
+fig.ext <- "pdf"
+if (is_html) {
     fa_arrow_circle_right <- '<i class="fas fa-arrow-circle-right"></i>'
     fa_r_project <- '<i class="fab fa-r-project"></i>'
-}else {
-    if(is_latex){
+} else {
+    if (is_latex) {
         fa_arrow_circle_right <- "\\faIcon{arrow-circle-right}"
         fa_r_project <- "\\faIcon{r-project}"
         fa_java <- "\\faIcon{java}"
-    }else {
+    } else {
         fa_arrow_circle_right <- "->"
         fa_r_project <- 'R'
     }
@@ -118,14 +118,12 @@ QR <- extract_QR("../Output/SA")
 QR
 
 ?compute_score # to see how the score is calculated (formula)
-QR <- compute_score(QR,
-                    n_contrib_score = 3)
+QR <- compute_score(QR, n_contrib_score = 3)
 
 QR
 
 QR <- sort(QR, decreasing = TRUE, sort_variables = "score")
-export_xlsx(QR,
-            file_name = "U:/quality_report.xls")
+export_xlsx(QR, file_name = "U:/quality_report.xls")
 ```
 
 ### Quality report with JDCruncher (4/4) : example
@@ -139,6 +137,7 @@ condition1 <- list(indicator = "oos_mse",
                                   "residuals_homoskedasticity",
                                   "residuals_normality"),
                    conditions_modalities = c("Bad","Severe"))
+
 BQ <- compute_score(BQ, n_contrib_score = 5,
                     conditional_indicator = list(condition1),
                     na.rm = TRUE)

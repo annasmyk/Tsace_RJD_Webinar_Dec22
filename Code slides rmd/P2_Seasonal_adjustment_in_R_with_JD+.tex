@@ -1,7 +1,7 @@
 \PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[10pt,xcolor=table,color={dvipsnames,usenames},ignorenonframetext,usepdftitle=false,french]{beamer}
+\documentclass[10pt,xcolor=table,color={dvipsnames,usenames},ignorenonframetext,usepdftitle=false,french,aspectratio=169]{beamer}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
@@ -311,10 +311,10 @@ In version 2 \footnotesize
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# X13}
-\NormalTok{sa\_x13\_v2}\OtherTok{\textless{}{-}}\NormalTok{RJDemetra}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, }\AttributeTok{spec =}\StringTok{"RSA5c"}\NormalTok{)}
+\NormalTok{sa\_x13\_v2 }\OtherTok{\textless{}{-}}\NormalTok{ RJDemetra}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, }\AttributeTok{spec =} \StringTok{"RSA5c"}\NormalTok{)}
 \CommentTok{\# see help pages for default spec names, identical in v2 and v3}
 \CommentTok{\#Tramo{-}Seats}
-\NormalTok{sa\_ts\_v2}\OtherTok{\textless{}{-}}\NormalTok{RJDemetra}\SpecialCharTok{::}\FunctionTok{tramoseats}\NormalTok{(y\_raw, }\AttributeTok{spec =}\StringTok{"RSAfull"}\NormalTok{)}
+\NormalTok{sa\_ts\_v2 }\OtherTok{\textless{}{-}}\NormalTok{ RJDemetra}\SpecialCharTok{::}\FunctionTok{tramoseats}\NormalTok{(y\_raw, }\AttributeTok{spec =} \StringTok{"RSAfull"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -323,7 +323,7 @@ In version 3 (printed model identical to v2) \footnotesize
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#X13}
-\NormalTok{sa\_x13\_v3 }\OtherTok{\textless{}{-}}\NormalTok{ rjd3x13}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, }\AttributeTok{spec=} \StringTok{"RSA5"}\NormalTok{)}
+\NormalTok{sa\_x13\_v3 }\OtherTok{\textless{}{-}}\NormalTok{ rjd3x13}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, }\AttributeTok{spec =} \StringTok{"RSA5"}\NormalTok{)}
 \NormalTok{sa\_x13\_v3}
 \end{Highlighting}
 \end{Shaded}
@@ -424,7 +424,7 @@ In version 3 (printed model identical to v2) \footnotesize
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#Tramo seats}
-\NormalTok{sa\_ts\_v3 }\OtherTok{\textless{}{-}}\NormalTok{ rjd3tramoseats}\SpecialCharTok{::}\FunctionTok{tramoseats}\NormalTok{(y\_raw, }\AttributeTok{spec=} \StringTok{"RSAfull"}\NormalTok{)}
+\NormalTok{sa\_ts\_v3 }\OtherTok{\textless{}{-}}\NormalTok{ rjd3tramoseats}\SpecialCharTok{::}\FunctionTok{tramoseats}\NormalTok{(y\_raw, }\AttributeTok{spec =} \StringTok{"RSAfull"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \end{frame}
@@ -436,10 +436,10 @@ In version 2 \footnotesize
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Reg{-}Arima part from X13 only (different default spec names, cf help pages)}
-\NormalTok{regA\_v2}\OtherTok{\textless{}{-}}\NormalTok{RJDemetra}\SpecialCharTok{::}\FunctionTok{regarima\_x13}\NormalTok{(y\_raw, }\AttributeTok{spec =}\StringTok{"RG5c"}\NormalTok{)}
+\NormalTok{regA\_v2 }\OtherTok{\textless{}{-}}\NormalTok{ RJDemetra}\SpecialCharTok{::}\FunctionTok{regarima\_x13}\NormalTok{(y\_raw, }\AttributeTok{spec =} \StringTok{"RG5c"}\NormalTok{)}
 
 \CommentTok{\# Tramo only }
-\NormalTok{tramo\_v2}\OtherTok{\textless{}{-}}\NormalTok{RJDemetra}\SpecialCharTok{::}\FunctionTok{regarima\_tramoseats}\NormalTok{(y\_raw,}\AttributeTok{spec =} \StringTok{"TRfull"}\NormalTok{)}
+\NormalTok{tramo\_v2 }\OtherTok{\textless{}{-}}\NormalTok{ RJDemetra}\SpecialCharTok{::}\FunctionTok{regarima\_tramoseats}\NormalTok{(y\_raw,}\AttributeTok{spec =} \StringTok{"TRfull"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -448,10 +448,10 @@ In version 3 (not very different) \footnotesize
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#X13}
-\NormalTok{sa\_regarima\_v3 }\OtherTok{\textless{}{-}}\NormalTok{ rjd3x13}\SpecialCharTok{::}\FunctionTok{regarima}\NormalTok{(y\_raw, }\AttributeTok{spec =}\StringTok{"RG5c"}\NormalTok{)}
+\NormalTok{sa\_regarima\_v3 }\OtherTok{\textless{}{-}}\NormalTok{ rjd3x13}\SpecialCharTok{::}\FunctionTok{regarima}\NormalTok{(y\_raw, }\AttributeTok{spec =} \StringTok{"RG5c"}\NormalTok{)}
 
 \CommentTok{\#Tramo seats }
-\CommentTok{\#sa\_tramo\_v3 \textless{}{-} rjd3tramoseats::tramo(y\_raw,spec = "TRfull")}
+\CommentTok{\#sa\_tramo\_v3 \textless{}{-} rjd3tramoseats::tramo(y\_raw, spec = "TRfull")}
 
 \CommentTok{\# "fast." versions...(just results, cf output structure)}
 \end{Highlighting}
@@ -465,10 +465,10 @@ In version 2 \footnotesize
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# X11 (spec option)}
-\NormalTok{X11\_v2}\OtherTok{\textless{}{-}}\NormalTok{RJDemetra}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, }\AttributeTok{spec =}\StringTok{"X11"}\NormalTok{)}
+\NormalTok{X11\_v2 }\OtherTok{\textless{}{-}}\NormalTok{ RJDemetra}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, }\AttributeTok{spec =} \StringTok{"X11"}\NormalTok{)}
 
 \CommentTok{\#Tramo{-}Seats ? you }
-\CommentTok{\#sa\_ts\_v2\textless{}{-}RJDemetra::tramoseats(y\_raw, spec ="RSAfull")}
+\CommentTok{\#sa\_ts\_v2\textless{}{-}RJDemetra::tramoseats(y\_raw, spec = "RSAfull")}
 \end{Highlighting}
 \end{Shaded}
 
@@ -511,7 +511,7 @@ All arranged in a specific way
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# v2 "output"}
-\NormalTok{Model\_sa}\OtherTok{\textless{}{-}}\NormalTok{RJDemetra}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, }\AttributeTok{spec =}\StringTok{"RSA5"}\NormalTok{)}
+\NormalTok{Model\_sa }\OtherTok{\textless{}{-}}\NormalTok{ RJDemetra}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, }\AttributeTok{spec =} \StringTok{"RSA5"}\NormalTok{)}
 
 \NormalTok{Model\_sa}\SpecialCharTok{$}\NormalTok{regarima}
 \NormalTok{Model\_sa}\SpecialCharTok{$}\NormalTok{decomposition}
@@ -540,7 +540,7 @@ Results vs specification\ldots and then by domain
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Model\_sa = sa\_x13\_v3}
-\NormalTok{sa\_x13\_v3}\OtherTok{\textless{}{-}}\NormalTok{RJDemetra}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, }\AttributeTok{spec =}\StringTok{"RSA5"}\NormalTok{)}
+\NormalTok{sa\_x13\_v3 }\OtherTok{\textless{}{-}}\NormalTok{ RJDemetra}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, }\AttributeTok{spec =} \StringTok{"RSA5"}\NormalTok{)}
 \NormalTok{sa\_x13\_v3}\SpecialCharTok{$}\NormalTok{result}
 \NormalTok{sa\_x13\_v3}\SpecialCharTok{$}\NormalTok{estimation\_spec}
 \NormalTok{sa\_x13\_v3}\SpecialCharTok{$}\NormalTok{result\_spec}
@@ -688,7 +688,7 @@ and v3)
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# version 3}
-\NormalTok{ud}\OtherTok{\textless{}{-}}\FunctionTok{userdefined\_variables\_x13}\NormalTok{()[}\DecValTok{15}\SpecialCharTok{:}\DecValTok{17}\NormalTok{] }\CommentTok{\# b series}
+\NormalTok{ud }\OtherTok{\textless{}{-}} \FunctionTok{userdefined\_variables\_x13}\NormalTok{()[}\DecValTok{15}\SpecialCharTok{:}\DecValTok{17}\NormalTok{] }\CommentTok{\# b series}
 \NormalTok{ud}
 \end{Highlighting}
 \end{Shaded}
@@ -700,7 +700,7 @@ and v3)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{sa\_x13\_v3\_UD}\OtherTok{\textless{}{-}}\NormalTok{rjd3x13}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw,}\StringTok{"RSA5c"}\NormalTok{,}\AttributeTok{userdefined=}\NormalTok{ud)}
+\NormalTok{sa\_x13\_v3\_UD }\OtherTok{\textless{}{-}}\NormalTok{ rjd3x13}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, }\StringTok{"RSA5c"}\NormalTok{, }\AttributeTok{userdefined =}\NormalTok{ ud)}
 \NormalTok{sa\_x13\_v3\_UD}\SpecialCharTok{$}\NormalTok{user\_defined }\CommentTok{\# remainder of the names }
 \end{Highlighting}
 \end{Shaded}
@@ -850,7 +850,7 @@ version 2}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#plot(sa\_x13\_v2, type= "cal{-}seas{-}irr",first\_date = c(2015, 1))}
+\CommentTok{\#plot(sa\_x13\_v2, type = "cal{-}seas{-}irr", first\_date = c(2015, 1))}
 \end{Highlighting}
 \end{Shaded}
 \end{frame}
@@ -861,7 +861,8 @@ version 2}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# regarima}
-\FunctionTok{layout}\NormalTok{(}\FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{));}\FunctionTok{plot}\NormalTok{(sa\_x13\_v2}\SpecialCharTok{$}\NormalTok{regarima,}\AttributeTok{ask =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{layout}\NormalTok{(}\FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(sa\_x13\_v2}\SpecialCharTok{$}\NormalTok{regarima, }\AttributeTok{ask =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -870,7 +871,7 @@ version 2}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Plotting SI ratios  }
-\FunctionTok{plot}\NormalTok{(sa\_x13\_v2}\SpecialCharTok{$}\NormalTok{decomposition, }\AttributeTok{first\_date =} \FunctionTok{c}\NormalTok{(}\DecValTok{2015}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(sa\_x13\_v2}\SpecialCharTok{$}\NormalTok{decomposition, }\AttributeTok{first\_date =} \FunctionTok{c}\NormalTok{(}\DecValTok{2015}\NormalTok{, }\DecValTok{1}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -883,7 +884,7 @@ version 2}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Plotting SI ratios  }
-\FunctionTok{plot}\NormalTok{(sa\_x13\_v2}\SpecialCharTok{$}\NormalTok{decomposition, }\AttributeTok{first\_date =} \FunctionTok{c}\NormalTok{(}\DecValTok{2015}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(sa\_x13\_v2}\SpecialCharTok{$}\NormalTok{decomposition, }\AttributeTok{first\_date =} \FunctionTok{c}\NormalTok{(}\DecValTok{2015}\NormalTok{, }\DecValTok{1}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -909,8 +910,8 @@ In version 3
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# version 3}
-\CommentTok{\# remotes::install\_github("AQLT/ggdemetra3",INSTALL\_opts = "{-}{-}no{-}multiarch")}
-\FunctionTok{library}\NormalTok{(ggdemetra3)}
+\CommentTok{\# remotes::install\_github("AQLT/ggdemetra3", INSTALL\_opts = "{-}{-}no{-}multiarch")}
+\FunctionTok{library}\NormalTok{(}\StringTok{"ggdemetra3"}\NormalTok{)}
 \NormalTok{ggdemetra3}\SpecialCharTok{::}\FunctionTok{siratioplot}\NormalTok{(sa\_x13\_v3)}
 \end{Highlighting}
 \end{Shaded}
@@ -977,8 +978,8 @@ Direct parameter modification as arguments of the specification function
 \CommentTok{\# changing estimation span, imposing additive model and}
 \CommentTok{\#adding user defined ouliers }
 \CommentTok{\# first create a new spec modifying the previous one }
-\NormalTok{spec\_1}\OtherTok{\textless{}{-}} \FunctionTok{x13\_spec}\NormalTok{(sa\_x13\_v2)}
-\NormalTok{spec\_2}\OtherTok{\textless{}{-}} \FunctionTok{x13\_spec}\NormalTok{(spec\_1, }\AttributeTok{estimate.from =} \StringTok{"2004{-}01{-}01"}\NormalTok{,}
+\NormalTok{spec\_1 }\OtherTok{\textless{}{-}} \FunctionTok{x13\_spec}\NormalTok{(sa\_x13\_v2)}
+\NormalTok{spec\_2 }\OtherTok{\textless{}{-}} \FunctionTok{x13\_spec}\NormalTok{(spec\_1, }\AttributeTok{estimate.from =} \StringTok{"2004{-}01{-}01"}\NormalTok{,}
                   \AttributeTok{usrdef.outliersEnabled =} \ConstantTok{TRUE}\NormalTok{,}
                              \AttributeTok{usrdef.outliersType =} \FunctionTok{c}\NormalTok{(}\StringTok{"LS"}\NormalTok{, }\StringTok{"AO"}\NormalTok{),}
                              \AttributeTok{usrdef.outliersDate =} \FunctionTok{c}\NormalTok{(}\StringTok{"2008{-}10{-}01"}\NormalTok{, }\StringTok{"2018{-}01{-}01"}\NormalTok{),}
@@ -987,7 +988,7 @@ Direct parameter modification as arguments of the specification function
 \CommentTok{\# the decomposition will be run on the whole span }
 
 \CommentTok{\# new sa processing}
-\NormalTok{sa\_x13\_v2\_2}\OtherTok{\textless{}{-}}\NormalTok{RJDemetra}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw,spec\_2)}
+\NormalTok{sa\_x13\_v2\_2 }\OtherTok{\textless{}{-}}\NormalTok{ RJDemetra}\SpecialCharTok{::}\FunctionTok{x13}\NormalTok{(y\_raw, spec\_2)}
 \NormalTok{sa\_x13\_v2\_2}\SpecialCharTok{$}\NormalTok{final}\SpecialCharTok{$}\NormalTok{series}
 \end{Highlighting}
 \end{Shaded}
@@ -1027,21 +1028,21 @@ Benchmarking New v3 feature, same options available as in GUI.
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# start with default spec }
-\NormalTok{spec\_1 }\OtherTok{=} \FunctionTok{spec\_x13\_default}\NormalTok{(}\StringTok{"RSA3"}\NormalTok{)}
+\NormalTok{spec\_1 }\OtherTok{\textless{}{-}} \FunctionTok{spec\_x13\_default}\NormalTok{(}\StringTok{"RSA3"}\NormalTok{)}
 \CommentTok{\# or start with existing spec (no extraction function needed)}
-\NormalTok{spec\_1}\OtherTok{\textless{}{-}}\NormalTok{sa\_x13\_v3\_UD}\SpecialCharTok{$}\NormalTok{estimation\_spec}
+\NormalTok{spec\_1 }\OtherTok{\textless{}{-}}\NormalTok{ sa\_x13\_v3\_UD}\SpecialCharTok{$}\NormalTok{estimation\_spec}
 
 \CommentTok{\# set a new spec}
 \DocumentationTok{\#\# add outliers }
-\NormalTok{spec\_2 }\OtherTok{=}\NormalTok{ rjd3modelling}\SpecialCharTok{::}\FunctionTok{add\_outlier}\NormalTok{(spec\_1,}
+\NormalTok{spec\_2 }\OtherTok{\textless{}{-}}\NormalTok{ rjd3modelling}\SpecialCharTok{::}\FunctionTok{add\_outlier}\NormalTok{(spec\_1,}
                   \AttributeTok{type =} \FunctionTok{c}\NormalTok{(}\StringTok{"AO"}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{"2015{-}01{-}01"}\NormalTok{, }\StringTok{"2010{-}01{-}01"}\NormalTok{))}
 \DocumentationTok{\#\# set trading days}
-\NormalTok{spec\_2}\OtherTok{\textless{}{-}}\NormalTok{rjd3modelling}\SpecialCharTok{::}\FunctionTok{set\_tradingdays}\NormalTok{(spec\_2,}
-    \AttributeTok{option =} \StringTok{"workingdays"}\NormalTok{ )}
+\NormalTok{spec\_2 }\OtherTok{\textless{}{-}}\NormalTok{ rjd3modelling}\SpecialCharTok{::}\FunctionTok{set\_tradingdays}\NormalTok{(spec\_2,}
+                  \AttributeTok{option =} \StringTok{"workingdays"}\NormalTok{ )}
 \CommentTok{\# set x11 options }
-\NormalTok{spec\_2}\OtherTok{\textless{}{-}}\FunctionTok{set\_x11}\NormalTok{(spec\_2,}\AttributeTok{henderson.filter =} \DecValTok{13}\NormalTok{)}
+\NormalTok{spec\_2 }\OtherTok{\textless{}{-}} \FunctionTok{set\_x11}\NormalTok{(spec\_2, }\AttributeTok{henderson.filter =} \DecValTok{13}\NormalTok{)}
 \CommentTok{\# apply with \textasciigrave{}fast.x13\textasciigrave{} (results only)}
-\FunctionTok{fast.x13}\NormalTok{(y,spec\_2)}
+\FunctionTok{fast.x13}\NormalTok{(y, spec\_2)}
 \end{Highlighting}
 \end{Shaded}
 \end{frame}
@@ -1071,15 +1072,15 @@ to add any user defined (non standard, e.g non outlier'') variable
 \AttributeTok{usrdef.varType=}\StringTok{"Calendar"}\NormalTok{,}
 \AttributeTok{usrdef.var=}\NormalTok{td\_regs ) }\CommentTok{\# regressors have to be a single or multiple TS }
 \CommentTok{\# new sa processing}
-\NormalTok{sa\_x13\_v2\_4}\OtherTok{\textless{}{-}}\FunctionTok{x13}\NormalTok{(y\_raw,spec\_td)}
+\NormalTok{sa\_x13\_v2\_4 }\OtherTok{\textless{}{-}} \FunctionTok{x13}\NormalTok{(y\_raw, spec\_td)}
 \CommentTok{\# user defined intervention variable  }
 \NormalTok{spec\_int }\OtherTok{\textless{}{-}} \FunctionTok{x13\_spec}\NormalTok{(spec\_1,}
                    \AttributeTok{usrdef.varEnabled =} \ConstantTok{TRUE}\NormalTok{,}
                    \CommentTok{\# the user defined variable will be assigned to the trend component}
-                   \AttributeTok{usrdef.varType=}\StringTok{"Trend"}\NormalTok{,}
-                   \AttributeTok{usrdef.var=}\NormalTok{x ) }\CommentTok{\# x has to to be a single or multiple TS }
+                   \AttributeTok{usrdef.varType =} \StringTok{"Trend"}\NormalTok{,}
+                   \AttributeTok{usrdef.var =}\NormalTok{ x ) }\CommentTok{\# x has to to be a single or multiple TS }
 \CommentTok{\# new sa processing}
-\NormalTok{sa\_x13\_v2\_5}\OtherTok{\textless{}{-}}\FunctionTok{x13}\NormalTok{(y\_raw,spec\_int)}
+\NormalTok{sa\_x13\_v2\_5 }\OtherTok{\textless{}{-}} \FunctionTok{x13}\NormalTok{(y\_raw, spec\_int)}
 \end{Highlighting}
 \end{Shaded}
 \end{frame}
@@ -1091,17 +1092,17 @@ to add any user defined (non standard, e.g non outlier'') variable
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# define a user defined trading days regressor }
-\NormalTok{td\_reg1}\OtherTok{\textless{}{-}}\NormalTok{ rjd3modelling}\SpecialCharTok{::}\FunctionTok{td}\NormalTok{(}\DecValTok{12}\NormalTok{, }\AttributeTok{start=}\FunctionTok{start}\NormalTok{(y\_raw),}\AttributeTok{length =} \FunctionTok{length}\NormalTok{(y\_raw),}\AttributeTok{groups =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\NormalTok{td\_reg1 }\OtherTok{\textless{}{-}}\NormalTok{ rjd3modelling}\SpecialCharTok{::}\FunctionTok{td}\NormalTok{(}\DecValTok{12}\NormalTok{, }\AttributeTok{start =} \FunctionTok{start}\NormalTok{(y\_raw), }\AttributeTok{length =} \FunctionTok{length}\NormalTok{(y\_raw), }\AttributeTok{groups =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{))}
 
 \CommentTok{\# define a context}
-\NormalTok{my\_context}\OtherTok{\textless{}{-}}\NormalTok{rjd3modelling}\SpecialCharTok{::}\FunctionTok{modelling\_context}\NormalTok{(}\AttributeTok{variables=}\FunctionTok{list}\NormalTok{(}\AttributeTok{a=}\NormalTok{xvar))}
+\NormalTok{my\_context }\OtherTok{\textless{}{-}}\NormalTok{ rjd3modelling}\SpecialCharTok{::}\FunctionTok{modelling\_context}\NormalTok{(}\AttributeTok{variables =} \FunctionTok{list}\NormalTok{(}\AttributeTok{a =}\NormalTok{ xvar))}
 
 \CommentTok{\# set a new specification from a default specification}
-\NormalTok{spec\_td}\OtherTok{\textless{}{-}}\NormalTok{ rjd3x13}\SpecialCharTok{::}\FunctionTok{spec\_regarima\_default}\NormalTok{(}\AttributeTok{name =} \StringTok{"rg3"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+\NormalTok{spec\_td }\OtherTok{\textless{}{-}}\NormalTok{ rjd3x13}\SpecialCharTok{::}\FunctionTok{spec\_regarima\_default}\NormalTok{(}\AttributeTok{name =} \StringTok{"rg3"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
 \NormalTok{  rjd3modelling}\SpecialCharTok{::}\FunctionTok{add\_usrdefvar}\NormalTok{(}\AttributeTok{id =} \StringTok{"r.a"}\NormalTok{)}
 
 \CommentTok{\# new reg{-}arima estimation}
-\NormalTok{reg\_a\_estimation}\OtherTok{\textless{}{-}}\NormalTok{rjd3x13}\SpecialCharTok{::}\FunctionTok{regarima}\NormalTok{(}\FunctionTok{window}\NormalTok{(ts, }\AttributeTok{start=}\DecValTok{1985}\NormalTok{, }\AttributeTok{end=}\DecValTok{2013}\NormalTok{),spec\_td,}\AttributeTok{context =}\NormalTok{ my\_context)}
+\NormalTok{reg\_a\_estimation }\OtherTok{\textless{}{-}}\NormalTok{ rjd3x13}\SpecialCharTok{::}\FunctionTok{regarima}\NormalTok{(}\FunctionTok{window}\NormalTok{(ts, }\AttributeTok{start =} \DecValTok{1985}\NormalTok{, }\AttributeTok{end =} \DecValTok{2013}\NormalTok{), spec\_td, }\AttributeTok{context =}\NormalTok{ my\_context)}
 \end{Highlighting}
 \end{Shaded}
 \end{frame}
@@ -1166,11 +1167,11 @@ In the ``sa\_model'' object generated by the estimation process:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{current\_result\_spec}\OtherTok{\textless{}{-}}\NormalTok{sa\_x13\_v3}\SpecialCharTok{$}\NormalTok{result\_spec}
-\NormalTok{current\_domain\_spec}\OtherTok{\textless{}{-}}\NormalTok{sa\_x13\_v3}\SpecialCharTok{$}\NormalTok{estimation\_spec}
+\NormalTok{current\_result\_spec }\OtherTok{\textless{}{-}}\NormalTok{ sa\_x13\_v3}\SpecialCharTok{$}\NormalTok{result\_spec}
+\NormalTok{current\_domain\_spec }\OtherTok{\textless{}{-}}\NormalTok{ sa\_x13\_v3}\SpecialCharTok{$}\NormalTok{estimation\_spec}
 
 \CommentTok{\# generate NEW spec for refresh }
-\NormalTok{refreshed\_spec}\OtherTok{\textless{}{-}}\FunctionTok{x13.refresh}\NormalTok{(current\_result\_spec, }\CommentTok{\# point spec to be refreshed}
+\NormalTok{refreshed\_spec }\OtherTok{\textless{}{-}} \FunctionTok{x13.refresh}\NormalTok{(current\_result\_spec, }\CommentTok{\# point spec to be refreshed}
 \NormalTok{            current\_domain\_spec, }\CommentTok{\#domain spec (set of constraints)}
             \AttributeTok{policy =} \StringTok{"Outliers"}\NormalTok{,}
             \AttributeTok{period =} \DecValTok{12}\NormalTok{, }\CommentTok{\# monthly series}
@@ -1179,7 +1180,7 @@ In the ``sa\_model'' object generated by the estimation process:
 
 \CommentTok{\# apply the new spec on new data : y\_new= y\_raw + 1 month}
 
-\NormalTok{sa\_x13\_v3\_refresh}\OtherTok{\textless{}{-}}\FunctionTok{x13}\NormalTok{(y\_new,refreshed\_spec)}
+\NormalTok{sa\_x13\_v3\_refresh }\OtherTok{\textless{}{-}} \FunctionTok{x13}\NormalTok{(y\_new, refreshed\_spec)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1282,7 +1283,7 @@ See \{rjd3highfreq\} help pages
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#step 1: p=7}
-\NormalTok{x11.dow}\OtherTok{\textless{}{-}}\NormalTok{rjd3highfreq}\SpecialCharTok{::}\FunctionTok{x11}\NormalTok{(}\FunctionTok{exp}\NormalTok{(pre.mult}\SpecialCharTok{$}\NormalTok{model}\SpecialCharTok{$}\NormalTok{linearized),}
+\NormalTok{x11.dow }\OtherTok{\textless{}{-}}\NormalTok{ rjd3highfreq}\SpecialCharTok{::}\FunctionTok{x11}\NormalTok{(}\FunctionTok{exp}\NormalTok{(pre.mult}\SpecialCharTok{$}\NormalTok{model}\SpecialCharTok{$}\NormalTok{linearized),}
         \AttributeTok{period =} \DecValTok{7}\NormalTok{,                 }\CommentTok{\# DOW pattern}
         \AttributeTok{mul =} \ConstantTok{TRUE}\NormalTok{,                              }
         \AttributeTok{trend.horizon =} \DecValTok{9}\NormalTok{,  }\CommentTok{\# 1/2 Filter length : not too long vs p}
@@ -1292,7 +1293,7 @@ See \{rjd3highfreq\} help pages
         \AttributeTok{seas.s0 =} \StringTok{"S3X9"}\NormalTok{, }\AttributeTok{seas.s1 =} \StringTok{"S3X9"}\NormalTok{,       }\CommentTok{\# Seasonal filters}
         \AttributeTok{extreme.lsig =} \FloatTok{1.5}\NormalTok{, }\AttributeTok{extreme.usig =} \FloatTok{2.5}\NormalTok{)   }\CommentTok{\# Sigma{-}limits}
 \CommentTok{\#step 2: p=365.25}
-\NormalTok{x11.doy}\OtherTok{\textless{}{-}}\NormalTok{ rjd3highfreq}\SpecialCharTok{::}\FunctionTok{x11}\NormalTok{(x11.dow}\SpecialCharTok{$}\NormalTok{decomposition}\SpecialCharTok{$}\NormalTok{sa,  }\CommentTok{\# previous sa}
+\NormalTok{x11.doy }\OtherTok{\textless{}{-}}\NormalTok{ rjd3highfreq}\SpecialCharTok{::}\FunctionTok{x11}\NormalTok{(x11.dow}\SpecialCharTok{$}\NormalTok{decomposition}\SpecialCharTok{$}\NormalTok{sa,  }\CommentTok{\# previous sa}
                     \AttributeTok{period =} \FloatTok{365.2425}\NormalTok{,         }\CommentTok{\# DOY pattern}
                     \AttributeTok{mul =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#other parameters skipped here}
 \end{Highlighting}
@@ -1356,7 +1357,7 @@ Can be done with rjd3modelling package
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(rjd3modelling)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"rjd3modelling"}\NormalTok{)}
 \CommentTok{\# French}
 \NormalTok{fr\_cal }\OtherTok{\textless{}{-}} \FunctionTok{calendar.new}\NormalTok{()}
 \FunctionTok{calendar.holiday}\NormalTok{(fr\_cal, }\StringTok{"NEWYEAR"}\NormalTok{)}
@@ -1407,7 +1408,7 @@ Use \texttt{holidays()} to get the days of the holidays and
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{s }\OtherTok{=} \FunctionTok{ts}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{start =} \DecValTok{2020}\NormalTok{, }\AttributeTok{end =} \FunctionTok{c}\NormalTok{(}\DecValTok{2020}\NormalTok{, }\DecValTok{11}\NormalTok{), }\AttributeTok{frequency =} \DecValTok{12}\NormalTok{)}
+\NormalTok{s }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{start =} \DecValTok{2020}\NormalTok{, }\AttributeTok{end =} \FunctionTok{c}\NormalTok{(}\DecValTok{2020}\NormalTok{, }\DecValTok{11}\NormalTok{), }\AttributeTok{frequency =} \DecValTok{12}\NormalTok{)}
 \CommentTok{\# Trading{-}days regressors (each day has a different effect, sunday as contrasts)}
 \NormalTok{td\_reg }\OtherTok{\textless{}{-}} \FunctionTok{htd}\NormalTok{(fr\_cal, }\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{groups =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{0}\NormalTok{))}
 \CommentTok{\# Working{-}days regressors (Monday = ... = Friday; Saturday = Sunday = contrasts)}
@@ -1436,7 +1437,7 @@ Use \texttt{holidays()} to get the days of the holidays and
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Monday = ... = Wednesday; Thursday; Friday = contrasts}
-\NormalTok{wd\_reg2}\OtherTok{\textless{}{-}} \FunctionTok{htd}\NormalTok{(fr\_cal, }\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{groups =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{wd\_reg2 }\OtherTok{\textless{}{-}} \FunctionTok{htd}\NormalTok{(fr\_cal, }\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{groups =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{))}
 \NormalTok{wd\_reg2}
 \end{Highlighting}
 \end{Shaded}
@@ -1480,12 +1481,12 @@ New feature of version 3 allows to create:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{s }\OtherTok{=} \FunctionTok{ts}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{start =} \DecValTok{2000}\NormalTok{, }\AttributeTok{end =} \DecValTok{2005}\NormalTok{, }\AttributeTok{frequency =} \DecValTok{12}\NormalTok{)}
-\NormalTok{ao }\OtherTok{=} \FunctionTok{ao.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{date =} \StringTok{"2001{-}03{-}01"}\NormalTok{)}
-\NormalTok{ls }\OtherTok{=} \FunctionTok{ls.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{date =} \StringTok{"2001{-}01{-}01"}\NormalTok{)}
-\NormalTok{tc }\OtherTok{=} \FunctionTok{tc.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{date =} \StringTok{"2001{-}01{-}01"}\NormalTok{, }\AttributeTok{rate =} \FloatTok{0.7}\NormalTok{) }\CommentTok{\# Customizable rate}
-\NormalTok{so }\OtherTok{=} \FunctionTok{so.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{date =} \StringTok{"2003{-}05{-}01"}\NormalTok{)}
-\NormalTok{ramp }\OtherTok{=} \FunctionTok{ramp.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{range =} \FunctionTok{c}\NormalTok{(}\StringTok{"2001{-}01{-}01"}\NormalTok{,}\StringTok{"2001{-}12{-}01"}\NormalTok{))}
+\NormalTok{s }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{start =} \DecValTok{2000}\NormalTok{, }\AttributeTok{end =} \DecValTok{2005}\NormalTok{, }\AttributeTok{frequency =} \DecValTok{12}\NormalTok{)}
+\NormalTok{ao }\OtherTok{\textless{}{-}} \FunctionTok{ao.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{date =} \StringTok{"2001{-}03{-}01"}\NormalTok{)}
+\NormalTok{ls }\OtherTok{\textless{}{-}} \FunctionTok{ls.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{date =} \StringTok{"2001{-}01{-}01"}\NormalTok{)}
+\NormalTok{tc }\OtherTok{\textless{}{-}} \FunctionTok{tc.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{date =} \StringTok{"2001{-}01{-}01"}\NormalTok{, }\AttributeTok{rate =} \FloatTok{0.7}\NormalTok{) }\CommentTok{\# Customizable rate}
+\NormalTok{so }\OtherTok{\textless{}{-}} \FunctionTok{so.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{date =} \StringTok{"2003{-}05{-}01"}\NormalTok{)}
+\NormalTok{ramp }\OtherTok{\textless{}{-}} \FunctionTok{ramp.variable}\NormalTok{(}\AttributeTok{s =}\NormalTok{ s, }\AttributeTok{range =} \FunctionTok{c}\NormalTok{(}\StringTok{"2001{-}01{-}01"}\NormalTok{,}\StringTok{"2001{-}12{-}01"}\NormalTok{))}
 \FunctionTok{plot}\NormalTok{(}\FunctionTok{ts.union}\NormalTok{(ao, ls, tc, so, ramp), }\AttributeTok{plot.type =} \StringTok{"single"}\NormalTok{,}
      \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{,}\StringTok{"lightgreen"}\NormalTok{,}\StringTok{"orange"}\NormalTok{,}\StringTok{"blue"}\NormalTok{,}\StringTok{"black"}\NormalTok{))}
 \end{Highlighting}
@@ -1552,18 +1553,27 @@ In rjd3sa:
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# JD+}
-\FunctionTok{print}\NormalTok{(}\FunctionTok{system.time}\NormalTok{(}\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{) \{  j}\OtherTok{\textless{}{-}}\NormalTok{rjd3modelling}\SpecialCharTok{::}\FunctionTok{sarima.estimate}\NormalTok{(}\FunctionTok{log}\NormalTok{(rjd3toolkit}\SpecialCharTok{::}\NormalTok{ABS}\SpecialCharTok{$}\NormalTok{X0.}\DecValTok{2}\NormalTok{.}\DecValTok{09}\NormalTok{.}\FloatTok{10.}\NormalTok{M), }\AttributeTok{order=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{seasonal =} \FunctionTok{list}\NormalTok{(}\AttributeTok{order=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{period=}\DecValTok{12}\NormalTok{))\}))}
-
+\FunctionTok{print}\NormalTok{(}\FunctionTok{system.time}\NormalTok{(}
+    \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{) \{  }
+\NormalTok{      j }\OtherTok{\textless{}{-}}\NormalTok{ rjd3modelling}\SpecialCharTok{::}\FunctionTok{sarima.estimate}\NormalTok{(}
+        \AttributeTok{data =} \FunctionTok{log}\NormalTok{(rjd3toolkit}\SpecialCharTok{::}\NormalTok{ABS}\SpecialCharTok{$}\NormalTok{X0.}\DecValTok{2}\NormalTok{.}\DecValTok{09}\NormalTok{.}\FloatTok{10.}\NormalTok{M), }
+        \AttributeTok{order =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{), }\AttributeTok{seasonal =} \FunctionTok{list}\NormalTok{(}\AttributeTok{order =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{), }\AttributeTok{period =} \DecValTok{12}\NormalTok{))}
+\NormalTok{    \}))}
 \CommentTok{\#       user    system        elapsed (in seconds) }
 \CommentTok{\#      4.98        0.37        4.63 }
 
 \CommentTok{\#R{-}native}
-\FunctionTok{print}\NormalTok{(}\FunctionTok{system.time}\NormalTok{(}\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{) \{  r}\OtherTok{\textless{}{-}}\FunctionTok{arima}\NormalTok{(}\FunctionTok{log}\NormalTok{(rjd3toolkit}\SpecialCharTok{::}\NormalTok{ABS}\SpecialCharTok{$}\NormalTok{X0.}\DecValTok{2}\NormalTok{.}\DecValTok{09}\NormalTok{.}\FloatTok{10.}\NormalTok{M), }\AttributeTok{order=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{seasonal =} \FunctionTok{list}\NormalTok{(}\AttributeTok{order=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{period=}\DecValTok{12}\NormalTok{))\}))}
-\FunctionTok{print}\NormalTok{(j}\SpecialCharTok{$}\NormalTok{likelihood )}
-\FunctionTok{print}\NormalTok{(r)}
-
+\FunctionTok{print}\NormalTok{(}\FunctionTok{system.time}\NormalTok{(}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{) \{  }
+\NormalTok{    r }\OtherTok{\textless{}{-}} \FunctionTok{arima}\NormalTok{(}
+      \AttributeTok{x =} \FunctionTok{log}\NormalTok{(rjd3toolkit}\SpecialCharTok{::}\NormalTok{ABS}\SpecialCharTok{$}\NormalTok{X0.}\DecValTok{2}\NormalTok{.}\DecValTok{09}\NormalTok{.}\FloatTok{10.}\NormalTok{M), }
+      \AttributeTok{order =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{), }\AttributeTok{seasonal =} \FunctionTok{list}\NormalTok{(}\AttributeTok{order =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{), }\AttributeTok{period =} \DecValTok{12}\NormalTok{))}
+\NormalTok{  \}))}
 \CommentTok{\#       user    system        elapsed (in seconds) }
 \CommentTok{\#     158.74        0.23      160.49 }
+
+\FunctionTok{print}\NormalTok{(j}\SpecialCharTok{$}\NormalTok{likelihood )}
+\FunctionTok{print}\NormalTok{(r)}
 \end{Highlighting}
 \end{Shaded}
 \end{frame}

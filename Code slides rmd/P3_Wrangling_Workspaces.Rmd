@@ -54,7 +54,7 @@ library("ggdemetra3")
 fig.ext <- "pdf"
 is_html <- knitr::is_html_output()
 is_latex <- knitr::is_latex_output()
-fig.ext = "pdf"
+fig.ext <- "pdf"
 if (is_html) {
     fa_arrow_circle_right <- '<i class="fas fa-arrow-circle-right"></i>'
     fa_r_project <- '<i class="fab fa-r-project"></i>'
