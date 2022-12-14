@@ -550,7 +550,7 @@ reg_a_estimation<-rjd3x13::regarima(window(ts, start=1985, end=2013),spec_td,con
 
 ## Refreshing data 
 
-### Estimation_spec vs result_spec (1/2)
+### Refreshing data: Estimation_spec vs result_spec (1/2)
 
 Possibility of refreshing data is a NEW feature of version 3.
 
