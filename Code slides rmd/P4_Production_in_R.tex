@@ -1,7 +1,7 @@
 \PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[10pt,xcolor=table,color={dvipsnames,usenames},ignorenonframetext,usepdftitle=false,french]{beamer}
+\documentclass[10pt,xcolor=table,color={dvipsnames,usenames},ignorenonframetext,usepdftitle=false,french,aspectratio=169]{beamer}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
@@ -302,14 +302,12 @@ The three main functions of the JDCruncher package are:
 \NormalTok{QR}
 
 \NormalTok{?compute\_score }\CommentTok{\# to see how the score is calculated (formula)}
-\NormalTok{QR }\OtherTok{\textless{}{-}} \FunctionTok{compute\_score}\NormalTok{(QR,}
-                    \AttributeTok{n\_contrib\_score =} \DecValTok{3}\NormalTok{)}
+\NormalTok{QR }\OtherTok{\textless{}{-}} \FunctionTok{compute\_score}\NormalTok{(QR, }\AttributeTok{n\_contrib\_score =} \DecValTok{3}\NormalTok{)}
 
 \NormalTok{QR}
 
 \NormalTok{QR }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(QR, }\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{sort\_variables =} \StringTok{"score"}\NormalTok{)}
-\FunctionTok{export\_xlsx}\NormalTok{(QR,}
-            \AttributeTok{file\_name =} \StringTok{"U:/quality\_report.xls"}\NormalTok{)}
+\FunctionTok{export\_xlsx}\NormalTok{(QR, }\AttributeTok{file\_name =} \StringTok{"U:/quality\_report.xls"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \end{frame}
@@ -327,6 +325,7 @@ Missing values can be ignored and conditions can be set for indicators:
                                   \StringTok{"residuals\_homoskedasticity"}\NormalTok{,}
                                   \StringTok{"residuals\_normality"}\NormalTok{),}
                    \AttributeTok{conditions\_modalities =} \FunctionTok{c}\NormalTok{(}\StringTok{"Bad"}\NormalTok{,}\StringTok{"Severe"}\NormalTok{))}
+
 \NormalTok{BQ }\OtherTok{\textless{}{-}} \FunctionTok{compute\_score}\NormalTok{(BQ, }\AttributeTok{n\_contrib\_score =} \DecValTok{5}\NormalTok{,}
                     \AttributeTok{conditional\_indicator =} \FunctionTok{list}\NormalTok{(condition1),}
                     \AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
