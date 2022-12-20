@@ -105,13 +105,13 @@ JDemetra+ is a library of algorithms on:
 
 - Benchmarking and temporal disaggregation (GUI and R)
 
-- Bowcasting (R and Plug-in)
+- Nowcasting (R and Plug-in)
 
 They can be accessed via graphical user-interface (GUI) and/or R and/or plug-ins. 
 
 The available output, functions or tools are in general not identical using R or GUI for example, it is often fruitful to combine them. 
 
-JDemetra+ also offers general utilities for time series analysis: tests, auto-correlation functions, arima modelling, spectral analysis tools ...(in GUI and R)
+JDemetra+ also offers general utilities for time series analysis: tests, auto-correlation functions, Arima modelling, spectral analysis tools ...(in GUI and R)
 
 ### Why R packages ? 
 
@@ -153,9 +153,9 @@ Modifications of existing functions and output organisation
 
 - RJDemetra (X13-Arima, Tramo-Seats, functions for workspace wrangling) 
 
-- additionnal packages based on RJDemetra: rjdworkspace, ggdemetra, rjdqa (see paper on V2)
+- additional packages based on RJDemetra: rjdworkspace, ggdemetra, rjdqa (see paper on V2)
 
-- more specific packatges like rjdhighfreq, rjdsts
+- more specific packages like rjdhighfreq, rjdsts
 
 (corresponding to the version 2.x family of JD+ Core)
 
