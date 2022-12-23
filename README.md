@@ -60,6 +60,20 @@ install.packages(c("knitr", "kableExtra", "ggplot2", "microbenchmark"))
 
 You can click on the thumbnails to access the video playback. They are also available in the video folder.
 
+- Presentation 1: General introduction
+- Presentation 2: Seasonal adjustment in R with JD+
+- Presentation 3: Wrangling Workspaces
+- Presentation 4: Production in R
+
+[<img src="https://github.com/TanguyBarthelemy/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P1.png?raw=true" alt="General introduction" width="480"/>](https://www.youtube.com/watch?v=KdROgaytCiU "General introduction") [<img src="https://github.com/TanguyBarthelemy/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P2.png?raw=true" alt="Seasonal adjustment in R with JD+" width="480"/>](https://www.youtube.com/watch?v=F-ozBZTrJV4 "Seasonal adjustment in R with JD+")
+[<img src="https://github.com/TanguyBarthelemy/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P3.png?raw=true" alt="Wrangling Workspaces" width="480"/>](https://www.youtube.com/watch?v=ED0h9Gycxtc "Wrangling Workspaces") [<img src="https://github.com/TanguyBarthelemy/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P4.png?raw=true" alt="Production in R" width="480"/>](https://www.youtube.com/watch?v=ufTfK6Vz11Y "Production in R")
+
+
+<!-- [<img src="https://github.com/TanguyBarthelemy/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P1.png?raw=true" alt="General introduction" width="480"/>](https://www.youtube.com/watch?v=KdROgaytCiU "General introduction") -->
+<!-- [![General introduction](http://img.youtube.com/vi/KdROgaytCiU/0.jpg)](https://www.youtube.com/watch?v=KdROgaytCiU "General introduction") -->
+
+
+
 ## Links to relevant GitHub pages
 
 Here are the online open-source packages in version 2:
