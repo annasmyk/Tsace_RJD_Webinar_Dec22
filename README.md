@@ -112,8 +112,8 @@ And in version 3:
 -   [**rjd3bench**](https://github.com/palatej/rjd3bench) on
 <https://github.com/palatej/rjd3bench>
 
--   [**ggdemetra3**](https://github.com/palatej/ggdemetra3) on
-<https://github.com/palatej/ggdemetra3>
+-   [**ggdemetra3**](https://github.com/AQLT/ggdemetra3) on
+<https://github.com/AQLT/ggdemetra3>
 
 ## Contact
 
