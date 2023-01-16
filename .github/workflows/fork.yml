@@ -33,5 +33,5 @@ jobs:
           # git push origin feature/x
 
           git checkout main
-          # git merge --no-edit upstream/main
+          git merge --no-edit upstream/main
           # git push origin main
