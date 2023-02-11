@@ -30,6 +30,9 @@ remotes::install_github("InseeFr/JDCruncheR")
 
 Version **3** packages can be installed like this:
 
+> **Warning**  
+> R packages in version 3 are changing structure and organization. The codes below may return errors.
+
 ```r
 remotes::install_github("palatej/rjdemetra3")
 
