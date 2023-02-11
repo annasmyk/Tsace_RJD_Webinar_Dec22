@@ -44,10 +44,10 @@ library("rjd3tramoseats")
 library("rjdemetra3")
 library("ggdemetra3")
 
-# library(rjd3sts)
-# library(rjd3highfreq)
+# library("rjd3sts")
+# library("rjd3highfreq")
 
-# library(rjd3bench)
+# library("rjd3bench")
 fig.ext <- "pdf"
 is_html <- knitr::is_html_output()
 is_latex <- knitr::is_latex_output()
