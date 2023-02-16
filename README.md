@@ -79,20 +79,27 @@ To complete an issue on GitHub, you should:
 
 1.Go to the *Issues* tab:
 
-![plot](https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/issue/issue_panel.png?raw=true)
+<p align="center">
+  <img src="https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/issue/issue_panel.png?raw=true">
+</p>
 
 2. Click on *New issue*:
 
-![plot](https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/issue/create_issue.png?raw=true)
+<p align="center">
+  <img src="https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/issue/create_issue.png?raw=true">
+</p>
 
 3. Choose one of the themes proposed in the list and click on *Get started*:
 
-![plot](https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/issue/choose_issue.png?raw=true)
+<p align="center">
+  <img src="https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/issue/choose_issue.png?raw=true">
+</p>
 
 4. Fill the question with a title and a text to explain the problem or the request and click on *Submit new issue*:
 
-![plot](https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/issue/complete_issue.png?raw=true)
-
+<p align="center">
+  <img src="https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/issue/complete_issue.png?raw=true">
+</p>
 
 ## Links to relevant GitHub pages
 
