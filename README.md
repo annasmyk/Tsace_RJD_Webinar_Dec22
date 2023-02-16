@@ -63,18 +63,35 @@ install.packages(c("knitr", "kableExtra", "ggplot2", "microbenchmark"))
 
 You can click on the thumbnails to access the video playback. They are also available in the video folder.
 
-- [Presentation 1: General introduction](https://www.youtube.com/watch?v=KdROgaytCiU)
-- [Presentation 2: Seasonal adjustment in R with JD+](https://www.youtube.com/watch?v=F-ozBZTrJV4)
-- [Presentation 3: Wrangling Workspaces](https://www.youtube.com/watch?v=ED0h9Gycxtc)
-- [Presentation 4: Production in R](https://www.youtube.com/watch?v=VSfz4kEoxCY)
+- [Presentation 1: General introduction](https://www.youtube.com/watch?v=Pj7qEJvDmA0)
+- [Presentation 2: Seasonal adjustment in R with JD+](https://www.youtube.com/watch?v=q86l0hn9AJA)
+- [Presentation 3: Wrangling Workspaces](https://www.youtube.com/watch?v=Q4VDowqboGs)
+- [Presentation 4: Production in R](https://www.youtube.com/watch?v=twegpbREQpI)
 
-[<img src="https://github.com/TanguyBarthelemy/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P1-github.png?raw=true" alt="General introduction" width="410"/>](https://www.youtube.com/watch?v=KdROgaytCiU "General introduction") [<img src="https://github.com/TanguyBarthelemy/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P2-github.png?raw=true" alt="Seasonal adjustment in R with JD+" width="410"/>](https://www.youtube.com/watch?v=F-ozBZTrJV4 "Seasonal adjustment in R with JD+")
-[<img src="https://github.com/TanguyBarthelemy/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P3-github.png?raw=true" alt="Wrangling Workspaces" width="410"/>](https://www.youtube.com/watch?v=ED0h9Gycxtc "Wrangling Workspaces") [<img src="https://github.com/TanguyBarthelemy/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P4-github.png?raw=true" alt="Production in R" width="410"/>](https://www.youtube.com/watch?v=VSfz4kEoxCY "Production in R")
+[<img src="https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P1-github.png?raw=true" alt="General introduction" width="410"/>](https://www.youtube.com/watch?v=Pj7qEJvDmA0 "General introduction") [<img src="https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P2-github.png?raw=true" alt="Seasonal adjustment in R with JD+" width="410"/>](https://www.youtube.com/watch?v=q86l0hn9AJA "Seasonal adjustment in R with JD+")
+[<img src="https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P3-github.png?raw=true" alt="Wrangling Workspaces" width="410"/>](https://www.youtube.com/watch?v=Q4VDowqboGs "Wrangling Workspaces") [<img src="https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P4-github.png?raw=true" alt="Production in R" width="410"/>](https://www.youtube.com/watch?v=twegpbREQpI "Production in R")
 
 
-<!-- [<img src="https://github.com/TanguyBarthelemy/Tsace_RJD_Webinar_Dec22/blob/main/img/miniature/miniature-P1.png?raw=true" alt="General introduction" width="480"/>](https://www.youtube.com/watch?v=KdROgaytCiU "General introduction") -->
-<!-- [![General introduction](http://img.youtube.com/vi/KdROgaytCiU/0.jpg)](https://www.youtube.com/watch?v=KdROgaytCiU "General introduction") -->
+## How to ask a question?
 
+To ask a question, you can send us an email to Anna (anna.smyk@insee.fr) and me (tanguy.barthelemy@insee.fr) or complete an issue directly on GitHub.
+To complete an issue on GitHub, you should:
+
+1.Go to the *Issues* tab:
+
+![plot](https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/issue/issue_panel.png?raw=true)
+
+2. Click on *New issue*:
+
+![plot](https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/issue/create_issue.png?raw=true)
+
+3. Choose one of the themes proposed in the list and click on *Get started*:
+
+![plot](https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/issue/choose_issue.png?raw=true)
+
+4. Fill the question with a title and a text to explain the problem or the request and click on *Submit new issue*:
+
+![plot](https://github.com/annasmyk/Tsace_RJD_Webinar_Dec22/blob/main/img/issue/complete_issue.png?raw=true)
 
 
 ## Links to relevant GitHub pages
