@@ -95,13 +95,13 @@ Context of use :
 
 - export the results (series and diagnostics), without having to open the graphical interface and operate manually.
 
-It can be launched in R with rjwsacruncher or JDCruncherR packages.
+It can be launched in R with rjwsacruncher or JDCruncheRR packages.
 
 The **JDCruncheR package** produces a QR based on JDemetra+ cruncher output
 
 ### Quality report with JDCruncheR package (2/4)
 
-The three main functions of the JDCruncher package are: 
+The three main functions of the JDCruncheR package are: 
 
 - `extract_QR` to extract the quality report from the csv file (demetra_m.csv) that contains all JD+ diagnostics
 
@@ -126,7 +126,7 @@ QR <- sort(QR, decreasing = TRUE, sort_variables = "score")
 export_xlsx(QR, file_name = "U:/quality_report.xls")
 ```
 
-### Quality report with JDCruncher (4/4) : example
+### Quality report with JDCruncheR (4/4) : example
 
 Missing values can be ignored and conditions can be set for indicators:
 ```{r, eval = FALSE}
@@ -235,7 +235,7 @@ In a full R set up:
 
 - more code needed, as fast ? (probably)
 
-- refresh policies (V3) even more flexible
+- refresh policies (v3) even more flexible
 
 - output is directly available in R for further processing
 
@@ -246,7 +246,7 @@ Step 1: comparing old and new sets of parameters
 
 - easy in both contexts using R (reading W with RJDemetra) : 
 
-- score computation with diagnostics : JDCruncher or adapted version to R objects 
+- score computation with diagnostics : JDCruncheR or adapted version to R objects 
 
 Step 2: select important series and fine-tune manually
 

@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-.tex
-.log
-.bib
+
+*.tex
+*.log
+*.bib

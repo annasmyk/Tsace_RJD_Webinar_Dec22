@@ -108,9 +108,9 @@ only the first property (1) will be available.
 
 ![](img/SA-item-XML.PNG)
 
-# Using workspaces and R packages in conjuction
+# Using workspaces and R packages in conjunction
 
-### Using workspaces and R packages in conjuction
+### Using workspaces and R packages in conjunction
 
 Two principal classes of benefits:
 
