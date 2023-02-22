@@ -1,5 +1,5 @@
 ---
-name: Quality report with JDCruncher
+name: Quality report with JDCruncheR
 about: Ask a question
 title: "[Question]"
 labels: ''
