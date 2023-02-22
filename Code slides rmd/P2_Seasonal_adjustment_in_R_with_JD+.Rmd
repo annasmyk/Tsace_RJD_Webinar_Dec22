@@ -211,7 +211,7 @@ Model_sa$decomposition
 ### "Model_sa" object structure  in version 2
 Organised by domain:
 
-![V2 structure](img/sa_obj_struct.PNG){width=90%}
+![v2 structure](img/sa_obj_struct.PNG) {width=90%}
 
 
 ### "Model_sa" object structure  in version 3
