@@ -299,7 +299,7 @@ JDemetra+ is a library of algorithms on:
 \item
   Benchmarking and temporal disaggregation (GUI and R)
 \item
-  Bowcasting (R and Plug-in)
+  Nowcasting (R and Plug-in)
 \end{itemize}
 
 They can be accessed via graphical user-interface (GUI) and/or R and/or
@@ -309,7 +309,7 @@ The available output, functions or tools are in general not identical
 using R or GUI for example, it is often fruitful to combine them.
 
 JDemetra+ also offers general utilities for time series analysis: tests,
-auto-correlation functions, arima modelling, spectral analysis tools
+auto-correlation functions, Arima modelling, spectral analysis tools
 \ldots(in GUI and R)
 \end{frame}
 
@@ -356,10 +356,10 @@ Modifications of existing functions and output organisation
 \end{frame}
 
 \hypertarget{accessing-jdemetra-core-routines-from-v2-to-v3}{%
-\section{Accessing JDemetra+ core routines: from V2 to
+\section{Accessing JDemetra+ core routines: from v2 to
 v3}\label{accessing-jdemetra-core-routines-from-v2-to-v3}}
 
-\begin{frame}{From V2 to v3: changing gears}
+\begin{frame}{From v2 to v3: changing gears}
 \protect\hypertarget{from-v2-to-v3-changing-gears}{}
 \textbf{Version 2:}
 
@@ -367,10 +367,10 @@ v3}\label{accessing-jdemetra-core-routines-from-v2-to-v3}}
 \item
   RJDemetra (X13-Arima, Tramo-Seats, functions for workspace wrangling)
 \item
-  additionnal packages based on RJDemetra: rjdworkspace, ggdemetra,
-  rjdqa (see paper on V2)
+  additional packages based on RJDemetra: rjdworkspace, ggdemetra, rjdqa
+  (see paper on v2)
 \item
-  more specific packatges like rjdhighfreq, rjdsts
+  more specific packages like rjdhighfreq, rjdsts
 \end{itemize}
 
 (corresponding to the version 2.x family of JD+ Core)
@@ -444,7 +444,7 @@ In part 3 and 4 we will also use
 
 \begin{itemize}
 \item
-  JDCruncher (based on cruncher output) To install it: download the
+  JDCruncheR (based on cruncher output) To install it: download the
   \textbf{.zip} or \textbf{.tar.gz} file from
   \url{https://github.com/InseeFr/JDCruncheR/releases}.
 \item
@@ -466,18 +466,25 @@ Installing latest version from GitHub (as not on CRAN yet)
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# install.packages("remotes")}
-\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3toolkit"}\NormalTok{)}
-\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3modelling"}\NormalTok{)}
-\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3sa"}\NormalTok{)}
-\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3arima"}\NormalTok{)}
-\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3x13"}\NormalTok{)}
-\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3tramoseats"}\NormalTok{)}
+
 \NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjdemetra3"}\NormalTok{)}
-\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjdfilters"}\NormalTok{)}
-\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3sts"}\NormalTok{)}
-\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3highfreq"}\NormalTok{)}
-\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3stl"}\NormalTok{)}
-\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3bench"}\NormalTok{)}
+
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3toolkit"}\NormalTok{, }\AttributeTok{ref =} \StringTok{"v0.6.0"}\NormalTok{)}
+
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3modelling"}\NormalTok{, }\AttributeTok{ref =} \StringTok{"v0.6.0"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3arima"}\NormalTok{, }\AttributeTok{ref =} \StringTok{"v0.6.0"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3sa"}\NormalTok{, }\AttributeTok{ref =} \StringTok{"v0.6.0"}\NormalTok{)}
+
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3tramoseats"}\NormalTok{, }\AttributeTok{ref =} \StringTok{"v0.6.0"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3x13"}\NormalTok{, }\AttributeTok{ref =} \StringTok{"v0.6.0"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjdemetra3"}\NormalTok{, }\AttributeTok{ref =} \StringTok{"v0.6.0"}\NormalTok{)}
+
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3sts"}\NormalTok{, }\AttributeTok{ref =} \StringTok{"v0.5.0"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3highfreq"}\NormalTok{, }\AttributeTok{ref =} \StringTok{"v0.5.0"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3stl"}\NormalTok{, }\AttributeTok{ref =} \StringTok{"v0.5.0"}\NormalTok{)}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"palatej/rjd3bench"}\NormalTok{, }\AttributeTok{ref =} \StringTok{"v0.5.0"}\NormalTok{)}
+\CommentTok{\# options : INSTALL\_opts = "{-}{-}no{-}multiarch"}
+
 \NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"AQLT/ggdemetra3"}\NormalTok{) }\CommentTok{\#additional graphics }
 \end{Highlighting}
 \end{Shaded}
