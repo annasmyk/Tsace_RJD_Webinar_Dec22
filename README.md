@@ -35,8 +35,6 @@ Version **3** packages can be installed like this:
 > R packages in version 3 are changing structure and organization. The codes below may return errors.
 
 ```r
-remotes::install_github("palatej/rjdemetra3")
-
 remotes::install_github("palatej/rjd3toolkit", ref = "v0.6.0")
 
 remotes::install_github("palatej/rjd3modelling", ref = "v0.6.0")
@@ -45,6 +43,7 @@ remotes::install_github("palatej/rjd3sa", ref = "v0.6.0")
 
 remotes::install_github("palatej/rjd3tramoseats", ref = "v0.6.0")
 remotes::install_github("palatej/rjd3x13", ref = "v0.6.0")
+
 remotes::install_github("palatej/rjdemetra3", ref = "v0.6.0")
 
 remotes::install_github("palatej/rjd3sts", ref = "v0.5.0")
