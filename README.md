@@ -29,26 +29,19 @@ install.packages("rjwsacruncher")
 
 Version **3** packages can be installed like this:
 
-> **Warning**  
-> R packages in version 3 are changing structure and organization. The codes below may return errors.
-
 ```r
-remotes::install_github("palatej/rjd3toolkit", ref = "v0.6.0")
+remotes::install_github("palatej/rjd3toolkit")
 
-remotes::install_github("palatej/rjd3modelling", ref = "v0.6.0")
-remotes::install_github("palatej/rjd3arima", ref = "v0.6.0")
-remotes::install_github("palatej/rjd3sa", ref = "v0.6.0")
+remotes::install_github("palatej/rjd3x13")
+remotes::install_github("palatej/rjd3tramoseats")
 
-remotes::install_github("palatej/rjd3tramoseats", ref = "v0.6.0")
-remotes::install_github("palatej/rjd3x13", ref = "v0.6.0")
+remotes::install_github("palatej/rjd3highfreq")
+remotes::install_github("palatej/rjdfilters")
+remotes::install_github("palatej/rjd3sts")
+remotes::install_github("palatej/rjd3stl")
+remotes::install_github("palatej/rjd3bench")
 
-remotes::install_github("palatej/rjdemetra3", ref = "v0.6.0")
-
-remotes::install_github("palatej/rjd3sts", ref = "v0.5.0")
-remotes::install_github("palatej/rjd3highfreq", ref = "v0.5.0")
-remotes::install_github("palatej/rjd3stl", ref = "v0.5.0")
-remotes::install_github("palatej/rjd3bench", ref = "v0.5.0")
-# options : INSTALL_opts = "--no-multiarch"
+remotes::install_github("palatej/rjdemetra3")
 
 remotes::install_github("AQLT/ggdemetra3")
 ```
